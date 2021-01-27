@@ -1,0 +1,5 @@
+node_modules
+.history
+package-lock.json
+.vscode
+dist 
