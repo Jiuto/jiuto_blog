@@ -17,6 +17,16 @@ module.exports = {
                 children: [
                     '/guide/vue/nextTick',
                 ]
+            },
+            {
+                title: '其他',
+                collapsable: false,
+                children: [
+                    '/guide/else/docker_initSql',
+                    '/guide/else/eslint_prettier',
+                    '/guide/else/ele_expend',
+                    '/guide/else/karma_mocha',
+                ]
             }
         ]
     },
