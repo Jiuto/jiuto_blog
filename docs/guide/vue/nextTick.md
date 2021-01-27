@@ -1,4 +1,4 @@
-## vue中$nextTick的实现
+## vue中$nextTick的实现原理
 
 ### 前置知识：宏任务 macrotask 和 微任务 microtask
 
