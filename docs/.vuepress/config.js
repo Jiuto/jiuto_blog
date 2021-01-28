@@ -1,4 +1,5 @@
 module.exports = {
+    base: "/jiuto_blog/",
     title: "Jiuto's blog",
     description: 'Just playing around',
     head: [
