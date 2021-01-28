@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>在vue项目中配置eslint + prettier | Jiuto&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.8.0">
+    <link rel="icon" href="favicon.ico">
+    <meta name="description" content="Just playing around">
+    
+    <link rel="preload" href="/jiuto_blog/assets/css/0.styles.8eccc1ce.css" as="style"><link rel="preload" href="/jiuto_blog/assets/js/app.e1c54208.js" as="script"><link rel="preload" href="/jiuto_blog/assets/js/2.36a0744b.js" as="script"><link rel="preload" href="/jiuto_blog/assets/js/10.425169de.js" as="script"><link rel="prefetch" href="/jiuto_blog/assets/js/11.027e819a.js"><link rel="prefetch" href="/jiuto_blog/assets/js/12.d4283da2.js"><link rel="prefetch" href="/jiuto_blog/assets/js/3.bb659546.js"><link rel="prefetch" href="/jiuto_blog/assets/js/4.865692a8.js"><link rel="prefetch" href="/jiuto_blog/assets/js/5.06b13832.js"><link rel="prefetch" href="/jiuto_blog/assets/js/6.c8b7a84a.js"><link rel="prefetch" href="/jiuto_blog/assets/js/7.63f10440.js"><link rel="prefetch" href="/jiuto_blog/assets/js/8.f8027234.js"><link rel="prefetch" href="/jiuto_blog/assets/js/9.093b1b43.js">
+    <link rel="stylesheet" href="/jiuto_blog/assets/css/0.styles.8eccc1ce.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/jiuto_blog/" class="home-link router-link-active"><!----> <span class="site-name">Jiuto's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://github.com/Jiuto" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://github.com/Jiuto" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Vue</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/jiuto_blog/guide/vue/nextTick.html" class="sidebar-link">vue中$nextTick的实现原理</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>其他</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/jiuto_blog/guide/else/docker_initSql.html" class="sidebar-link">通过Dockerfile在docker中初始化mysql表</a></li><li><a href="/jiuto_blog/guide/else/eslint_prettier.html" aria-current="page" class="active sidebar-link">在vue项目中配置eslint + prettier</a></li><li><a href="/jiuto_blog/guide/else/ele_expend.html" class="sidebar-link">如何在element-ui中拓展一个新的组件</a></li><li><a href="/jiuto_blog/guide/else/karma_mocha.html" class="sidebar-link">搭建一个由 karma + mocha + chai + Istanbul + es6 + webpack 组成的基础测试工具</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="在vue项目中配置eslint-prettier"><a href="#在vue项目中配置eslint-prettier" class="header-anchor">#</a> 在vue项目中配置eslint + prettier</h2> <h3 id="前提-配置eslint"><a href="#前提-配置eslint" class="header-anchor">#</a> 前提：配置eslint</h3> <p>方案一：vue-cli初始化vue项目并选择初始化eslint
+方案二：自行百度eslint相关编辑器插件和项目依赖</p> <h3 id="安装prettier相关依赖"><a href="#安装prettier相关依赖" class="header-anchor">#</a> 安装prettier相关依赖</h3> <p><code>npm i --save-dev prettier eslint-plugin-prettier eslint-config-prettier prettier-eslint-cli</code>
+安装eslint-plugin-prettier 配合eslint使用prettier
+安装eslint-config-prettier 禁用一些eslint和prettier冲突的规则
+安装prettier-eslint-cli 使我们可以敲命令格式化代码</p> <h3 id="eslint配置更改"><a href="#eslint配置更改" class="header-anchor">#</a> eslint配置更改</h3> <p>extends中添加'plugin:prettier/recommended'
+plugins中添加'prettier'
+rules中添加
+&quot;prettier/prettier&quot;: [
+ &quot;error&quot;,
+ {
+  &quot;singleQuote&quot;: true,
+  &quot;trailingComma&quot;: &quot;none&quot;,
+  &quot;bracketSpacing&quot;: true,
+  &quot;jsxBracketSameLine&quot;: true
+ }
+]
+添加prettier支持并规避prettier配置和编辑器prettier配置冲突报错</p> <h3 id="package-json设置命令"><a href="#package-json设置命令" class="header-anchor">#</a> package.json设置命令</h3> <p>package.json的scripts中添加：
+&quot;format&quot;: &quot;prettier-eslint --write &quot;src/<strong>/*.js&quot; &quot;src/</strong>/<em>.scss&quot; &quot;src/**/</em>.less&quot; &quot;src/**/*.vue&quot;&quot;</p> <h3 id="执行"><a href="#执行" class="header-anchor">#</a> 执行</h3> <p><code>npm run format</code></p> <h3 id="额外配置"><a href="#额外配置" class="header-anchor">#</a> 额外配置</h3> <p>可在package.json中增加以下配置，默认提交代码时自动格式化代码</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token punctuation">{</span>
+	<span class="token string">&quot;husky&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;hooks&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">&quot;pre-commit&quot;</span><span class="token operator">:</span> <span class="token string">&quot;lint-staged&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;lint-staged&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;*.{js,jsx,ts,tsx,md,html,vue,css,scss,less,json}&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">&quot;prettier-eslint --write&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;git add&quot;</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;package-lock.json&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">&quot;git rm --cached&quot;</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><hr> <h4 id="附"><a href="#附" class="header-anchor">#</a> 附：</h4> <p>eslint配置，可自由添加<a href="http://eslint.cn/docs/rules/" target="_blank" rel="noopener noreferrer">规则（自行翻墙）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  root<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  parserOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
+    parser<span class="token operator">:</span> <span class="token string">'babel-eslint'</span><span class="token punctuation">,</span>
+    ecmaVersion<span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  env<span class="token operator">:</span> <span class="token punctuation">{</span>
+    browser<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    es6<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token keyword">extends</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">'plugin:vue/essential'</span><span class="token punctuation">,</span> 
+    <span class="token string">'eslint:recommended'</span><span class="token punctuation">,</span>
+    <span class="token string">'plugin:prettier/recommended'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">'vue'</span><span class="token punctuation">,</span>
+    <span class="token string">'prettier'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  globals<span class="token operator">:</span> <span class="token punctuation">{</span>
+    require<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment">// add your custom rules here</span>
+  rules<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// allow async-await</span>
+    <span class="token string">'generator-star-spacing'</span><span class="token operator">:</span> <span class="token string">'off'</span><span class="token punctuation">,</span>
+    <span class="token comment">// allow debugger during development</span>
+    <span class="token string">'no-debugger'</span><span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">'production'</span> <span class="token operator">?</span> <span class="token string">'error'</span> <span class="token operator">:</span> <span class="token string">'off'</span><span class="token punctuation">,</span>
+
+    <span class="token string">'no-console'</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token comment">//禁用 console</span>
+    <span class="token string">'no-unused-vars'</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token comment">//禁止出现未使用过的变量</span>
+
+    <span class="token string">&quot;prettier/prettier&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">&quot;error&quot;</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        <span class="token string">&quot;singleQuote&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;trailingComma&quot;</span><span class="token operator">:</span> <span class="token string">&quot;none&quot;</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;bracketSpacing&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;jsxBracketSameLine&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+         <span class="token string">&quot;endOfLine&quot;</span><span class="token operator">:</span><span class="token string">&quot;auto&quot;</span> <span class="token comment">//不同系统换行符不一致</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/jiuto_blog/guide/else/docker_initSql.html" class="prev">
+        通过Dockerfile在docker中初始化mysql表
+      </a></span> <span class="next"><a href="/jiuto_blog/guide/else/ele_expend.html">
+        如何在element-ui中拓展一个新的组件
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/jiuto_blog/assets/js/app.e1c54208.js" defer></script><script src="/jiuto_blog/assets/js/2.36a0744b.js" defer></script><script src="/jiuto_blog/assets/js/10.425169de.js" defer></script>
+  </body>
+</html>

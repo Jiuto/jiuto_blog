@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>搭建一个由 karma + mocha + chai + Istanbul + es6 + webpack 组成的基础测试工具 | Jiuto&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.8.0">
+    <link rel="icon" href="favicon.ico">
+    <meta name="description" content="Just playing around">
+    
+    <link rel="preload" href="/jiuto_blog/assets/css/0.styles.8eccc1ce.css" as="style"><link rel="preload" href="/jiuto_blog/assets/js/app.e1c54208.js" as="script"><link rel="preload" href="/jiuto_blog/assets/js/2.36a0744b.js" as="script"><link rel="preload" href="/jiuto_blog/assets/js/11.027e819a.js" as="script"><link rel="prefetch" href="/jiuto_blog/assets/js/10.425169de.js"><link rel="prefetch" href="/jiuto_blog/assets/js/12.d4283da2.js"><link rel="prefetch" href="/jiuto_blog/assets/js/3.bb659546.js"><link rel="prefetch" href="/jiuto_blog/assets/js/4.865692a8.js"><link rel="prefetch" href="/jiuto_blog/assets/js/5.06b13832.js"><link rel="prefetch" href="/jiuto_blog/assets/js/6.c8b7a84a.js"><link rel="prefetch" href="/jiuto_blog/assets/js/7.63f10440.js"><link rel="prefetch" href="/jiuto_blog/assets/js/8.f8027234.js"><link rel="prefetch" href="/jiuto_blog/assets/js/9.093b1b43.js">
+    <link rel="stylesheet" href="/jiuto_blog/assets/css/0.styles.8eccc1ce.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/jiuto_blog/" class="home-link router-link-active"><!----> <span class="site-name">Jiuto's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://github.com/Jiuto" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://github.com/Jiuto" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Vue</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/jiuto_blog/guide/vue/nextTick.html" class="sidebar-link">vue中$nextTick的实现原理</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>其他</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/jiuto_blog/guide/else/docker_initSql.html" class="sidebar-link">通过Dockerfile在docker中初始化mysql表</a></li><li><a href="/jiuto_blog/guide/else/eslint_prettier.html" class="sidebar-link">在vue项目中配置eslint + prettier</a></li><li><a href="/jiuto_blog/guide/else/ele_expend.html" class="sidebar-link">如何在element-ui中拓展一个新的组件</a></li><li><a href="/jiuto_blog/guide/else/karma_mocha.html" aria-current="page" class="active sidebar-link">搭建一个由 karma + mocha + chai + Istanbul + es6 + webpack 组成的基础测试工具</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="搭建一个由-karma-mocha-chai-istanbul-es6-webpack-组成的基础测试工具"><a href="#搭建一个由-karma-mocha-chai-istanbul-es6-webpack-组成的基础测试工具" class="header-anchor">#</a> 搭建一个由 karma + mocha + chai + Istanbul + es6 + webpack 组成的基础测试工具</h1> <h2 id="目的"><a href="#目的" class="header-anchor">#</a> 目的</h2> <p>搭建一个由 karma + mocha + chai + Istanbul + es6 + webpack 组成的基础测试工具</p> <hr> <h2 id="工具的简单介绍"><a href="#工具的简单介绍" class="header-anchor">#</a> 工具的简单介绍</h2> <h3 id="测试框架"><a href="#测试框架" class="header-anchor">#</a> 测试框架</h3> <h4 id="mocha"><a href="#mocha" class="header-anchor">#</a> Mocha</h4> <blockquote><p>mocha是JavaScript的一种单元测试框架，既可以在浏览器环境下运行，也可以在Node.js环境下运行。
+使用mocha，我们就只需要专注于编写单元测试本身，然后，让mocha去自动运行所有的测试，并给出测试结果。
+mocha的特点主要有：</p> <ol><li>既可以测试简单的JavaScript函数，又可以测试异步代码，因为异步是JavaScript的特性之一；</li></ol></blockquote> <blockquote><ol><li>可以自动运行所有测试，也可以只运行特定的测试；</li></ol></blockquote> <blockquote><ol><li>可以支持before、after、beforeEach和afterEach来编写初始化代码。</li></ol></blockquote> <p><a href="">测试框架Mocah实例教程</a> <a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/00147203593334596b366f3fe0b409fbc30ad81a0a91c4a000" target="_blank" rel="noopener noreferrer">廖雪峰js教程<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <hr> <h4 id="chai断言库"><a href="#chai断言库" class="header-anchor">#</a> Chai断言库</h4> <blockquote><p>chai 提供了三种断言风格来分别适用于 BDD 和 TDD。<code>expect/should</code> API 对应BDD风格，<code>Assert API</code> 对应TDD风格。</p></blockquote> <p><a href="https://www.chaijs.com/api/" target="_blank" rel="noopener noreferrer">Chai官网API Reference<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> <a href="https://www.jianshu.com/p/f200a75a15d2" target="_blank" rel="noopener noreferrer">Chai.js断言库API中文文档<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="前端测试工具"><a href="#前端测试工具" class="header-anchor">#</a> 前端测试工具</h3> <h4 id="karma"><a href="#karma" class="header-anchor">#</a> Karma</h4> <blockquote><p>Karma是一个基于 Node.js 的 JavaScript 测试执行过程管理工具（Test Runner）。该工具可用于测试所有主流Web浏览器，也可集成到 CI（Continuous integration）工具，也可和其他代码编辑器一起使用。这个测试工具的一个强大特性就是，它可以监控(Watch)文件的变化，然后自行执行，通过<code>console.log</code>显示测试结果。</p></blockquote> <p><a href="https://karma-runner.github.io/2.0/intro/configuration.html" target="_blank" rel="noopener noreferrer">Karma官网<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <hr> <h4 id="istanbul"><a href="#istanbul" class="header-anchor">#</a> Istanbul</h4> <blockquote><p>测试的时候，我们常常关心，是否所有代码都测试到了。
+这个指标就叫做&quot;代码覆盖率&quot;（code coverage）。它有四个测量维度。</p> <ul><li>行覆盖率（line coverage）：是否每一行都执行了？</li> <li>函数覆盖率（function coverage）：是否每个函数都调用了？</li> <li>分支覆盖率（branch coverage）：是否每个if代码块都执行了？</li> <li>语句覆盖率（statement coverage）：是否每个语句都执行了？</li></ul></blockquote> <p><a href="http://www.ruanyifeng.com/blog/2015/06/istanbul.html" target="_blank" rel="noopener noreferrer">代码覆盖率工具 Istanbul 入门教程<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h2 id="实践"><a href="#实践" class="header-anchor">#</a> 实践</h2> <h3 id="文件结构概览"><a href="#文件结构概览" class="header-anchor">#</a> 文件结构概览</h3> <p>karma_mocha-----项目文件夹
+|
+|---node_modules-----项目依赖
+|
+|---src
+|------add.js-----待测文件
+|
+|---test
+|------coverage-----自动生产的报告文件夹
+|------mochaDemo
+|---------add.spec.js-----测试用例文件
+|------karma.conf.js-----karma配置文件
+|
+|---.babelrc-----babel配置文件
+|---package.json-----npm配置文件
+|---webpack.config.js-----webpack配置文件</p> <hr> <h3 id="初始化配置"><a href="#初始化配置" class="header-anchor">#</a> 初始化配置</h3> <h4 id="karma配置"><a href="#karma配置" class="header-anchor">#</a> karma配置</h4> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> webpack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'../webpack.config.js'</span><span class="token punctuation">)</span>
+module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">config</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    config<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      basePath<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+      port<span class="token operator">:</span><span class="token number">1010</span><span class="token punctuation">,</span>
+      <span class="token comment">// 自动启用Chrome浏览器执行代码 karma-chrome-launcher</span>
+      browsers<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'Chrome'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token comment">// 告诉karma用的测试框架（mocha）和断言库 (karma-chai)</span>
+      frameworks<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'mocha'</span><span class="token punctuation">,</span><span class="token string">'chai'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token comment">// 测试报告的显示格式（命令行内的显示格式）  karma-mocha-reporter</span>
+      <span class="token comment">// 测试覆盖率报告  karma-coverage</span>
+      reporters<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'spec'</span><span class="token punctuation">,</span> <span class="token string">'coverage'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token comment">//colors 报表中是否有颜色区分</span>
+      colors<span class="token operator">:</span><span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token comment">// 将功能代码和测试代码加载到karma</span>
+      files<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">'mochaDemo/**/*.spec.js'</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token comment">//排除文件，可以是正则</span>
+      exclude<span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">&quot;karma.conf.js&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token comment">//对指定文件的预处理</span>
+      preprocessors<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">'mochaDemo/add.spec.js'</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'webpack'</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token comment">// webpack</span>
+      webpack<span class="token operator">:</span> webpack<span class="token punctuation">,</span>
+      <span class="token comment">// 测试时忽略打包信息</span>
+      webpackMiddleware<span class="token operator">:</span> <span class="token punctuation">{</span>
+        noInfo<span class="token operator">:</span> <span class="token boolean">true</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token comment">// 生成的覆盖率报告 配置项</span>
+      <span class="token comment">// coverageReporter: {</span>
+      <span class="token comment">//   type : 'html',</span>
+      <span class="token comment">//   dir : 'coverage/'</span>
+      <span class="token comment">// }</span>
+      coverageReporter<span class="token operator">:</span> <span class="token punctuation">{</span>
+        dir<span class="token operator">:</span> <span class="token string">'./coverage'</span><span class="token punctuation">,</span>
+        reporters<span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span> type<span class="token operator">:</span> <span class="token string">'lcov'</span><span class="token punctuation">,</span> subdir<span class="token operator">:</span> <span class="token string">'.'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">{</span> type<span class="token operator">:</span> <span class="token string">'text-summary'</span> <span class="token punctuation">}</span> <span class="token comment">//在控制台输出摘要</span>
+        <span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token comment">// 检测文件变动 文件变动自动执行测试文件</span>
+      autoWatch<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token comment">// 输出的日志级别</span>
+      <span class="token comment">// possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG</span>
+      logLevel<span class="token operator">:</span> config<span class="token punctuation">.</span><span class="token constant">LOG_INFO</span><span class="token punctuation">,</span>
+      <span class="token comment">//是否依附浏览器运行</span>
+      singleRun<span class="token operator">:</span><span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token comment">//并发数，同时支持多少个浏览器运行</span>
+      concurrency<span class="token operator">:</span><span class="token number">Infinity</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="babel配置"><a href="#babel配置" class="header-anchor">#</a> babel配置</h4> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token punctuation">{</span>
+  <span class="token string">&quot;presets&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">[</span><span class="token string">&quot;env&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      <span class="token string">&quot;modules&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;targets&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">&quot;browsers&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;&gt; 1%&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;last 2 versions&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;not ie &lt;= 8&quot;</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;stage-2&quot;</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;plugins&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;transform-vue-jsx&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;transform-runtime&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token string">&quot;env&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;test&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string">&quot;presets&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;env&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;stage-2&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;plugins&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;transform-vue-jsx&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;istanbul&quot;</span><span class="token punctuation">]</span>  
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="webpack配置"><a href="#webpack配置" class="header-anchor">#</a> webpack配置</h4> <div class="language-javascript extra-class"><pre class="language-javascript"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  module<span class="token operator">:</span> <span class="token punctuation">{</span>
+    rules<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.js$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        exclude<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">node_modules</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        use<span class="token operator">:</span> <span class="token punctuation">{</span>
+          loader<span class="token operator">:</span> <span class="token string">&quot;babel-loader&quot;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="package-json修改脚本"><a href="#package-json修改脚本" class="header-anchor">#</a> package.json修改脚本</h4> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token string">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;test&quot;</span><span class="token operator">:</span> <span class="token string">&quot;cross-env BABEL_ENV=test karma start test/karma.conf.js&quot;</span>
+  <span class="token punctuation">}</span>
+</code></pre></div><h4 id="安装依赖"><a href="#安装依赖" class="header-anchor">#</a> 安装依赖</h4> <div class="language-javascript extra-class"><pre class="language-javascript"><code>		<span class="token string">&quot;babel-core&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^6.26.3&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;babel-loader&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^7.1.1&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;babel-plugin-syntax-jsx&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^6.18.0&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;babel-plugin-transform-runtime&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^6.23.0&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;babel-plugin-transform-vue-jsx&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^3.7.0&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;babel-preset-env&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^1.7.0&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;babel-preset-stage-2&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^6.24.1&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;chai&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^4.2.0&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;cross-env&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^5.2.0&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;karma&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^4.0.1&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;karma-chai&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^0.1.0&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;karma-chrome-launcher&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^2.2.0&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;karma-coverage&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^1.1.2&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;karma-mocha&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^1.3.0&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;karma-spec-reporter&quot;</span><span class="token operator">:</span> <span class="token string">&quot;0.0.32&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;karma-webpack&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^2.0.2&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;mocha&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^6.0.2&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;webpack&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^3.6.0&quot;</span>
+    <span class="token string">&quot;babel-plugin-istanbul&quot;</span><span class="token operator">:</span> <span class="token string">&quot;^4.1.1&quot;</span>
+</code></pre></div><hr> <h3 id="功能测试demo"><a href="#功能测试demo" class="header-anchor">#</a> 功能测试demo</h3> <p>待测文件</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">//add.js</span>
+<span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> x <span class="token operator">+</span> y
+<span class="token punctuation">}</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> add<span class="token punctuation">;</span>
+</code></pre></div><p>测试用例</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">//add.spec.js</span>
+<span class="token keyword">var</span> add <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'../../src/add.js'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> expect <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'chai'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>expect<span class="token punctuation">;</span>
+
+<span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">'加法函数的测试'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'1 加 1 等于 2'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span>be<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><hr> <h3 id="接口测试demo"><a href="#接口测试demo" class="header-anchor">#</a> 接口测试demo</h3> <p>接口测试使用了chai的插件chai-http，详见<a href="https://www.chaijs.com/plugins/chai-http/" target="_blank" rel="noopener noreferrer">chai-http官网<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。
+另外还有supertest等其他http测试工具。</p> <p>karma.conf.js增加proxies配置项，用于代理跨域请求。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">config</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    config<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token operator">...</span>
+      <span class="token comment">//代理</span>
+      proxies<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">'/'</span><span class="token operator">:</span> <span class="token string">'http://192.168.23.170:29548'</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>添加http请求测试</p> <div class="language- extra-class"><pre class="language-text"><code>...
+var chai = require('chai');
+var chaiHttp = require('chai-http');
+chai.use(chaiHttp);
+describe('接口测试', function() {
+	...
+  it('请求数据库列表接口成功', done =&gt; {
+    chai
+      .request(&quot;http://localhost:1010&quot;)	// 这个端口为karma.conf.js中配置的port端口
+      .post('/djtest/projectConfig/listDataBase.do')
+      .set('Content-Type', 'application/json')
+      .send({
+        'fprojectId': '',
+        'fsort': '',
+        'pagenum': 1,
+        'pagesize': 10
+      })
+      .end((err, res) =&gt; {
+        if (err) {
+          done();
+        }
+        let data = JSON.parse(res.text);
+        expect(data.success).to.be.true;
+        done();
+      });
+  });
+});
+</code></pre></div><p>在终端执行<code>npm run test</code></p> <p>控制台可看到输出结果</p> <p><img src="https://cdn.nlark.com/yuque/0/2019/png/312001/1557397161909-9739fcf8-2445-478c-890b-aea75c24a121.png#align=left&amp;display=inline&amp;height=557&amp;name=image.png&amp;originHeight=557&amp;originWidth=1155&amp;size=90223&amp;status=done&amp;width=1155" alt="image.png"></p> <p>test目录下生成coverage文件夹，打开index.html</p> <p><img src="https://cdn.nlark.com/yuque/0/2019/png/312001/1557397186139-46cb0d7f-527b-4e2d-9a9d-a27e5abb3fd9.png#align=left&amp;display=inline&amp;height=197&amp;name=image.png&amp;originHeight=197&amp;originWidth=1932&amp;size=18881&amp;status=done&amp;width=1932" alt="image.png"></p> <hr> <h3 id="在vue项目中的使用"><a href="#在vue项目中的使用" class="header-anchor">#</a> 在vue项目中的使用</h3> <p><a href="https://vue-test-utils.vuejs.org/zh/" target="_blank" rel="noopener noreferrer">Vue Test Utils<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 是 Vue.js 官方的单元测试实用工具库。
+安装依赖：
+<code>npm install --save-dev @vue/test-utils</code></p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> ElementUI <span class="token keyword">from</span> <span class="token string">&quot;element-ui&quot;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> vueComponent <span class="token keyword">from</span> <span class="token string">&quot;@/demo/vueComponent.vue&quot;</span><span class="token punctuation">;</span> <span class="token comment">// 待测vue组件</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> createLocalVue<span class="token punctuation">,</span> mount <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;vue-test-utils&quot;</span><span class="token punctuation">;</span> <span class="token comment">// vue-test-utils提供的方法</span>
+
+<span class="token keyword">const</span> localVue <span class="token operator">=</span> <span class="token function">createLocalVue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token comment">// 返回一个 Vue 的类供你添加组件、混入和安装插件而不会污染全局的 Vue 类</span>
+
+localVue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>ElementUI<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 注册element ui</span>
+<span class="token keyword">const</span> wrapper <span class="token operator">=</span> <span class="token function">mount</span><span class="token punctuation">(</span>dataBaseManagement<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  localVue
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 创建一个包含被挂载和渲染的 Vue 组件的 Wrapper</span>
+
+<span class="token comment">// 开始编写测试用例</span>
+</code></pre></div><hr> <p>参考文章：</p> <p><a href="https://github.com/muwoo/blogs/issues/33#event-1789300650" target="_blank" rel="noopener noreferrer">前端测试的那些事<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/jiuto_blog/guide/else/ele_expend.html" class="prev">
+        如何在element-ui中拓展一个新的组件
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/jiuto_blog/assets/js/app.e1c54208.js" defer></script><script src="/jiuto_blog/assets/js/2.36a0744b.js" defer></script><script src="/jiuto_blog/assets/js/11.027e819a.js" defer></script>
+  </body>
+</html>
