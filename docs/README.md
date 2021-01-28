@@ -2,14 +2,14 @@
 
 ### vue
 
-<a href="/guide/vue/nextTick">element-ui 创建组件的项目结构分析</a>
+[vue中$nextTick的实现原理](https://jiuto.github.io/jiuto_blog/guide/vue/nextTick.html)
 
 ### 其他
 
-<a href="/guide/else/docker_initSql">通过Dockerfile在docker中初始化mysql表</a>
+[通过Dockerfile在docker中初始化mysql表](https://jiuto.github.io/jiuto_blog/guide/else/docker_initSql.html)
 
-<a href="/guide/else/eslint_prettier">在vue项目中配置eslint + prettier</a>
+[在vue项目中配置eslint + prettier](https://jiuto.github.io/jiuto_blog/guide/else/eslint_prettier.html)
 
-<a href="/guide/else/ele_expend">如何在element-ui中拓展一个新的组件</a>
+[如何在element-ui中拓展一个新的组件](https://jiuto.github.io/jiuto_blog/guide/else/ele_expend.html)
 
-<a href="/guide/else/karma_mocha">搭建一个由 karma + mocha + chai + Istanbul + es6 + webpack 组成的基础测试工具</a>
+[搭建一个由 karma + mocha + chai + Istanbul + es6 + webpack 组成的基础测试工具](https://jiuto.github.io/jiuto_blog/guide/else/karma_mocha.html)
