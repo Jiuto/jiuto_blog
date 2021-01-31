@@ -7,8 +7,11 @@
 #### demo
 
 1、在自己的仓库中 fork element-ui 项目，新建一个自己的分支
+
 2、windows下需提前配置make命令所需环境
+
 3、使用`make new componentTag componentName ` 生成新组件相关的所有文件
+
 4、开发自己的组件（关于样式部分，element声明了一些基础变量，使用方便，很有参考意义）
 
 <img :src="$withBase('/imgs/element1.png')" alt="效果一">

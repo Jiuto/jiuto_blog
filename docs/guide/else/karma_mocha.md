@@ -54,21 +54,37 @@
 ### 文件结构概览
 
 karma_mocha-----项目文件夹
+
 |
+
 |---node_modules-----项目依赖
+
 |
+
 |---src
+
 |------add.js-----待测文件
+
 |
+
 |---test
+
 |------coverage-----自动生产的报告文件夹
+
 |------mochaDemo
+
 |---------add.spec.js-----测试用例文件
+
 |------karma.conf.js-----karma配置文件
+
 |
+
 |---.babelrc-----babel配置文件
+
 |---package.json-----npm配置文件
+
 |---webpack.config.js-----webpack配置文件
+
 
 ---
 
@@ -279,11 +295,11 @@ describe('接口测试', function() {
 
 控制台可看到输出结果
 
-![image.png](https://cdn.nlark.com/yuque/0/2019/png/312001/1557397161909-9739fcf8-2445-478c-890b-aea75c24a121.png#align=left&display=inline&height=557&name=image.png&originHeight=557&originWidth=1155&size=90223&status=done&width=1155)
+<img :src="$withBase('/imgs/console.png')" alt="控制台输出">
 
 test目录下生成coverage文件夹，打开index.html
 
-![image.png](https://cdn.nlark.com/yuque/0/2019/png/312001/1557397186139-46cb0d7f-527b-4e2d-9a9d-a27e5abb3fd9.png#align=left&display=inline&height=197&name=image.png&originHeight=197&originWidth=1932&size=18881&status=done&width=1932)
+<img :src="$withBase('/imgs/coverage.png')" alt="index.html">
 
 ---
 
