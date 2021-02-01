@@ -6,6 +6,7 @@
 
 vue：
 ```
+  "babel-eslint": "^10.1.0",
   "eslint": "^4.15.0",
   "eslint-config-standard": "^10.2.1",
   "eslint-friendly-formatter": "^3.0.0",
@@ -19,6 +20,7 @@ vue：
 
 react:
 ```
+  "babel-eslint": "^10.1.0",
   "eslint": "=6.6.0",
   "eslint-plugin-import": "^2.22.1",
   "eslint-plugin-jsx-a11y": "^6.4.1",
@@ -96,9 +98,13 @@ eslint配置，可自由添加[规则](http://eslint.cn/docs/rules/)
 ```javascript
 module.exports = {
   root: true,
+  parser: "babel-eslint",
   parserOptions: {
-    parser: "babel-eslint",
-    ecmaVersion: 6,
+    ecmaVersion: 11,  // ECMAScript版本
+    sourceType: "module",
+    ecmaFeatures: { // 额外语言特性
+        "jsx": true
+    },
   },
   env: {
     browser: true,
@@ -125,6 +131,7 @@ module.exports = {
     "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
     "no-console": 0, //禁用 console
     "no-unused-vars": 1, //禁止出现未使用过的变量
+    "react/prop-types": "off", // react 使用babel-eslint会导致react/prop-types报错
     "prettier/prettier": [
       "error",
       {
