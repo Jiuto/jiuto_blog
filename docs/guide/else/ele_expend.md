@@ -2,7 +2,7 @@
 
 #### 一张图诠释
 
-<img :src="$withBase('/imgs/ele_xmind.png')" alt="element-ui 创建组件的项目结构分析">
+<img :src="$withBase('/imgs/ele_expend/ele_xmind.png')" alt="element-ui 创建组件的项目结构分析">
 
 #### demo
 
@@ -14,8 +14,8 @@
 
 4、开发自己的组件（关于样式部分，element声明了一些基础变量，使用方便，很有参考意义）
 
-<img :src="$withBase('/imgs/element1.png')" alt="效果一">
+<img :src="$withBase('/imgs/ele_expend/element1.png')" alt="效果一">
 
-<img :src="$withBase('/imgs/element2.png')" alt="效果二">
+<img :src="$withBase('/imgs/ele_expend/element2.png')" alt="效果二">
 
 [github地址，切换ele-expand分支](https://github.com/Jiuto/element.git)

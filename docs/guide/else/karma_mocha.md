@@ -295,11 +295,11 @@ describe('接口测试', function() {
 
 控制台可看到输出结果
 
-<img :src="$withBase('/imgs/console.png')" alt="控制台输出">
+<img :src="$withBase('/imgs/karma_mocha/console.png')" alt="控制台输出">
 
 test目录下生成coverage文件夹，打开index.html
 
-<img :src="$withBase('/imgs/coverage.png')" alt="index.html">
+<img :src="$withBase('/imgs/karma_mocha/coverage.png')" alt="index.html">
 
 ---
 

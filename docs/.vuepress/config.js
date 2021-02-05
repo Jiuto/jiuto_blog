@@ -27,6 +27,7 @@ module.exports = {
                     '/guide/else/eslint_prettier',
                     '/guide/else/ele_expend',
                     '/guide/else/karma_mocha',
+                    '/guide/else/docker_verdaccio',
                 ]
             }
         ]

@@ -28,6 +28,8 @@ react:
   "eslint-plugin-react-hooks": "^4.2.0",
 ```
 
+eslint依赖高版本有一个'basePath' should be an absolute path的报错，固定6.6.0版本可[解决](https://stackoverflow.com/questions/60103564/there-was-trouble-creating-the-eslint-cliengine?r=SearchResults)
+
 ### 安装prettier相关依赖
 
 `npm i --save-dev prettier eslint-plugin-prettier eslint-config-prettier prettier-eslint-cli`
