@@ -18,11 +18,11 @@
 5. 执行`cd docker-examples`命令进入docker-examples文件夹，
 执行`mv docker-local-storage-volume ~/docker/verdaccio`将docker-local-storage-volume下的配置文件移动到docker下新建的verdaccio文件夹
 
-6. 执行`chown -R 100:101 ~/docker/verdaccio`设置文件权限
+6. 执行`chown -R 10001:65533 ~/docker/verdaccio`设置文件权限，docker环境下verdaccio容器中用户不是当前系统用户
 
 ### 启动镜像
 
-7. 执行`docker run --name verdaccio -itd -v ~/docker/verdaccio:/verdaccio -p 4873:4873 verdaccio/verdaccio`命令启动镜像，
+7. 执行`docker run --name verdaccio -itd -v ~/docker/verdaccio/conf:/verdaccio/conf -v ~/docker/verdaccio/storage:/verdaccio/storage -p 4873:4873 verdaccio/verdaccio`命令启动镜像，
 此时通过`docker ps -a`可以看到容器已经启动，访问4873端口可以看到仓库已经好了（我自己的dockerIP是http://192.168.99.100:4873/下文以此为例）
 
 <img :src="$withBase('/imgs/docker_verdaccio/docker.png')" alt="docker">
@@ -46,7 +46,7 @@
 
 #### 报错
 
-如果有`docker verdaccio one of the uplinks is down, refuse to publish`报错，
+13. 如果有`docker verdaccio one of the uplinks is down, refuse to publish`报错，
 则需要修改配置文件`docker\verdaccio\conf\config.yaml`，在文件后面加上
 
 ```
