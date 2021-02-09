@@ -28,6 +28,7 @@ module.exports = {
                     '/guide/else/ele_expend',
                     '/guide/else/karma_mocha',
                     '/guide/else/docker_verdaccio',
+                    '/guide/else/cli',
                 ]
             }
         ]
