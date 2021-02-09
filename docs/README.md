@@ -15,3 +15,5 @@
 [搭建一个由 karma + mocha + chai + Istanbul + es6 + webpack 组成的基础测试工具](https://jiuto.github.io/jiuto_blog/guide/else/karma_mocha.html)
 
 [在docker中通过Verdaccio搭建一个私有npm库](https://jiuto.github.io/jiuto_blog/guide/else/docker_verdaccio.html)
+
+[搭建一个脚手架工具](https://jiuto.github.io/jiuto_blog/guide/else/cli.html)
