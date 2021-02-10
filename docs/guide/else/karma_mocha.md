@@ -1,4 +1,4 @@
-# 搭建一个由 karma + mocha + chai + Istanbul + es6 + webpack 组成的基础测试工具
+# 搭建一个由 karma + mocha + chai + Istanbul 组成的基础测试工具
 
 ## 目的
 搭建一个由 karma + mocha + chai + Istanbul + es6 + webpack 组成的基础测试工具

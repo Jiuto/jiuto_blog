@@ -23,12 +23,13 @@ module.exports = {
                 title: '其他',
                 collapsable: false,
                 children: [
+                    '/guide/else/ele_expend',
+                    '/guide/else/cli',
+                    '/guide/else/utils',
+                    '/guide/else/docker_verdaccio',
                     '/guide/else/docker_initSql',
                     '/guide/else/eslint_prettier',
-                    '/guide/else/ele_expend',
                     '/guide/else/karma_mocha',
-                    '/guide/else/docker_verdaccio',
-                    '/guide/else/cli',
                 ]
             }
         ]
