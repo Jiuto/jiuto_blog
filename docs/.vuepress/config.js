@@ -26,6 +26,7 @@ module.exports = {
                     '/guide/else/ele_expend',
                     '/guide/else/cli',
                     '/guide/else/utils',
+                    '/guide/else/webpack_template',
                     '/guide/else/docker_verdaccio',
                     '/guide/else/docker_initSql',
                     '/guide/else/eslint_prettier',
