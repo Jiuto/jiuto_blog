@@ -14,6 +14,8 @@
 
 [webpack多页面打包方法工具和模板](https://jiuto.github.io/jiuto_blog/guide/else/webpack_template.html)
 
+[搭建一个自动化部署服务](https://jiuto.github.io/jiuto_blog/guide/else/auto_deploy.htm)
+
 [在docker中通过Verdaccio搭建一个私有npm库](https://jiuto.github.io/jiuto_blog/guide/else/docker_verdaccio.html)
 
 [通过Dockerfile在docker中初始化mysql表](https://jiuto.github.io/jiuto_blog/guide/else/docker_initSql.html)

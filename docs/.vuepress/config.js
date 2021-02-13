@@ -27,6 +27,7 @@ module.exports = {
                     '/guide/else/cli',
                     '/guide/else/utils',
                     '/guide/else/webpack_template',
+                    '/guide/else/auto_deploy',
                     '/guide/else/docker_verdaccio',
                     '/guide/else/docker_initSql',
                     '/guide/else/eslint_prettier',

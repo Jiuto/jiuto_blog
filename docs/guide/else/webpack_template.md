@@ -138,7 +138,7 @@ setEntryAndHtmlPlugin方法主要调用了handleCustom方法，handleCustom方�
 }
 ```
 
-3. 在讲述handleCustom前，我们先在index.js中增加声明如下变量和方法
+3. 在讲述handleCustom前，我们先在index.js中增加声明如下常量和方法
 
 ``` js
 const glob = require("glob");
