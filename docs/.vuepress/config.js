@@ -20,13 +20,20 @@ module.exports = {
                 ]
             },
             {
+                title: 'webpack',
+                collapsable: false,
+                children: [
+                    '/guide/webpack/webpack_template',
+                    '/guide/webpack/babeltry',
+                ]
+            },
+            {
                 title: '其他',
                 collapsable: false,
                 children: [
                     '/guide/else/ele_expend',
                     '/guide/else/cli',
                     '/guide/else/utils',
-                    '/guide/else/webpack_template',
                     '/guide/else/auto_deploy',
                     '/guide/else/docker_verdaccio',
                     '/guide/else/docker_initSql',

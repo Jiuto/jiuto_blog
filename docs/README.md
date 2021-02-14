@@ -4,6 +4,12 @@
 
 [vue中$nextTick的实现原理](https://jiuto.github.io/jiuto_blog/guide/vue/nextTick.html)
 
+### webpack
+
+[webpack多页面打包方法工具和模板](https://jiuto.github.io/jiuto_blog/guide/webpack/webpack_template.html)
+
+[通过babel手撸超简化版webpack](https://jiuto.github.io/jiuto_blog/guide/webpack/babeltry.html)
+
 ### 其他
 
 [如何在element-ui中拓展一个新的组件](https://jiuto.github.io/jiuto_blog/guide/else/ele_expend.html)
@@ -11,8 +17,6 @@
 [搭建一个脚手架工具](https://jiuto.github.io/jiuto_blog/guide/else/cli.html)
 
 [搭建一个方法库](https://jiuto.github.io/jiuto_blog/guide/else/utils.html)
-
-[webpack多页面打包方法工具和模板](https://jiuto.github.io/jiuto_blog/guide/else/webpack_template.html)
 
 [搭建一个自动化部署服务](https://jiuto.github.io/jiuto_blog/guide/else/auto_deploy.htm)
 
