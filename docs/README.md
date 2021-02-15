@@ -10,6 +10,8 @@
 
 [通过babel手撸超简化版webpack](https://jiuto.github.io/jiuto_blog/guide/webpack/babeltry.html)
 
+[手写webpack plugin 和 loader](https://jiuto.github.io/jiuto_blog/guide/webpack/plugin_loader.html)
+
 ### 其他
 
 [如何在element-ui中拓展一个新的组件](https://jiuto.github.io/jiuto_blog/guide/else/ele_expend.html)

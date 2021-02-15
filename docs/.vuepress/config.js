@@ -25,6 +25,7 @@ module.exports = {
                 children: [
                     '/guide/webpack/webpack_template',
                     '/guide/webpack/babeltry',
+                    '/guide/webpack/plugin_loader',
                 ]
             },
             {
