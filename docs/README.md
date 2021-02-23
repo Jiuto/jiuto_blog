@@ -1,5 +1,9 @@
 # Jiuto's blog 
 
+### JavaScript
+
+[用Map写一个EventBus事件总线](https://jiuto.github.io/jiuto_blog/guide/js/EventBus.html)
+
 ### vue
 
 [vue中$nextTick的实现原理](https://jiuto.github.io/jiuto_blog/guide/vue/nextTick.html)

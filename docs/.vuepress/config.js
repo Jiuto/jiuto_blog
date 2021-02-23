@@ -13,6 +13,13 @@ module.exports = {
         ],
         sidebar: [
             {
+                title: 'JavaScript',
+                collapsable: false,
+                children: [
+                    '/guide/js/EventBus',
+                ]
+            },
+            {
                 title: 'Vue',
                 collapsable: false,
                 children: [
