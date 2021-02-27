@@ -20,6 +20,13 @@ module.exports = {
                 ]
             },
             {
+                title: 'CSS',
+                collapsable: false,
+                children: [
+                    '/guide/css/flex',
+                ]
+            },
+            {
                 title: 'Vue',
                 collapsable: false,
                 children: [
