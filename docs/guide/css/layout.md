@@ -68,6 +68,8 @@ html right提前
 
 #### 方式三 float+overflow (触发BFC)
 
+BFC，即[块格式化上下文-MDN](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context)
+
 ``` css
 .content3 .left {
     float: left;
@@ -359,6 +361,10 @@ html
     margin: 0 200px;
 }
 ```
+
+#### 最终效果
+
+<img :src="$withBase('/imgs/css/layout/双飞翼.png')" alt="row">
 
 ### 参考
 
