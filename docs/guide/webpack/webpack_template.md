@@ -4,7 +4,7 @@
 
 ### 打包前后目录结构效果
 
-<img :src="$withBase('/imgs/webpack_template/before.png')" alt="打包前目录结构">
+<img :src="$withBase('/imgs/webpack/webpack_template/before.png')" alt="打包前目录结构">
 
 1. 打包目标为src目录，src目录下又分两类：
 
@@ -12,7 +12,7 @@
 
 第二类是pages，即业务文件夹，下分为对应的personalCenter、shoppingMall等二级目录，即个人中心模块/商城模块，每个模块目录下的index文件即该模块主页，子目录如productDetails文件即商品模块子页面的商品详情；
 
-<img :src="$withBase('/imgs/webpack_template/after.png')" alt="打包后目录结构">
+<img :src="$withBase('/imgs/webpack/webpack_template/after.png')" alt="打包后目录结构">
 
 2. 打包后的文件输入在dist文件夹下：
 

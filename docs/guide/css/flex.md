@@ -42,19 +42,19 @@ flex容器的主轴（main axis）由flex-direction属性定义，有四个取�
 
 row（默认）
 
-<img :src="$withBase('/imgs/flex/flex-direction_row.png')" alt="row">
+<img :src="$withBase('/imgs/css/flex/flex-direction_row.png')" alt="row">
 
 row-reverse
 
-<img :src="$withBase('/imgs/flex/flex-direction_row-reverse.png')" alt="row-reverse">
+<img :src="$withBase('/imgs/css/flex/flex-direction_row-reverse.png')" alt="row-reverse">
 
 column
 
-<img :src="$withBase('/imgs/flex/flex-direction_column.png')" alt="column">
+<img :src="$withBase('/imgs/css/flex/flex-direction_column.png')" alt="column">
 
 column-reverse
 
-<img :src="$withBase('/imgs/flex/flex-direction_column-reverse.png')" alt="column-reverse">
+<img :src="$withBase('/imgs/css/flex/flex-direction_column-reverse.png')" alt="column-reverse">
 
 交叉轴（cross axis）与主轴垂直，flex元素默认沿主轴排列。
 
@@ -64,15 +64,15 @@ flex-wrap定义一行放不下时，元素的换行方式，有三种取值：
 
 nowrap（默认），宽度不够时元素会被压缩变形
 
-<img :src="$withBase('/imgs/flex/flex-wrap_nowrap.png')" alt="nowrap">
+<img :src="$withBase('/imgs/css/flex/flex-wrap_nowrap.png')" alt="nowrap">
 
 wrap
 
-<img :src="$withBase('/imgs/flex/flex-wrap_wrap.png')" alt="wrap">
+<img :src="$withBase('/imgs/css/flex/flex-wrap_wrap.png')" alt="wrap">
 
 wrap-reverse
 
-<img :src="$withBase('/imgs/flex/flex-wrap_wrap-reverse.png')" alt="wrap-reverse">
+<img :src="$withBase('/imgs/css/flex/flex-wrap_wrap-reverse.png')" alt="wrap-reverse">
 
 #### 容器属性：justify-content
 
@@ -80,27 +80,27 @@ justify-content定义元素在主轴上的对齐方式，有五种取值方式�
 
 flex-start（默认）
 
-<img :src="$withBase('/imgs/flex/flex-direction_row.png')" alt="flex-start">
+<img :src="$withBase('/imgs/css/flex/flex-direction_row.png')" alt="flex-start">
 
 flex-end
 
-<img :src="$withBase('/imgs/flex/flex-direction_row-reverse.png')" alt="flex-end">
+<img :src="$withBase('/imgs/css/flex/flex-direction_row-reverse.png')" alt="flex-end">
 
 center
 
-<img :src="$withBase('/imgs/flex/justify-content_center.png')" alt="center">
+<img :src="$withBase('/imgs/css/flex/justify-content_center.png')" alt="center">
 
 space-around
 
 > 每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍
 
-<img :src="$withBase('/imgs/flex/justify-content_space-around.png')" alt="space-around">
+<img :src="$withBase('/imgs/css/flex/justify-content_space-around.png')" alt="space-around">
 
 space-between
 
 > 两端对齐，项目之间的间隔都相等
 
-<img :src="$withBase('/imgs/flex/justify-content_space-between.png')" alt="space-between">
+<img :src="$withBase('/imgs/css/flex/justify-content_space-between.png')" alt="space-between">
 
 #### 容器属性：align-items
 
@@ -110,27 +110,27 @@ stretch（默认）
 
 未定义元素高度，定义容器高度，元素会被拉伸满容器高度
 
-<img :src="$withBase('/imgs/flex/align-items_stretch1.png')" alt="stretch">
+<img :src="$withBase('/imgs/css/flex/align-items_stretch1.png')" alt="stretch">
 
 未定义容器高度，定义元素高度，容器会被拉伸到最高元素的高度
 
-<img :src="$withBase('/imgs/flex/align-items_stretch2.png')" alt="stretch">
+<img :src="$withBase('/imgs/css/flex/align-items_stretch2.png')" alt="stretch">
 
 flex-start
 
-<img :src="$withBase('/imgs/flex/align-items_stretch2.png')" alt="flex-start">
+<img :src="$withBase('/imgs/css/flex/align-items_stretch2.png')" alt="flex-start">
 
 flex-end
 
-<img :src="$withBase('/imgs/flex/align-items_flex-end.png')" alt="flex-end">
+<img :src="$withBase('/imgs/css/flex/align-items_flex-end.png')" alt="flex-end">
 
 center
 
-<img :src="$withBase('/imgs/flex/align-items_center.png')" alt="center">
+<img :src="$withBase('/imgs/css/flex/align-items_center.png')" alt="center">
 
 baseline
 
-<img :src="$withBase('/imgs/flex/align-items_baseline.png')" alt="baseline">
+<img :src="$withBase('/imgs/css/flex/align-items_baseline.png')" alt="baseline">
 
 #### 容器属性：align-content
 
@@ -138,31 +138,31 @@ align-content定义元素在交叉轴方向的对齐方式（即多行情况）�
 
 stretch（默认）
 
-<img :src="$withBase('/imgs/flex/align-content_stretch.png')" alt="stretch">
+<img :src="$withBase('/imgs/css/flex/align-content_stretch.png')" alt="stretch">
 
 flex-start
 
-<img :src="$withBase('/imgs/flex/align-content_flex-start.png')" alt="flex-start">
+<img :src="$withBase('/imgs/css/flex/align-content_flex-start.png')" alt="flex-start">
 
 flex-end
 
-<img :src="$withBase('/imgs/flex/align-content_flex-end.png')" alt="flex-end">
+<img :src="$withBase('/imgs/css/flex/align-content_flex-end.png')" alt="flex-end">
 
 center
 
-<img :src="$withBase('/imgs/flex/align-content_center.png')" alt="center">
+<img :src="$withBase('/imgs/css/flex/align-content_center.png')" alt="center">
 
 space-between
 
 > 与交叉轴两端对齐，轴线之间的间隔平均分布
 
-<img :src="$withBase('/imgs/flex/align-content_space-between.png')" alt="space-between">
+<img :src="$withBase('/imgs/css/flex/align-content_space-between.png')" alt="space-between">
 
 space-around
 
 > 每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍
 
-<img :src="$withBase('/imgs/flex/align-content_space-around.png')" alt="space-around">
+<img :src="$withBase('/imgs/css/flex/align-content_space-around.png')" alt="space-around">
 
 #### 容器属性：flex-flow 简写属性
 
@@ -172,15 +172,15 @@ space-around
 
 order定义元素排列顺序，数字越小越靠前，默认为0
 
-<img :src="$withBase('/imgs/flex/flex-direction_row.png')" alt="order">
+<img :src="$withBase('/imgs/css/flex/flex-direction_row.png')" alt="order">
 
 #### 元素属性：flex-grow 放大
 
 > flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。如果所有项目的flex-grow属性都为1，则它们将等分剩余空间。
 
-<img :src="$withBase('/imgs/flex/flex-grow1.png')" alt="flex-grow">
+<img :src="$withBase('/imgs/css/flex/flex-grow1.png')" alt="flex-grow">
 
-<img :src="$withBase('/imgs/flex/flex-grow2.png')" alt="flex-grow">
+<img :src="$withBase('/imgs/css/flex/flex-grow2.png')" alt="flex-grow">
 
 #### 元素属性：flex-shrink 缩小
 
@@ -189,13 +189,13 @@ order定义元素排列顺序，数字越小越靠前，默认为0
 > 如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。
 > 负值对该属性无效。
 
-<img :src="$withBase('/imgs/flex/flex-shrink.png')" alt="flex-shrink">
+<img :src="$withBase('/imgs/css/flex/flex-shrink.png')" alt="flex-shrink">
 
 #### 元素属性：flex-basis
 
 flex-basis定义在分配多余空间之前，元素占据的主轴空间，默认auto，即元素原本大小。
 
-<img :src="$withBase('/imgs/flex/flex-basis.png')" alt="flex-basis">
+<img :src="$withBase('/imgs/css/flex/flex-basis.png')" alt="flex-basis">
 
 #### 元素属性：align-self 单个元素对齐方式
 
@@ -230,7 +230,7 @@ flex: 1 === flex: 1 1 0
 
 ### flex浏览器兼容性
 
-<img :src="$withBase('/imgs/flex/兼容性.png')" alt="浏览器兼容性">
+<img :src="$withBase('/imgs/css/flex/兼容性.png')" alt="浏览器兼容性">
 
 ### flex布局demo
 
@@ -238,7 +238,7 @@ demo实现了内容充满一个屏的高度，首尾高度固定，内容自适�
 内容区分三部分，第三部分由内容撑开，一二部分平分剩余高度，第二部分超出设置滚动条。
 第一部分又分上下两部分，上部分由内容撑开，下部分撑满剩余高度，超出则设置滚动条。
 
-<img :src="$withBase('/imgs/flex/demo.png')" alt="demo">
+<img :src="$withBase('/imgs/css/flex/demo.png')" alt="demo">
 
 ``` html
 <div id="app" class="flex">

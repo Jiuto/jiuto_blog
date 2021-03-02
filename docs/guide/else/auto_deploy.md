@@ -13,7 +13,7 @@
 
 1. 部署服务项目的目录结构
 
-<img :src="$withBase('/imgs/auto_deploy/file.png')" alt="目录结构">
+<img :src="$withBase('/imgs/else/auto_deploy/file.png')" alt="目录结构">
 
 static：用于存放目标项目打包后的文件
 
@@ -289,22 +289,22 @@ function changeProxy(cmdStr){
 
 7. 进入auto_deploy目录，执行`pm2 start app.js`启动部署服务
 
-<img :src="$withBase('/imgs/auto_deploy/pm2.png')" alt="pm2">
+<img :src="$withBase('/imgs/else/auto_deploy/pm2.png')" alt="pm2">
 
 随后，在本地8003端口即可看到部署服务的前端页面
 
-<img :src="$withBase('/imgs/auto_deploy/html.png')" alt="部署服务前端页面">
+<img :src="$withBase('/imgs/else/auto_deploy/html.png')" alt="部署服务前端页面">
 
 ### 自动化部署
 
 正在部署
 
-<img :src="$withBase('/imgs/auto_deploy/deploy.png')" alt="正在部署">
+<img :src="$withBase('/imgs/else/auto_deploy/deploy.png')" alt="正在部署">
 
 dist
 
-<img :src="$withBase('/imgs/auto_deploy/dist.png')" alt="dist">
+<img :src="$withBase('/imgs/else/auto_deploy/dist.png')" alt="dist">
 
 httpserver
 
-<img :src="$withBase('/imgs/auto_deploy/httpserver.png')" alt="httpserver">
+<img :src="$withBase('/imgs/else/auto_deploy/httpserver.png')" alt="httpserver">

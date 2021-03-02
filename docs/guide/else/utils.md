@@ -95,11 +95,11 @@ export default utils;
 
 最终目录结构
 
-<img :src="$withBase('/imgs/utils/file.png')" alt="目录结构">
+<img :src="$withBase('/imgs/else/utils/file.png')" alt="目录结构">
 
 npm私有库
 
-<img :src="$withBase('/imgs/utils/npm.png')" alt="发布方法库">
+<img :src="$withBase('/imgs/else/utils/npm.png')" alt="发布方法库">
 
 7. 在项目中安装该方法库，引入依赖，即可正常使用
 

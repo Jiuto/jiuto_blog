@@ -25,9 +25,9 @@
 7. 执行`docker run --name verdaccio -itd -v ~/docker/verdaccio/conf:/verdaccio/conf -v ~/docker/verdaccio/storage:/verdaccio/storage -p 4873:4873 verdaccio/verdaccio`命令启动镜像，
 此时通过`docker ps -a`可以看到容器已经启动，访问4873端口可以看到仓库已经好了（我自己的dockerIP是http://192.168.99.100:4873/下文以此为例）
 
-<img :src="$withBase('/imgs/docker_verdaccio/docker.png')" alt="docker">
+<img :src="$withBase('/imgs/else/docker_verdaccio/docker.png')" alt="docker">
 
-<img :src="$withBase('/imgs/docker_verdaccio/verdaccio.png')" alt="verdaccio">
+<img :src="$withBase('/imgs/else/docker_verdaccio/verdaccio.png')" alt="verdaccio">
 
 ### 发布包
 
@@ -42,7 +42,7 @@
 
 12. 撤销包可用`npm unpublish 包名 --force`
 
-<img :src="$withBase('/imgs/docker_verdaccio/npm.png')" alt="已发布的包">
+<img :src="$withBase('/imgs/else/docker_verdaccio/npm.png')" alt="已发布的包">
 
 #### 报错
 
@@ -55,4 +55,4 @@ publish:
 ## This will allow the publisher to publish packages even if any uplink is down.
   allow_offline: true
 ```
-<img :src="$withBase('/imgs/docker_verdaccio/config.png')" alt="config">
+<img :src="$withBase('/imgs/else/docker_verdaccio/config.png')" alt="config">

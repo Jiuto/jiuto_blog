@@ -6,7 +6,7 @@
 
 ### 目录结构
 
-<img :src="$withBase('/imgs/babeltry/file.png')" alt="目录结构">
+<img :src="$withBase('/imgs/webpack/babeltry/file.png')" alt="目录结构">
 
 src：用于测试的打包项目
 
@@ -105,7 +105,7 @@ exports.str = str;},})
 </html>
 ```
 
-<img :src="$withBase('/imgs/babeltry/result.png')" alt="test.html">
+<img :src="$withBase('/imgs/webpack/babeltry/result.png')" alt="test.html">
 
 ### 开始编写打包工具
 

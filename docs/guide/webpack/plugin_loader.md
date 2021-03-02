@@ -75,7 +75,7 @@ compiler暴露了和webpack相关的生命周期hooks，我们希望在生成的
 
 目录结构
 
-<img :src="$withBase('/imgs/plugin_loader/file.png')" alt="目录结构">
+<img :src="$withBase('/imgs/webpack/plugin_loader/file.png')" alt="目录结构">
 
 测试代码
 
@@ -132,8 +132,8 @@ module.exports = {
 
 使用plugin或loader前
 
-<img :src="$withBase('/imgs/plugin_loader/before.png')" alt="使用前">
+<img :src="$withBase('/imgs/webpack/plugin_loader/before.png')" alt="使用前">
 
 使用plugin或loader后
 
-<img :src="$withBase('/imgs/plugin_loader/after.png')" alt="使用后">
+<img :src="$withBase('/imgs/webpack/plugin_loader/after.png')" alt="使用后">

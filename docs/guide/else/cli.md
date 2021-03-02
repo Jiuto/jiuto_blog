@@ -18,11 +18,11 @@
 
 1. 目录结构
 
-<img :src="$withBase('/imgs/cli/file.png')" alt="目录结构">
+<img :src="$withBase('/imgs/else/cli/file.png')" alt="目录结构">
 
 2. 执行`npm init`命令生产`package.json`文件，并下载依赖
 
-<img :src="$withBase('/imgs/cli/package.png')" alt="package.json">
+<img :src="$withBase('/imgs/else/cli/package.png')" alt="package.json">
 
 3. 编写执行文件/bin/dc-cli.js
 
@@ -64,13 +64,13 @@ if(!program.args.length){
 
 `.description('download a new initial project, type could be "vue" or "react"')`命令的描述
 
-<img :src="$withBase('/imgs/cli/dc-cli.png')" alt="提示信息">
+<img :src="$withBase('/imgs/else/cli/dc-cli.png')" alt="提示信息">
 
 `.version(require('../package').version, '-v, --version')`设置版本号查询命令，
 
 当命令参数为`-v`/`-version`，响应package.json文件配置的`version`
 
-<img :src="$withBase('/imgs/cli/dc-cli-v.png')" alt="版本信息">
+<img :src="$withBase('/imgs/else/cli/dc-cli-v.png')" alt="版本信息">
 
 `.command('init <type> <projectName>')` 配置命令，命令是init，必要参数为type、projectName
 
@@ -138,10 +138,10 @@ module.exports = function(type, projectNmae) {
 ```
 
 <br>
-<img :src="$withBase('/imgs/cli/loading.png')" alt="loading">
+<img :src="$withBase('/imgs/else/cli/loading.png')" alt="loading">
 <br>
 <br>
-<img :src="$withBase('/imgs/cli/init.png')" alt="拉取模板成功">
+<img :src="$withBase('/imgs/else/cli/init.png')" alt="拉取模板成功">
 
 5. 增加安装依赖功能
 
@@ -207,4 +207,4 @@ function installNPM(projectNmae){
 ```
 
 <br>
-<img :src="$withBase('/imgs/cli/npm.png')" alt="安装依赖成功">
+<img :src="$withBase('/imgs/else/cli/npm.png')" alt="安装依赖成功">
