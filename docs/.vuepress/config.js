@@ -24,6 +24,7 @@ module.exports = {
                 collapsable: false,
                 children: [
                     '/guide/css/flex',
+                    '/guide/css/layout',
                 ]
             },
             {

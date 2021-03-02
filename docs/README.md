@@ -8,6 +8,8 @@
 
 [flex布局](https://jiuto.github.io/jiuto_blog/guide/css/flex.html)
 
+[常见布局](https://jiuto.github.io/jiuto_blog/guide/css/layout.html)
+
 ### vue
 
 [vue中$nextTick的实现原理](https://jiuto.github.io/jiuto_blog/guide/vue/nextTick.html)
