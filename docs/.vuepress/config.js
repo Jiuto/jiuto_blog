@@ -16,7 +16,8 @@ module.exports = {
                 title: 'JavaScript',
                 collapsable: false,
                 children: [
-                    '/guide/js/EventBus',
+                    '/guide/js/eventBus',
+                    '/guide/js/promise',
                 ]
             },
             {

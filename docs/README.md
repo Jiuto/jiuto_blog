@@ -2,7 +2,9 @@
 
 ### JavaScript
 
-[用Map写一个EventBus事件总线](https://jiuto.github.io/jiuto_blog/guide/js/EventBus.html)
+[用Map写一个EventBus事件总线](https://jiuto.github.io/jiuto_blog/guide/js/eventBus.html)
+
+[手写一个Promise](https://jiuto.github.io/jiuto_blog/guide/js/promise.html)
 
 ### CSS
 

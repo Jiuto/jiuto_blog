@@ -94,4 +94,4 @@ console.log(eventBus)
 
 ### 结果
 
-<img :src="$withBase('/imgs/js/EventBus/example.png')" alt="example">
+<img :src="$withBase('/imgs/js/eventBus/example.png')" alt="example">
