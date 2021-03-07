@@ -8,6 +8,8 @@
 
 [冒泡与捕获](https://jiuto.github.io/jiuto_blog/guide/js/babble_capture.html)
 
+[防抖与节流](https://jiuto.github.io/jiuto_blog/guide/js/debounce_throttle.html)
+
 ### CSS
 
 [flex布局](https://jiuto.github.io/jiuto_blog/guide/css/flex.html)

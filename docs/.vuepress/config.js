@@ -19,6 +19,7 @@ module.exports = {
                     '/guide/js/eventBus',
                     '/guide/js/promise',
                     '/guide/js/babble_capture',
+                    '/guide/js/debounce_throttle',
                 ]
             },
             {
