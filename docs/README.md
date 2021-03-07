@@ -6,6 +6,8 @@
 
 [手写一个Promise](https://jiuto.github.io/jiuto_blog/guide/js/promise.html)
 
+[冒泡与捕获](https://jiuto.github.io/jiuto_blog/guide/js/babble_capture.html)
+
 ### CSS
 
 [flex布局](https://jiuto.github.io/jiuto_blog/guide/css/flex.html)
