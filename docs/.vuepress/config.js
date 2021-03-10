@@ -20,6 +20,7 @@ module.exports = {
                     '/guide/js/promise',
                     '/guide/js/babble_capture',
                     '/guide/js/debounce_throttle',
+                    '/guide/js/clone',
                 ]
             },
             {

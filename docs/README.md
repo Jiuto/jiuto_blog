@@ -10,6 +10,8 @@
 
 [防抖与节流](https://jiuto.github.io/jiuto_blog/guide/js/debounce_throttle.html)
 
+[浅拷贝和深拷贝](https://jiuto.github.io/jiuto_blog/guide/js/clone.html)
+
 ### CSS
 
 [flex布局](https://jiuto.github.io/jiuto_blog/guide/css/flex.html)
