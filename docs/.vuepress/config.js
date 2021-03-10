@@ -21,6 +21,7 @@ module.exports = {
                     '/guide/js/babble_capture',
                     '/guide/js/debounce_throttle',
                     '/guide/js/clone',
+                    '/guide/js/module',
                 ]
             },
             {

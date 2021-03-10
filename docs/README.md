@@ -12,6 +12,8 @@
 
 [浅拷贝和深拷贝](https://jiuto.github.io/jiuto_blog/guide/js/clone.html)
 
+[ES6 Module](https://jiuto.github.io/jiuto_blog/guide/js/module.html)
+
 ### CSS
 
 [flex布局](https://jiuto.github.io/jiuto_blog/guide/css/flex.html)
