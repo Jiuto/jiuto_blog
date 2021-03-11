@@ -30,6 +30,7 @@ module.exports = {
                 children: [
                     '/guide/css/flex',
                     '/guide/css/layout',
+                    '/guide/css/bfc',
                 ]
             },
             {

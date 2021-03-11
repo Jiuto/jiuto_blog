@@ -20,6 +20,8 @@
 
 [常见布局](https://jiuto.github.io/jiuto_blog/guide/css/layout.html)
 
+[BFC 块格式化上下文](https://jiuto.github.io/jiuto_blog/guide/css/bfc.html)
+
 ### vue
 
 [vue中$nextTick的实现原理](https://jiuto.github.io/jiuto_blog/guide/vue/nextTick.html)

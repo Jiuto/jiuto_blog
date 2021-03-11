@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>可以包含浮动元素</title>
+    <style>
+        .box {
+            overflow: auto;
+            width: 1000px;
+            height: 100%;
+            padding: 10px;
+            text-align: center;
+        }
+        .show {
+            float: left;
+            width: 50%;
+        }
+        .show-body {
+            border: 1px solid black;
+            border-radius: 2px;
+            padding: 10px;
+        }
+        button {
+            margin: 10px 0;
+        }
+        .con {
+            float: left;
+            width: 50%;
+        }
+        .con dl * {
+            float: left;
+            overflow: hidden;
+        }
+        .con dt {
+            font-weight: bold;
+            width: 100%;
+        }
+        .con dd {
+            margin: 5px;
+            width: 30%;
+            background-color: rgb(236 236 236);
+            color: black;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box">
+        <div class="show">
+            <div class="show-body" id="bfc">
+                <div style="float: left;background-color: #ffc107;width: 200px">左浮动的测试文字</div>    
+            </div>
+            <button id="reset">还原</button>  
+        </div>
+        <div class="con">
+            <dl>
+                <dt>float</dt> 
+
+                <dd>none</dd>
+                <dd>left</dd>
+                <dd>right</dd>
+            </dl>
+            <dl>
+                <dt>position</dt> 
+
+                <dd>unset</dd>
+                <dd>absolute</dd>
+                <dd>fixed</dd>
+            </dl>
+            <dl>
+                <dt>overflow</dt> 
+
+                <dd>visible</dd>
+                <dd>hidden</dd>
+                <dd>scroll</dd>
+                <dd>auto</dd>
+            </dl>
+            <dl>
+                <dt>display</dt> 
+
+                <dd>block</dd>
+                <dd>flex</dd>
+                <dd>inline-flex</dd>
+                <dd>grid</dd>
+                <dd>inline-grid</dd>
+                <dd>flow-root</dd>
+                <dd>inline-block</dd>
+                <dd>table-cell</dd>
+                <dd>table-caption</dd>
+                <dd>table</dd>
+                <dd>inline-table</dd>
+                <dd>table-row</dd>
+                <dd>table-row-group</dd>
+                <dd>table-header-group</dd>
+                <dd>table-footer-group</dd>
+            </dl>
+            <dl>
+                <dt>contain</dt> 
+
+                <dd>unset</dd>
+                <dd>layout</dd>
+                <dd>content</dd>
+                <dd>paint</dd>
+            </dl>
+            <dl>
+                <dt>column-count</dt> 
+
+                <dd>auto</dd>
+                <dd>1</dd>
+            </dl>
+            <dl>
+                <dt>column-width</dt> 
+
+                <dd>auto</dd>
+                <dd>250px</dd>
+            </dl>
+            <dl>
+                <dt>column-span</dt> 
+
+                <dd>unset</dd>
+                <dd>all</dd>
+            </dl>
+        </div>
+    </div>  
+    <script>
+        (function con(){
+            var box = document.getElementById('box');
+            var dls = box.getElementsByTagName('dl');
+            var bfc = document.getElementById('bfc');
+
+            reset.onclick = function(){
+                location.reload()
+            }
+
+            for(let i = 0, dl_len = dls.length; i < dl_len; i++){
+                let dds = dls[i].getElementsByTagName('dd');
+
+                for(let j = 0,dd_len = dds.length; j < dd_len; j++){
+                    dds[j].index = j;
+                    dds[j].onclick = function(){
+                        let dl = this.parentNode,
+                            dt = dl.getElementsByTagName('dt')[0];
+
+                        dl.getElementsByTagName('dd')[dl.last || 0].style.cssText = 'color: black; background-color: rgb(236 236 236);'
+                        dl.last = this.index;
+
+                        this.style.cssText = 'color: white; background-color: black;';
+                        bfc.style[dt.innerHTML] = this.innerHTML;
+                    }
+                }
+            } 
+        })();
+    </script>
+</body>
+</html>
