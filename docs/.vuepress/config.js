@@ -22,6 +22,7 @@ module.exports = {
                     '/guide/js/debounce_throttle',
                     '/guide/js/clone',
                     '/guide/js/module',
+                    '/guide/js/template',
                 ]
             },
             {

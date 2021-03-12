@@ -14,6 +14,8 @@
 
 [ES6 Module](https://jiuto.github.io/jiuto_blog/guide/js/module.html)
 
+[模板引擎原理](https://jiuto.github.io/jiuto_blog/guide/js/template.html)
+
 ### CSS
 
 [flex布局](https://jiuto.github.io/jiuto_blog/guide/css/flex.html)
