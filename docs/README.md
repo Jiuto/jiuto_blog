@@ -36,6 +36,10 @@
 
 [手写webpack plugin 和 loader](https://jiuto.github.io/jiuto_blog/guide/webpack/plugin_loader.html)
 
+### 浏览器
+
+[event loop 事件循环](https://jiuto.github.io/jiuto_blog/guide/browser/eventloop.html)
+
 ### 其他
 
 [如何在element-ui中拓展一个新的组件](https://jiuto.github.io/jiuto_blog/guide/else/ele_expend.html)

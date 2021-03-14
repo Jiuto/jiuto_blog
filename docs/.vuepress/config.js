@@ -51,6 +51,13 @@ module.exports = {
                 ]
             },
             {
+                title: '浏览器',
+                collapsable: false,
+                children: [
+                    '/guide/browser/eventloop',
+                ]
+            },
+            {
                 title: '其他',
                 collapsable: false,
                 children: [
