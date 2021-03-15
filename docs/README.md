@@ -24,6 +24,8 @@
 
 [BFC 块格式化上下文](https://jiuto.github.io/jiuto_blog/guide/css/bfc.html)
 
+[层叠上下文、层叠层级、层叠顺序](https://jiuto.github.io/jiuto_blog/guide/css/stacking_context.html)
+
 ### vue
 
 [vue中$nextTick的实现原理](https://jiuto.github.io/jiuto_blog/guide/vue/nextTick.html)

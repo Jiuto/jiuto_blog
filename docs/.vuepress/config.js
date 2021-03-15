@@ -32,6 +32,7 @@ module.exports = {
                     '/guide/css/flex',
                     '/guide/css/layout',
                     '/guide/css/bfc',
+                    '/guide/css/stacking_context',
                 ]
             },
             {
