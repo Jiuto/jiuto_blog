@@ -23,6 +23,7 @@ module.exports = {
                     '/guide/js/clone',
                     '/guide/js/module',
                     '/guide/js/template',
+                    '/guide/js/closure',
                 ]
             },
             {

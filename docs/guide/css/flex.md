@@ -185,8 +185,11 @@ order定义元素排列顺序，数字越小越靠前，默认为0
 #### 元素属性：flex-shrink 缩小
 
 > flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。
+>
 > 如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。
+>
 > 如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。
+>
 > 负值对该属性无效。
 
 <img :src="$withBase('/imgs/css/flex/flex-shrink.png')" alt="flex-shrink">
@@ -200,6 +203,7 @@ flex-basis定义在分配多余空间之前，元素占据的主轴空间，默�
 #### 元素属性：align-self 单个元素对齐方式
 
 > align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。
+>
 > 默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。
 
 有六种取值: 

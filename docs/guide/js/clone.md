@@ -3,6 +3,7 @@
 ### 浅拷贝
 
 > 创建一个新对象，这个对象有着原始对象属性值的一份精确拷贝。
+>
 > 如果属性是基本类型，拷贝的就是基本类型的值，如果属性是引用类型，拷贝的就是内存地址，所以如果其中一个对象改变了这个地址，就会影响到另一个对象。
 
 方法：
@@ -16,7 +17,9 @@
 ### 深拷贝
 
 > 深拷贝会拷贝所有的属性，并拷贝属性指向的动态分配的内存。
+>
 > 当对象和它所引用的对象一起拷贝时即发生深拷贝。
+>
 > 深拷贝相比于浅拷贝速度较慢并且花销较大。拷贝前后两个对象互不影响。
 
 方法：
@@ -50,9 +53,9 @@
 1. 查看对象属性是否可枚举，可使用 `Object.getOwnPropertyDescriptor` 或者 `Object.propertyIsEnumerable`
 
 > [Object.prototype.propertyIsEnumerable()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/propertyIsEnumerable)
-
+>
 > `propertyIsEnumerable()`方法返回一个布尔值，表示指定的属性是否可枚举。
-
+>
 > 此方法可以确定对象中指定的属性是否可以被 for...in 循环枚举，但是通过原型链继承的属性除外。如果对象没有指定的属性，则此方法返回 false。
 
 2. 判断参数是否为undefined或者null可直接通过`arg == null`判断，因为`undefined == null`为true
@@ -60,9 +63,9 @@
 3. Object.defineProperty()
 
 > [Object.defineProperty()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
-
+>
 > Object.defineProperty(obj, prop, descriptor) 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性，并返回此对象。
-
+>
 > descriptor：要定义或修改的属性描述符
 
 ``` js
@@ -101,7 +104,7 @@ function isObject(obj) {
 9. [Reflect.ownKeys()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect/ownKeys)
 
 > 静态方法 Reflect.ownKeys() 返回一个由目标对象自身的属性键组成的数组。
-
+>
 > 它的返回值等同于Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target))。
 
 #### step1 实现一个浅拷贝

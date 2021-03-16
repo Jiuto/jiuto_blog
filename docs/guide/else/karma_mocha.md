@@ -9,14 +9,13 @@
 ### 测试框架
 #### Mocha
 > mocha是JavaScript的一种单元测试框架，既可以在浏览器环境下运行，也可以在Node.js环境下运行。
-> 使用mocha，我们就只需要专注于编写单元测试本身，然后，让mocha去自动运行所有的测试，并给出测试结果。
-> mocha的特点主要有：
 >
+> 使用mocha，我们就只需要专注于编写单元测试本身，然后，让mocha去自动运行所有的测试，并给出测试结果。
+>
+> mocha的特点主要有：
 >   1. 既可以测试简单的JavaScript函数，又可以测试异步代码，因为异步是JavaScript的特性之一；
-
->   1. 可以自动运行所有测试，也可以只运行特定的测试；
-
->   1. 可以支持before、after、beforeEach和afterEach来编写初始化代码。
+>   2. 可以自动运行所有测试，也可以只运行特定的测试；
+>   3. 可以支持before、after、beforeEach和afterEach来编写初始化代码。
 
 
 [测试框架Mocah实例教程]()
@@ -35,7 +34,9 @@
 
 ### 前端测试工具
 #### Karma
-> Karma是一个基于 Node.js 的 JavaScript 测试执行过程管理工具（Test Runner）。该工具可用于测试所有主流Web浏览器，也可集成到 CI（Continuous integration）工具，也可和其他代码编辑器一起使用。这个测试工具的一个强大特性就是，它可以监控(Watch)文件的变化，然后自行执行，通过`console.log`显示测试结果。
+> Karma是一个基于 Node.js 的 JavaScript 测试执行过程管理工具（Test Runner）。
+> 该工具可用于测试所有主流Web浏览器，也可集成到 CI（Continuous integration）工具，也可和其他代码编辑器一起使用。
+> 这个测试工具的一个强大特性就是，它可以监控(Watch)文件的变化，然后自行执行，通过`console.log`显示测试结果。
 
 [Karma官网](https://karma-runner.github.io/2.0/intro/configuration.html)
 
@@ -43,6 +44,7 @@
 
 #### Istanbul
 > 测试的时候，我们常常关心，是否所有代码都测试到了。
+>
 > 这个指标就叫做"代码覆盖率"（code coverage）。它有四个测量维度。
 > - 行覆盖率（line coverage）：是否每一行都执行了？
 > - 函数覆盖率（function coverage）：是否每个函数都调用了？

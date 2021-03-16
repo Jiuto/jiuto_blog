@@ -1,10 +1,11 @@
 ## 搭建一个自动化部署服务
 
 > 本文讲述如何搭建一个前端自动化部署服务，示例项目代码参考[auto_deploy](https://github.com/Jiuto/auto_deploy.git)
-
+>
 > 部署服务前端只有一个简单的html，后端使用 koa，通过 pm2 启动。
+>
 > 服务功能实现通过 child_process 执行命令，使用 taskkill 杀死进程，部署的目标项目使用 http-server 启动。
-
+>
 > 需要提前在安装全局 pm2 和 http-server
 
 ---

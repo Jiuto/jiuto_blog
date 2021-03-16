@@ -1,6 +1,7 @@
 ## 搭建一个方法库
 
 > 本文讲述如何搭建一个自己的js常用方法库，并引入typescript，打包工具使用rollup。
+>
 > 示例代码详见[dc-utils](https://github.com/Jiuto/dc-utils)
 
 ---

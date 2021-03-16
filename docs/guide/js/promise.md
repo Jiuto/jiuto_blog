@@ -60,55 +60,55 @@ var promise = new Promise((resolve,reject)=>{
 ##### Promise.prototype.finally()
 
 > finally方法不管promise最后的状态，在执行完then或catch指定的回调函数以后，都会执行finally方法指定的回调函数。
-
+>
 > finally方法的回调函数不接受任何参数，这意味着没有办法知道，前面的 Promise 状态到底是fulfilled还是rejected。
-
+>
 > 这表明，finally方法里面的操作，应该是与状态无关的，不依赖于 Promise 的执行结果。
 
 ##### Promise.all()
 
 > 接受一组 Promise 实例作为参数，包装成一个新的 Promise 实例。
-
+>
 > Promise.all()方法接受一个数组作为参数，p1、p2、p3都是 Promise 实例，如果不是，就会先调用Promise.resolve方法，将参数转为 Promise 实例，再进一步处理。
-
+>
 > 另外，Promise.all()方法的参数可以不是数组，但必须具有 Iterator 接口，且返回的每个成员都是 Promise 实例。
-
+>
 > 只有p1、p2、p3的状态都变成fulfilled，p的状态才会变成fulfilled，只要p1、p2、p3之中有一个被rejected，p的状态就变成rejected。
 
 ##### Promise.race()
 
 > 接受一组 Promise 实例作为参数，包装成一个新的 Promise 实例。
-
+>
 > Promise.race()方法的参数与Promise.all()方法一样，如果不是 Promise 实例，就会先调用Promise.resolve()方法，将参数转为 Promise 实例，再进一步处理。
-
+>
 > 只要p1、p2、p3之中有一个实例率先改变状态，p的状态就跟着改变。那个率先改变的 Promise 实例的返回值，就传递给p的回调函数。
 
 ##### Promise.allSettled() ES2020
 
 > 接受一组 Promise 实例作为参数，包装成一个新的 Promise 实例。
-
+>
 > 该方法返回的新的 Promise 实例，一旦结束，状态总是fulfilled，不会变成rejected。
-
+>
 > 状态变成fulfilled后，Promise 的监听函数接收到的参数是一个results数组，每个成员对应一个传入Promise.allSettled()的 Promise 实例。
 
 ##### Promise.any() ES2021
 
 > 接受一组 Promise 实例作为参数，包装成一个新的 Promise 实例。
-
+>
 > 只要参数实例有一个变成fulfilled状态，包装实例就会变成fulfilled状态；如果所有参数实例都变成rejected状态，包装实例就会变成rejected状态。
-
+>
 > Promise.any()跟Promise.race()方法很像，只有一点不同，就是不会因为某个 Promise 变成rejected状态而结束。
 
 ##### Promise.resolve()
 
 > 将现有对象转为 Promise 对象。
-
+>
 > （1）参数是一个 Promise 实例：如果参数是 Promise 实例，那么Promise.resolve将不做任何修改、原封不动地返回这个实例。
-
+>
 > （2）参数是一个thenable对象：Promise.resolve()方法会将这个对象转为 Promise 对象，然后就立即执行thenable对象的then()方法。
-
+>
 > （3）参数不是具有then()方法的对象，或根本就不是对象：Promise.resolve()方法返回一个新的 Promise 对象，其状态从一生成就是resolved，所以回调函数会立即执行，Promise.resolve()的入参会传给回调函数。
-
+>
 > （4）不带有任何参数：直接返回一个resolved状态的 Promise 对象。
 
 ##### Promise.reject()

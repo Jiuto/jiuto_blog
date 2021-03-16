@@ -13,15 +13,15 @@
 + 任务队列分为 MicroTask（也叫Task） 和 MacroTask：
 
 > 宿主环境提供的叫宏任务，由语言标准提供的叫微任务。
-
+>
 > 宿主环境：
-
+>
 > 简单来说就是能使javascript完美运行的环境，只要能完美运行javascript的载体就是javascript的宿主环境。目前我们常见的两种宿主环境有浏览器和node。宿主环境内所有的内建或自定义的变量/函数都是 global/window 这个全局对象的属性/方法，而由宿主环境提供的也叫宏任务。
-
+>
 > 语言标准：
-
+>
 > 我们都知道JavaScript是一种编程语言，但其实JavaScript由ECMA制定标准，称之为ECMAScript，所以由语言标准提供的就是微任务，比如ES6提供的promise。
-
+>
 > (引自https://www.jianshu.com/p/a697e9bfdaef)
 
 `宏任务 MacroTask ：Script、setTimeout、setImmediate、setInterval、I/O、UI rendering`

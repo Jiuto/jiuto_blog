@@ -16,6 +16,8 @@
 
 [模板引擎原理](https://jiuto.github.io/jiuto_blog/guide/js/template.html)
 
+[理解js闭包](https://jiuto.github.io/jiuto_blog/guide/js/closure.html)
+
 ### CSS
 
 [flex布局](https://jiuto.github.io/jiuto_blog/guide/css/flex.html)

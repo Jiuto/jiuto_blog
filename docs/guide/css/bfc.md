@@ -45,7 +45,9 @@
 3. 阻止相邻元素的margin合并
 
 > 属于同一个BFC的两个相邻块级子元素的上下margin会发生重叠。
+>
 > 所以当两个相邻块级子元素分属于不同的BFC时可以阻止margin重叠。
+>
 > 这里给任一个相邻块级盒子的外面包一个div，通过改变此div的属性使两个原盒子分属于两个不同的BFC，以此来阻止margin重叠。
 
 <img :src="$withBase('/imgs/css/bfc/bfc3.png')" alt="阻止相邻元素的margin合并">
