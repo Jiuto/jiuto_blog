@@ -52,8 +52,8 @@
 
 1. 查看对象属性是否可枚举，可使用 `Object.getOwnPropertyDescriptor` 或者 `Object.propertyIsEnumerable`
 
-> [Object.prototype.propertyIsEnumerable()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/propertyIsEnumerable)
->
+[Object.prototype.propertyIsEnumerable()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/propertyIsEnumerable)
+
 > `propertyIsEnumerable()`方法返回一个布尔值，表示指定的属性是否可枚举。
 >
 > 此方法可以确定对象中指定的属性是否可以被 for...in 循环枚举，但是通过原型链继承的属性除外。如果对象没有指定的属性，则此方法返回 false。
@@ -62,8 +62,8 @@
 
 3. Object.defineProperty()
 
-> [Object.defineProperty()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
->
+[Object.defineProperty()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
+
 > Object.defineProperty(obj, prop, descriptor) 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性，并返回此对象。
 >
 > descriptor：要定义或修改的属性描述符

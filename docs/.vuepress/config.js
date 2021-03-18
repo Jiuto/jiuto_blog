@@ -24,6 +24,7 @@ module.exports = {
                     '/guide/js/module',
                     '/guide/js/template',
                     '/guide/js/closure',
+                    '/guide/js/proto',
                 ]
             },
             {

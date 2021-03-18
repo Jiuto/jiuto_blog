@@ -167,6 +167,8 @@ const fun = gap => new Promise((resolve,reject) => {
 
 《JavaScript权威指南》
 
+---
+
 闭包相关的面试题可以参考：
 
 [破解前端面试（80% 应聘者不及格系列）：从闭包说起](https://juejin.cn/post/6844903474212143117#heading-0)

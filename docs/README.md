@@ -18,6 +18,8 @@
 
 [理解js闭包](https://jiuto.github.io/jiuto_blog/guide/js/closure.html)
 
+[理解js原型、原型链和继承](https://jiuto.github.io/jiuto_blog/guide/js/proto.html)
+
 ### CSS
 
 [flex布局](https://jiuto.github.io/jiuto_blog/guide/css/flex.html)

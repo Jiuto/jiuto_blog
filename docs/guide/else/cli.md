@@ -1,9 +1,9 @@
 ## 搭建一个脚手架工具
 
 > 本文讲述如何搭建一个简易的脚手架工具。
->
+
 > 简单概括脚手架的原理，即，建好一个模板项目（例如一个已经做好常用配置的vue/react项目），而最简单的脚手架功能就是把这个项目clone下来。
->
+
 > 本文示例的项目参见[dc-cli](https://github.com/Jiuto/dc-cli)，前身为[crx-cli](https://www.npmjs.com/package/crx-cli)，
 > 示例版本增加了react模板，并不再使用`child_process.exec`直接执行`git clone`命令，而是引入了`download-git-repo`依赖。
 >
