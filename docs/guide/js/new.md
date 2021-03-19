@@ -164,12 +164,16 @@ console.log(typeof err)
 
 ### 实现
 
+[new.target](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new.target)
+
 ``` js
 function newOperator(ctor){
     // 校验构造函数
     if(typeof ctor !== 'function'){
       throw ctor + 'is not a constructor';
     }
+    // 设置 new.target
+    newOperator.target = ctor;
     // 创建实例对象
     var rtn_obj = Object.create(ctor.prototype);
     // 获取其他参数

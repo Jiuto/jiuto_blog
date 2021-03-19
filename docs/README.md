@@ -22,6 +22,8 @@
 
 [手写 new 操作符](https://jiuto.github.io/jiuto_blog/guide/js/new.html)
 
+[手写 bind](https://jiuto.github.io/jiuto_blog/guide/js/bind.html)
+
 ### CSS
 
 [flex布局](https://jiuto.github.io/jiuto_blog/guide/css/flex.html)

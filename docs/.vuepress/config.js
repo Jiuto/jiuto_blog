@@ -26,6 +26,7 @@ module.exports = {
                     '/guide/js/closure',
                     '/guide/js/proto',
                     '/guide/js/new',
+                    '/guide/js/bind',
                 ]
             },
             {
