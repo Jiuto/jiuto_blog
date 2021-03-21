@@ -27,6 +27,7 @@ module.exports = {
                     '/guide/js/proto',
                     '/guide/js/new',
                     '/guide/js/bind',
+                    '/guide/js/apply_call',
                 ]
             },
             {

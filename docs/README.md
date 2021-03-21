@@ -24,6 +24,8 @@
 
 [手写 bind](https://jiuto.github.io/jiuto_blog/guide/js/bind.html)
 
+[手写 apply 和 call](https://jiuto.github.io/jiuto_blog/guide/js/apply_call.html)
+
 ### CSS
 
 [flex布局](https://jiuto.github.io/jiuto_blog/guide/css/flex.html)
