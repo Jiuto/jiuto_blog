@@ -28,6 +28,7 @@ module.exports = {
                     '/guide/js/new',
                     '/guide/js/bind',
                     '/guide/js/apply_call',
+                    '/guide/js/let_const',
                 ]
             },
             {
@@ -38,6 +39,7 @@ module.exports = {
                     '/guide/css/layout',
                     '/guide/css/bfc',
                     '/guide/css/stacking_context',
+                    '/guide/css/center',
                 ]
             },
             {

@@ -26,6 +26,8 @@
 
 [手写 apply 和 call](https://jiuto.github.io/jiuto_blog/guide/js/apply_call.html)
 
+[let、const和块级作用域](https://jiuto.github.io/jiuto_blog/guide/js/let_const.html)
+
 ### CSS
 
 [flex布局](https://jiuto.github.io/jiuto_blog/guide/css/flex.html)
@@ -35,6 +37,8 @@
 [BFC 块格式化上下文](https://jiuto.github.io/jiuto_blog/guide/css/bfc.html)
 
 [层叠上下文、层叠层级、层叠顺序](https://jiuto.github.io/jiuto_blog/guide/css/stacking_context.html)
+
+[水平居中、垂直居中](https://jiuto.github.io/jiuto_blog/guide/css/center.html)
 
 ### vue
 
