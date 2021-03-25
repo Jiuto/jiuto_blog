@@ -47,6 +47,8 @@ module.exports = {
                 collapsable: false,
                 children: [
                     '/guide/vue/nextTick',
+                    '/guide/vue/responsive',
+                    '/guide/vue/initData',
                 ]
             },
             {

@@ -71,8 +71,8 @@
 ``` js
 var obj = {};
 Object.defineProperty(obj, "key", {
-  enumerable: false, //为true该属性的描述符才能够被改变，同时该属性也能从对应的对象上被删除。默认为false。
-  configurable: false, //为true属性才会出现在对象的枚举属性中即被for...in 或 Object.keys 方法枚举到。默认为false。
+  enumerable: false, //为true属性才会出现在对象的枚举属性中即被for...in 或 Object.keys 方法枚举到。默认为false。
+  configurable: false, //为true该属性的描述符才能够被改变，同时该属性也能从对应的对象上被删除。默认为false。
   writable: false, //为true时，属性的值value才能被赋值运算符改变。默认为false。
   value: "static", //该属性对应的值。可以是任何有效的JavaScript值（数值，对象，函数等）。默认为undefined。
   // get、set

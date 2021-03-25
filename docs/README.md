@@ -44,6 +44,10 @@
 
 [vue中$nextTick的实现原理](https://jiuto.github.io/jiuto_blog/guide/vue/nextTick.html)
 
+[简单实现vue响应式原理](https://jiuto.github.io/jiuto_blog/guide/vue/responsive.html)
+
+[阅读源码vue响应式原理](https://jiuto.github.io/jiuto_blog/guide/vue/initData.html)
+
 ### webpack
 
 [webpack多页面打包方法工具和模板](https://jiuto.github.io/jiuto_blog/guide/webpack/webpack_template.html)
