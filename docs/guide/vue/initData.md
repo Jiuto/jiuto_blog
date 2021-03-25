@@ -549,11 +549,9 @@ export default class Dep {
   // 发布通知
   notify () {
     const subs = this.subs.slice()
-    // config.async 不为true时需要排序
+    // 异步时通过观察者队列执行Watcher实例的run方法之前会有排序操作，同步情况通过update方法调用run，需要提前排序
     if (process.env.NODE_ENV !== 'production' && !config.async) {
-      // subs aren't sorted in scheduler if not running async
-      // we need to sort them now to make sure they fire in correct
-      // order
+      // 由于Watcher实例的id是递增的数字，所以可以直接通过数组的sort进行排序
       subs.sort((a, b) => a.id - b.id)
     }
     // 挨个儿调用观察者的update方法
