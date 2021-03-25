@@ -1,7 +1,7 @@
 ## 源码分析vue响应式原理
 
 > 经过上篇[简单实现vue响应式原理](https://jiuto.github.io/jiuto_blog/guide/vue/responsive.html)之后，
-> 我们已经大概了解了响应式是怎么通过发布-订阅模式来实现的，这篇主要就是看看vue的源码是怎么初始化data的。
+> 我们已经简略地了解了响应式是怎么通过发布-订阅模式来实现的，这篇主要从源码分析Vue对响应式原理的实现。
 
 ### 找到initData
 
