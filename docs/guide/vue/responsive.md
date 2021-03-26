@@ -193,4 +193,4 @@ function complie(node, vm) {    // 节点, Vue实例
 
 ##### 注：
 
-> 这个实现还是很粗糙的，有太多场景没有考虑，更完善的可以看看源码分析这篇[阅读源码vue响应式原理](https://jiuto.github.io/jiuto_blog/guide/vue/initData.html)。
+> 这个实现还是很粗糙的，有太多场景没有考虑，更完善的可以看看源码分析这篇[源码分析vue响应式原理](https://jiuto.github.io/jiuto_blog/guide/vue/initData.html)。

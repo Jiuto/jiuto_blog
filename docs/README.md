@@ -46,7 +46,9 @@
 
 [简单实现vue响应式原理](https://jiuto.github.io/jiuto_blog/guide/vue/responsive.html)
 
-[阅读源码vue响应式原理](https://jiuto.github.io/jiuto_blog/guide/vue/initData.html)
+[源码分析vue响应式原理](https://jiuto.github.io/jiuto_blog/guide/vue/initData.html)
+
+[源码分析vue watch侦听器](https://jiuto.github.io/jiuto_blog/guide/vue/initWatch.html)
 
 ### webpack
 

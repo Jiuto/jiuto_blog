@@ -49,6 +49,7 @@ module.exports = {
                     '/guide/vue/nextTick',
                     '/guide/vue/responsive',
                     '/guide/vue/initData',
+                    '/guide/vue/initWatch',
                 ]
             },
             {
