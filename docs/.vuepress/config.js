@@ -40,6 +40,7 @@ module.exports = {
                     '/guide/css/bfc',
                     '/guide/css/stacking_context',
                     '/guide/css/center',
+                    '/guide/css/grid',
                 ]
             },
             {

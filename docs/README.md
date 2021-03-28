@@ -40,6 +40,8 @@
 
 [水平居中、垂直居中](https://jiuto.github.io/jiuto_blog/guide/css/center.html)
 
+[grid 网格布局](https://jiuto.github.io/jiuto_blog/guide/css/grid.html)
+
 ### vue
 
 [vue中$nextTick的实现原理](https://jiuto.github.io/jiuto_blog/guide/vue/nextTick.html)
