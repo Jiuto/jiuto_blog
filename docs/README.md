@@ -28,6 +28,8 @@
 
 [let、const和块级作用域](https://jiuto.github.io/jiuto_blog/guide/js/let_const.html)
 
+[柯里化](https://jiuto.github.io/jiuto_blog/guide/js/curry.html)
+
 ### CSS
 
 [flex布局](https://jiuto.github.io/jiuto_blog/guide/css/flex.html)
@@ -41,6 +43,8 @@
 [水平居中、垂直居中](https://jiuto.github.io/jiuto_blog/guide/css/center.html)
 
 [grid 网格布局](https://jiuto.github.io/jiuto_blog/guide/css/grid.html)
+
+[CSS3 动画](https://jiuto.github.io/jiuto_blog/guide/css/css3.html)
 
 ### vue
 

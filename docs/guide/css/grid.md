@@ -462,7 +462,7 @@ justify-self 定义单元格内容的水平位置，align-self 定义单元格�
 
 ### 浏览器兼容性
 
-<img :src="$withBase('/imgs/css/grid/兼容性.png')" alt="兼容性">
+<img :src="$withBase('/imgs/css/grid/compatibility.png')" alt="浏览器兼容性">
 
 ### 参考
 

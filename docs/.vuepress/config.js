@@ -29,6 +29,7 @@ module.exports = {
                     '/guide/js/bind',
                     '/guide/js/apply_call',
                     '/guide/js/let_const',
+                    '/guide/js/curry',
                 ]
             },
             {
@@ -41,6 +42,7 @@ module.exports = {
                     '/guide/css/stacking_context',
                     '/guide/css/center',
                     '/guide/css/grid',
+                    '/guide/css/css3',
                 ]
             },
             {

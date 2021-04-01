@@ -234,7 +234,7 @@ flex: 1 === flex: 1 1 0
 
 ### flex浏览器兼容性
 
-<img :src="$withBase('/imgs/css/flex/兼容性.png')" alt="浏览器兼容性">
+<img :src="$withBase('/imgs/css/flex/compatibility.png')" alt="浏览器兼容性">
 
 ### flex布局demo
 
