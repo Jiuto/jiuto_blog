@@ -56,6 +56,8 @@
 
 [源码分析vue watch侦听器](https://jiuto.github.io/jiuto_blog/guide/vue/initWatch.html)
 
+[源码分析vue VirtualDOM 和 diff](https://jiuto.github.io/jiuto_blog/guide/vue/patch.html)
+
 ### webpack
 
 [webpack多页面打包方法工具和模板](https://jiuto.github.io/jiuto_blog/guide/webpack/webpack_template.html)

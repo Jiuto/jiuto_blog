@@ -53,6 +53,7 @@ module.exports = {
                     '/guide/vue/responsive',
                     '/guide/vue/initData',
                     '/guide/vue/initWatch',
+                    '/guide/vue/patch',
                 ]
             },
             {
