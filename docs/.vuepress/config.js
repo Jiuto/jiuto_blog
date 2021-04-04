@@ -54,6 +54,7 @@ module.exports = {
                     '/guide/vue/initData',
                     '/guide/vue/initWatch',
                     '/guide/vue/patch',
+                    '/guide/vue/initComputed',
                 ]
             },
             {
