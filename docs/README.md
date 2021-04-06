@@ -56,9 +56,11 @@
 
 [源码分析vue watch侦听器](https://jiuto.github.io/jiuto_blog/guide/vue/initWatch.html)
 
-[源码分析vue VirtualDOM 和 diff](https://jiuto.github.io/jiuto_blog/guide/vue/patch.html)
+[源码阅读vue VirtualDOM 和 diff](https://jiuto.github.io/jiuto_blog/guide/vue/patch.html)
 
 [源码分析vue computed](https://jiuto.github.io/jiuto_blog/guide/vue/initComputed.html)
+
+[源码阅读vue-router](https://jiuto.github.io/jiuto_blog/guide/vue/router.html)
 
 ### webpack
 

@@ -1,4 +1,4 @@
-## 源码分析vue VirtualDOM 和 diff
+## 源码阅读vue VirtualDOM 和 diff
 
 ### 是什么
 
@@ -706,7 +706,3 @@ function removeVnodes (vnodes, startIdx, endIdx) {
 ### 参考
 
 [VirtualDOM与diff(Vue实现)](https://github.com/answershuto/learnVue/blob/master/docs/VirtualDOM%E4%B8%8Ediff(Vue%E5%AE%9E%E7%8E%B0).MarkDown)
-
-
-
-> 这篇等有时间还需要再深入整理，暂不发布其他社区。
