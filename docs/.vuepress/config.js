@@ -75,6 +75,13 @@ module.exports = {
                 ]
             },
             {
+                title: '网络',
+                collapsable: false,
+                children: [
+                    '/guide/network/http',
+                ]
+            },
+            {
                 title: '其他',
                 collapsable: false,
                 children: [

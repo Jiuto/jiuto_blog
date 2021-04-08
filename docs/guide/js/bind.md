@@ -100,7 +100,7 @@ console.log(newBoundResult.getA()) // newBoundResult.getA is not a function
 
 这怎么解释呢？
 
-在[手写 new 操作符](https://jiuto.github.io/jiuto_blog/guide/js/new.html)这边文章中，我们发现new操作符有这样一条表现：
+在[手写 new 操作符](https://jiuto.github.io/jiuto_blog/guide/js/new.html)这篇文章中，我们发现new操作符有这样一条表现：
 
 当return 一个Object/Function/Array/Date/RegExp/Error的实例，new操作符得到的就是return的结果。
 
