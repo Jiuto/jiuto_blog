@@ -79,6 +79,7 @@ module.exports = {
                 collapsable: false,
                 children: [
                     '/guide/network/http',
+                    '/guide/network/cache',
                 ]
             },
             {

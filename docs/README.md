@@ -76,7 +76,9 @@
 
 ### 网络
 
-[http、https、浏览器缓存](https://jiuto.github.io/jiuto_blog/guide/network/http.html)
+[http、https](https://jiuto.github.io/jiuto_blog/guide/network/http.html)
+
+[浏览器缓存](https://jiuto.github.io/jiuto_blog/guide/network/cache.html)
 
 ### 其他
 
