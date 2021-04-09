@@ -80,6 +80,7 @@ module.exports = {
                 children: [
                     '/guide/network/http',
                     '/guide/network/cache',
+                    '/guide/network/cross',
                 ]
             },
             {
