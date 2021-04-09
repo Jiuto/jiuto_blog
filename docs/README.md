@@ -74,13 +74,15 @@
 
 [event loop 事件循环](https://jiuto.github.io/jiuto_blog/guide/browser/eventloop.html)
 
-### 网络
+### 网络与安全
 
 [http、https](https://jiuto.github.io/jiuto_blog/guide/network/http.html)
 
 [浏览器缓存](https://jiuto.github.io/jiuto_blog/guide/network/cache.html)
 
 [跨域](https://jiuto.github.io/jiuto_blog/guide/network/cross.html)
+
+[web 安全](https://jiuto.github.io/jiuto_blog/guide/network/security.html)
 
 ### 其他
 

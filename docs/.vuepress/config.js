@@ -75,12 +75,13 @@ module.exports = {
                 ]
             },
             {
-                title: '网络',
+                title: '网络与安全',
                 collapsable: false,
                 children: [
                     '/guide/network/http',
                     '/guide/network/cache',
                     '/guide/network/cross',
+                    '/guide/network/security',
                 ]
             },
             {
