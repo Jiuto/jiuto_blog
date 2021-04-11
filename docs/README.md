@@ -74,6 +74,8 @@
 
 [event loop 事件循环](https://jiuto.github.io/jiuto_blog/guide/browser/eventloop.html)
 
+[浏览器渲染机制](https://jiuto.github.io/jiuto_blog/guide/browser/render.html)
+
 ### 网络与安全
 
 [http、https](https://jiuto.github.io/jiuto_blog/guide/network/http.html)
@@ -101,3 +103,5 @@
 [在vue项目中配置eslint + prettier](https://jiuto.github.io/jiuto_blog/guide/else/eslint_prettier.html)
 
 [搭建一个由 karma + mocha + chai + Istanbul 组成的基础测试工具](https://jiuto.github.io/jiuto_blog/guide/else/karma_mocha.html)
+
+[首屏加载优化](https://jiuto.github.io/jiuto_blog/guide/else/optimization.html)

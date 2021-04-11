@@ -72,6 +72,7 @@ module.exports = {
                 collapsable: false,
                 children: [
                     '/guide/browser/eventloop',
+                    '/guide/browser/render',
                 ]
             },
             {
@@ -96,6 +97,7 @@ module.exports = {
                     '/guide/else/docker_initSql',
                     '/guide/else/eslint_prettier',
                     '/guide/else/karma_mocha',
+                    '/guide/else/optimization',
                 ]
             }
         ]
