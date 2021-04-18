@@ -12,7 +12,7 @@
 
 ``` js
 var vm = new Vue({
-    el: 'app',
+    el: '#app',
     data: {
         text: 'hello world',
     }

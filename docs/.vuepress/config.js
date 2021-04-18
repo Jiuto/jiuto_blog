@@ -98,6 +98,7 @@ module.exports = {
                     '/guide/else/eslint_prettier',
                     '/guide/else/karma_mocha',
                     '/guide/else/optimization',
+                    '/guide/else/interview',
                 ]
             }
         ]

@@ -94,7 +94,7 @@ export function initState (vm: Component) {
 
 ``` js
 new Vue({
-    el: 'app',
+    el: '#app',
     data: {
         text: 'hello world',
     }
