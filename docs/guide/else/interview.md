@@ -2,7 +2,7 @@
 
 > 一个菜鸡的面试之路记录，持续更新中
 
-### 4.15 晚上电话面试50min 阿里菜鸟
+### 4.15 晚上电话面试50min ALCN
 
 #### vue和react的不同
 
@@ -159,7 +159,7 @@ activated => deactivated
 
 mode、devtool、entry、output、resolve(alias、extensions)、module.rules(babel-loader、style-loader、css-loader、less-loader、less-loader、url-loader)、plugins(html-webpack-plugin、mini-css-extract-plugin)
 
-### 4.16 上午到场面试50min 安恒
+### 4.16 上午到场面试50min AH
 
 #### 回流、重塑
 
@@ -227,7 +227,7 @@ for...in语句以任意顺序遍历一个对象的除Symbol以外的可枚举属
 
 #### 需要大屏经验 three、d3
 
-### 4.16 下午到场笔试+15min面试 匡汇 
+### 4.16 下午到场笔试+15min面试 KH
 
 #### promise的三种状态
 
@@ -258,7 +258,7 @@ localStorage同sessionStorage
 
 仅在当前会话有效；可保存5MB数据；不参与通信，仅存于客户端；
 
-### 4.16 下午到场面试四轮 好洛维
+### 4.16 下午到场面试四轮 HLW
 
 #### vue 的 data 为什么要写return
 
@@ -497,8 +497,30 @@ resolve(new Error('error'))
 
 console.prototype.log1 = function (){}
 
-#### 原来公司的权限是怎么实现的
-
-> 未完待续
-
 #### 需要状态码调试经验
+
+### 4.19 下午到场两轮两小时技术面 GWG
+
+> 重复问题：水平/垂直居中、es6、promise、vue生命周期、vue3.0、性能优化、http协议
+
+#### 说一下flex布局
+
+[flex布局](https://jiuto.github.io/jiuto_blog/guide/css/flex.html)
+
+#### 在循环里使用promise
+
+在循环中把promise保存到数组里，循环外使用Promise.all()传入数组
+
+#### 为什么要有 virtual dom
+
+VirtualDOM 是根据真实的DOM节点树，抽象出来的一棵用 JavaScript 对象描述节点的抽象树。
+
+通过 VirtualDOM ，可以对比前后节点变化了哪些变化，做到局部更新视图，减少 DOM 操作。
+
+> Virtual DOM的优势不在于单次的操作，而是在大量、频繁的数据更新下，能够对视图进行合理、高效的更新。
+
+> 由于 Virtual DOM 是以 JavaScript 对象为基础而不依赖真实平台环境，所以使它具有了跨平台的能力，比如说浏览器平台、Weex、Node 等。
+
+#### 浏览器渲染原理
+
+[浏览器渲染机制](https://jiuto.github.io/jiuto_blog/guide/browser/render.html)
