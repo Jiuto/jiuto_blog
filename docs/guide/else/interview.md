@@ -50,7 +50,7 @@ Redux 在检测数据变化的时候，是通过 diff 的方式比较差异的�
 
 例如：header、footer、nav、article、section、aside
 
-有利于阅读和维护、有利于SEO搜索引擎识别页面结构、有利于设备解析（盲人阅读）
+有利于阅读和维护、有利于SEO搜索引擎识别页面结构、有利于无障碍设备解析
 
 + 表单功能增强
 
@@ -135,13 +135,15 @@ Object.defineProperty(obj, "key", {
 
 beforeCreate => created 这个阶段进行数据观测，created可以拿到$data
 
-beforeMount => mounted 这个阶段从`{{message}} => 真实内容`，添加$el
+beforeMount => mounted 这个阶段从 `{ { message } } => 真实内容`，添加$el
 
 beforeUpdate => updated
 
 beforeDestroy => destroyed
 
 activated => deactivated
+
+> 未完待续
 
 #### 水平垂直居中
 
@@ -193,7 +195,25 @@ https：TLS/SSL依赖于三类基本算法：对称加密（数据加密）、�
 
 定时器 + transform
 
-> 未完待续
+``` html
+<style>
+    #bg {
+        margin: 100px;
+        height: 100px;
+        width: 100px;
+        background-color: cadetblue;
+    }
+</style>
+<div id="bg"></div>
+<script>
+    var bg = document.getElementById("bg"),
+        count = 1;
+    setInterval(function(){
+        count++;
+        bg.style.transform = 'rotate(' + count + 'deg)'
+    },8)
+</script>
+```
 
 #### 同时发起多个请求
 
@@ -207,15 +227,17 @@ Promise.all
 
 computed本质是在vue实例上定义一个计算属性同名属性，我们设置的computed的方法是这个属性的get方法，而watch设置的方法是watcher实例的callback回调。
 
-> 未完待续
+[源码分析vue computed](https://jiuto.github.io/jiuto_blog/guide/vue/initComputed.html)
 
 #### 如何创建一个没有原型的对象
 
 Object.create(null)
 
-#### for in 为什么不能遍历原型
+#### for in 不能遍历原型
 
 for...in语句以任意顺序遍历一个对象的除Symbol以外的可枚举属性。
+
+in 操作符可以遍历原型，结合`hasOwnProperty()`可以判断对象属性是否在原型对象上。
 
 #### BFC
 
@@ -434,7 +456,7 @@ axios.interceptors.response.use(
 
 更新视图同样需要使用`Vue.set`，需要用新对象替换老对象。
 
-Action 提交的是 mutation，而不是直接变更状态， Action 可以包含任意异步操作， Action 通过 store.dispatch 方法触发
+Action 提交的是 mutation，而不是直接变更状态， Action 可以包含任意异步操作， Action 通过 store.dispatch 方法触发。
 
 ``` js
 const SOME_MUTATION = 'SOME_MUTATION'
@@ -483,7 +505,11 @@ store.dispatch('actionA').then(() => {
 
 在style标签上加上scoped属性，实现标签内的样式仅在当前模板输出的HTML标签上生效。
 
-> 未完待续
+> + 每个Vue文件都将对应一个唯一的id，该id可以根据文件路径名和内容hash生成
+> + 编译template标签时时为每个标签添加了当前组件的id，如<div class="demo"></div>会被编译成<div class="demo" data-v-27e4e96e></div>
+> + 编译style标签时，会根据当前组件的id通过属性选择器和组合选择器输出样式，如.demo{color: red;}会被编译成.demo[data-v-27e4e96e]{color: red;}
+>
+> ( 涉及vue-loader相关源码，引自[从vue-loader源码分析CSS Scoped的实现](https://juejin.cn/post/6844903949900742670)。)
 
 #### 直接打开url怎么做
 
@@ -524,3 +550,137 @@ VirtualDOM 是根据真实的DOM节点树，抽象出来的一棵用 JavaScript 
 #### 浏览器渲染原理
 
 [浏览器渲染机制](https://jiuto.github.io/jiuto_blog/guide/browser/render.html)
+
+---
+
+### 其他
+
+#### dom列表倒置
+
+``` html
+<ul id="ul">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+</ul>
+<script>
+    var ul = document.getElementById("ul"),
+        flag = document.createDocumentFragment(),
+        arr;
+
+    arr = Array.from(ul.children); // 类数组转换，也可用Array.prototype.slice.call(ul.children)
+    arr.reverse(); // 倒置原数组，reverse会改变原数组，不会生成新的数组
+    ul.innerHTML = ""; // 清空ul
+    // 将倒置后的节点按顺序添加到空节点上
+    arr.forEach((item)=>{
+        flag.appendChild(item)
+    })
+    // 最后一次性添加到ul上
+    ul.appendChild(flag);
+</script>
+```
+
+#### 跨域 CORS
+
+[跨域](https://jiuto.github.io/jiuto_blog/guide/network/cross.html)
+
+#### webpack缓存
+
+``` js
+// webpack.config.js
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+module.exports = {
+  entry: {
+      main:"main.js",
+      sub:"sub.js"
+  },
+  output: {
+    path: "/dist",
+    filename: "[name].[hash].js"
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+        template: `index.html`,
+        filename: `index.html`,
+        chunks: ["vendors", "index"],
+        hash:true,
+        minify: {
+            html5: true,
+            collapseWhitespace: true,
+            preserveLineBreaks: false,
+            minifyCSS: true,
+            minifyJS: true,
+            removeComments: true,
+        },
+    })
+  ]
+};
+```
+
+#### Tree-shaking原理
+
+**定义**
+
+Tree-shaking 是指将没有使用到的代码删去，比如我们在项目中引入了某些依赖，但只使用了其中的部分功能，通过 Tree-shaking 可以将没有用到的代码删除。
+
+**意义**
+
+> javascript绝大多数情况需要通过网络进行加载，然后执行，加载的文件大小越小，整体执行时间更短，所以去除无用代码以减少文件体积，对javascript来说更有意义。
+
+**DCE**
+
+DCE（dead code elimination），无用代码消除。
+
+> Tree-shaking 是 DCE 的一种新的实现，和传统的 DCE 的方法又不太一样，传统的 DCE 消灭不可能执行的代码，而 Tree-shaking 更关注宇消除没有用到的代码。
+>
+> Dead Code 一般具有以下几个特征：
+> + 代码不会被执行，不可到达
+> + 代码执行的结果不会被用到
+> + 代码只会影响死变量（只写不读）
+
+js中，由代码压缩优化工具 uglify 完成DCE。
+
+**原理**
+
+Tree-shaking原理依赖于ES6的模块特性。
+
+> ES6模块依赖关系是确定的，和运行时的状态无关，可以进行可靠的静态分析，这就是tree-shaking的基础。
+>
+> 所谓静态分析就是不执行代码，从字面量上对代码进行分析，ES6之前的模块化，比如我们可以动态require一个模块，只有执行后才知道引用的什么模块，这个就不能通过静态分析去做优化。
+
+**工具**
+
+Rollup、Webpack、Closure compiler
+
+Webpack4 中的 Tree-shakingg 相关配置：
+
+在`package.json`中设置`"sideEffects": false`，表示项目中导入引入的都是没有副作用的函数或类，可以安全地删除未用到的export。
+
+对于有副作用的导出文件，可以这样设置来告知webpack`"sideEffects": [ "./src/some-side-effectful-file.js" ]`。
+
+也可以通过 module.rules 配置设置 sideEffects。
+
+#### 快速排序
+
+``` js
+function quickSort(arr) {
+    if(arr.length<=1) return arr
+    var left = [],
+        right = [],
+        pos = arr.splice(0,1);
+    for(let i = 0; i < arr.length; i++) {
+        arr[i] <= pos ? left.push(arr[i]) : right.push(arr[i])
+    }
+    return quickSort(left).concat(pos,quickSort(right))
+}
+var array = [5,8,23,57,1,56,88,6,43]
+console.log(quickSort(array)) // [1, 5, 6, 8, 23, 43, 56, 57, 88]
+console.log(array) // [8, 23, 57, 1, 56, 88, 6, 43]
+```
+
+平均时间复杂度O(logn)，最坏时间复杂度O(n²)，空间复杂度O(nlogn)，不是稳定。
+
+假设有两个相同的数A和B，在排序之前A在B的前面，经过排序之后B跑到了A的前面，就叫做排序的不稳定性。
