@@ -154,7 +154,7 @@ console.log(typeof Function.prototype) // function
 console.log(Function.prototype.__proto__ === Object.prototype) // true
 ```
 
-4. `Object.prototype__proto__`是什么？
+4. `Object.prototype.__proto__`是什么？
 
 ``` js
 console.log(Object.prototype.__proto__) // null

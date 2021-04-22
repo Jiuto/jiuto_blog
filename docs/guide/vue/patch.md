@@ -200,10 +200,12 @@ export function createPatchFunction (backend) {
     }
     // ...
 
-    function patch (oldVnode, vnode, hydrating, removeOnly) {
-        // vnode不存在，直接调用
+    return function patch (oldVnode, vnode, hydrating, removeOnly) {
+        // vnode不存在
         if (isUndef(vnode)) {
+            // oldVnode存在，直接调用DestroyHook
             if (isDef(oldVnode)) invokeDestroyHook(oldVnode)
+            // 直接return
             return
         }
 
@@ -246,7 +248,6 @@ export function createPatchFunction (backend) {
                     nodeOps.nextSibling(oldElm)
                 )
 
-                
                 if (isDef(vnode.parent)) {
                     /*组件根节点被替换，遍历更新父节点element*/
                     let ancestor = vnode.parent
@@ -621,7 +622,7 @@ function updateChildren (parentElm, oldCh, newCh, insertedVnodeQueue, removeOnly
         // newStartVnode 右移， newStartIdx +1
         newStartVnode = newCh[++newStartIdx]
       } else {
-        // 非首尾亮亮对比四种结果的情况
+        // 非首尾两两对比四种结果的情况
         // 初始化 oldKeyToIdx 为一个key值与下标的哈希表
         if (isUndef(oldKeyToIdx)) oldKeyToIdx = createKeyToOldIdx(oldCh, oldStartIdx, oldEndIdx)
         // 如果新子节点列表首个节点存在key值，到哈希表中查找，否则到旧子节点列表中根据sameVnode查找，得到下标
@@ -700,6 +701,53 @@ function removeVnodes (vnodes, startIdx, endIdx) {
         }
       }
     }
+}
+```
+
+### 总结
+
+渲染Watcher执行`update->run->get`，调用了`vm._update->vm.__patch__->patch`。
+
+节点相同判断通过sameVnode方法。
+
+patch：
+
++ 新节点不存在，则销毁旧节点，结束patch；
++ 旧节点不存在，则创建新节点；
++ 旧节点存在且新旧相同，进行patchVnode；
++ 旧节点存在且新旧不同，创建新节点；
+
+patchVnode：
+
++ 新节点有文本节点，且与旧文本节点不同，则替换文本；
++ 新节点不存在文本节点：
++ 都有子节点且子节点不同，进行updateChildren；
++ 仅新节点有子节点，增加节点；
++ 仅旧节点有子节点，删除节点；
++ 均无子节点，清空文本；
+
+updateChildren：
+
++ 首首、尾尾、首尾、尾首比较；
++ 上述四种不匹配，则查找相同key，没找到则新增节点；
++ 找到相同key但节点不同，则新增节点；
++ 找到相同key但节点相同，则移动；
++ 直到新节点列表或旧节点列表有一个遍历完，对多余的旧节点进行删除，新节点进行增加；
+
+``` js
+export default class VNode {
+  tag: string | void;
+  data: VNodeData | void;
+  children: ?Array<VNode>;
+  text: string | void;
+  elm: Node | void;
+  ns: string | void;
+  context: Component | void; // rendered in this component's scope
+  key: string | number | void;
+  componentOptions: VNodeComponentOptions | void;
+  componentInstance: Component | void; // component instance
+  parent: VNode | void; // component placeholder node
+  //...
 }
 ```
 

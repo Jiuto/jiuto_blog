@@ -34,7 +34,7 @@ Vue是在template模板中，通过指令比如v-if、v-for来实现
 
 + vuex 和 redux
 
-Vue 使用 commit-mutations 和 dispatch-actions 提交更新，通过 mapState 或者直接通过 this.$store 来读取数据，在组件内可以用commit和dispatch。
+Vuex 使用 commit-mutations 和 dispatch-actions 提交更新，通过 mapState 或者直接通过 this.$store 来读取数据，在组件内可以用commit和dispatch。
 
 redux每个组件都要显式地用 connect 把需要的 props 和 dispatch 连接起来，在组件中只能dispatch。
 
@@ -161,6 +161,8 @@ activated => deactivated
 
 mode、devtool、entry、output、resolve(alias、extensions)、module.rules(babel-loader、style-loader、css-loader、less-loader、less-loader、url-loader)、plugins(html-webpack-plugin、mini-css-extract-plugin)
 
+---
+
 ### 4.16 上午到场面试50min AH
 
 #### 回流、重塑
@@ -249,6 +251,8 @@ in 操作符可以遍历原型，结合`hasOwnProperty()`可以判断对象属�
 
 #### 需要大屏经验 three、d3
 
+---
+
 ### 4.16 下午到场笔试+15min面试 KH
 
 #### promise的三种状态
@@ -279,6 +283,8 @@ localStorage同sessionStorage
 **sessionStorage**
 
 仅在当前会话有效；可保存5MB数据；不参与通信，仅存于客户端；
+
+---
 
 ### 4.16 下午到场面试四轮 HLW
 
@@ -525,6 +531,8 @@ console.prototype.log1 = function (){}
 
 #### 需要状态码调试经验
 
+---
+
 ### 4.19 下午到场两轮两小时技术面 GWG
 
 > 重复问题：水平/垂直居中、es6、promise、vue生命周期、vue3.0、性能优化、http协议
@@ -550,6 +558,95 @@ VirtualDOM 是根据真实的DOM节点树，抽象出来的一棵用 JavaScript 
 #### 浏览器渲染原理
 
 [浏览器渲染机制](https://jiuto.github.io/jiuto_blog/guide/browser/render.html)
+
+---
+
+### 4.22 下午50min视频面试+coding ZJ
+
+> 未完待续
+
+#### 给多个li增加事件处理程序，如果有加载更多，怎么做其他li的事件绑定
+
+#### vue 和 react 底层有没有做事件委托
+
+#### document.querySelectorAll("div")，返回的是什么，怎么遍历
+
+#### http2有哪些特点，这些特点有哪些应用
+
+#### 讲一下 VirtualDOM ，除了浏览器还在哪些方面有应用
+
+#### 了解过weex和服务端渲染吗
+
+#### 数组降维+去重+排序
+
+``` js
+let arr = [[222, 333, 444], [55, 66, 77], {a: 1} ]
+console.log(Array.prototype.concat.apply([], arr)) // 返回新数组 [222, 333, 444, 55, 66, 77, {a: 1}]
+console.log(arr.flat()) // 返回新数组 [222, 333, 444, 55, 66, 77, {a: 1}]
+// 或者用递归实现
+```
+
+#### XMLHttpRequest 和 fetch 的区别
+
+#### 网络工具怎么封装的
+
+#### 了解过reactNative吗
+
+#### 用户缓存怎么做的，有什么办法优化
+
+#### 讲一下http缓存，除了http缓存，还有哪些缓存
+
+#### 你知道哪些排序算法
+
+
+
+---
+
+### 4.22 晚上37min电话面试 AL
+
+> 重复问题：水平/垂直居中、vue3.0、响应式原理
+
+> 未完待续
+
+#### es6及之后版本添加的特性
+
+#### vue响应式原理之后，如何更新页面
+
+渲染Watcher执行`update->run->get`，调用了`vm._update->vm.__patch__->patch`。
+
+节点相同判断通过sameVnode方法。
+
+patch：
+
++ 新节点不存在，则销毁旧节点，结束patch；
++ 旧节点不存在，则创建新节点；
++ 旧节点存在且新旧相同，进行patchVnode；
++ 旧节点存在且新旧不同，创建新节点；
+
+patchVnode：
+
++ 新节点有文本节点，且与旧文本节点不同，则替换文本；
++ 新节点不存在文本节点：
++ 都有子节点且子节点不同，进行updateChildren；
++ 仅新节点有子节点，增加节点；
++ 仅旧节点有子节点，删除节点；
++ 均无子节点，清空文本；
+
+updateChildren：
+
++ 首首、尾尾、首尾、尾首比较；
++ 上述四种不匹配，则查找相同key，没找到则新增节点；
++ 找到相同key但节点不同，则新增节点；
++ 找到相同key但节点相同，则移动；
++ 直到新节点列表或旧节点列表有一个遍历完，对多余的旧节点进行删除，新节点进行增加；
+
+[源码阅读vue VirtualDOM 和 diff](https://jiuto.github.io/jiuto_blog/guide/vue/patch.html)
+
+#### webpack构建流程
+
+#### 数组求和：实现一个function getIndex(arr,sum)，找出数组中和为sum的下标
+
+
 
 ---
 
@@ -684,3 +781,27 @@ console.log(array) // [8, 23, 57, 1, 56, 88, 6, 43]
 平均时间复杂度O(logn)，最坏时间复杂度O(n²)，空间复杂度O(nlogn)，不是稳定。
 
 假设有两个相同的数A和B，在排序之前A在B的前面，经过排序之后B跑到了A的前面，就叫做排序的不稳定性。
+
+#### 斐波那契数列
+
+0 1 1 2 3 5 8 ...
+
+``` js
+function fibonacci(n) {
+    return n === 0 || n === 1 ? n : fibonacci(n-1) + fibonacci(n-2)
+}
+function memory(fn) {
+    var m = new Map();
+    return function(n) {
+        if(m.get(n)) {
+            return m.get(n)
+        }else{
+            let rtn = fn(n);
+            m.set(n, rtn);
+            return rtn
+        }
+    }
+}
+var newFibonacci = memory(fibonacci);
+console.log(newFibonacci(7))
+```
