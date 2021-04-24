@@ -4,6 +4,51 @@
 
 ### 4.15 晚上电话面试50min ALCN
 
+#### ES6及之后版本添加的特性
+
+**ES2015/ES6**
+
+let/const、Promise、Module、Class、箭头函数、函数参数默认值、字符串模板\`$\{data\}\`、结构赋值`{name} = data;`与`[a, b] = [1, 2];`、延展操作符`...`、
+对象属性简写`var obj = { name, age, city };`、
+
+[let、const和块级作用域](https://jiuto.github.io/jiuto_blog/guide/js/let_const.html)
+
+[ES6 Module](https://jiuto.github.io/jiuto_blog/guide/js/module.html)
+
+**ES2016**
+
+`Array.prototype.includes()`返回布尔值、指数运算符`**`（`2**10` 同 `Math.pow(2,10)`）
+
+**ES2017**
+
+async/await、Object.values()返回属性值数组、Object.entries()返回对象可枚举属性的键值对数组、String.prototype.padStart和String.prototype.padEnd、
+函数参数列表结尾允许逗号、Object.getOwnPropertyDescriptors()、SharedArrayBuffer对象、Atomics对象
+
+**ES2018**
+
+异步迭代（await可以和for...of循环一起使用）、Promise.finally()、Rest/Spread 属性（为对象解构提供了和数组一样的Rest参数）、
+正则表达式命名捕获组、正则表达式反向断言、正则表达式dotAll模式、正则表达式 Unicode 转义、非转义序列的模板字符串
+
+**ES2019**
+
+行分隔符（U + 2028）和段分隔符（U + 2029）符号现在允许在字符串文字中，与JSON匹配、更加友好的 JSON.stringify、Array.prototype.flat()和Array.prototype.flatMap()、
+String的trimStart()方法和trimEnd()方法、Object.fromEntries()、Symbol.prototype.description、String.prototype.matchAll、Function.prototype.toString()现在返回精确字符，包括空格和注释、修改 catch 绑定、BigInt（七种基本数据类型，分别是： String、Number、Boolean、Null、Undefined、Symbol、BigInt）
+
+**ES2020**
+
+可选链操作符（Optional Chaining）`obj?.first?.second`、空位合并操作符（`a ?? b` 同 `a !== undefined && a !== null ? a : b`）、Promise.allSettled、
+String.prototype.matchAll、Dynamic import（支持await）、BigInt、globalThis
+
+**ES2021**
+
+String.prototype.replaceAll()、Promise.any()、WeakRefs、逻辑赋值运算符（`a ||= b` 同 `a || (a = b)`，还有`&&=`、`??=`）、数字分隔符_(下划线)
+
+[ES6、ES7、ES8、ES9、ES10新特性一览](https://juejin.cn/post/6844903811622912014#heading-35)
+
+[ES2020新特性](https://juejin.cn/post/6844904080955932679#heading-0)
+
+[ES2021新特性](https://juejin.cn/post/6919682252808912904#heading-0)
+
 #### vue和react的不同
 
 + 监听数据变化的实现原理不同
@@ -87,14 +132,6 @@ ondrop - 在一个拖动过程中，释放鼠标键时触发此事件
 + LocalStorage 和 SessionStorage
 
 + Web Worker
-
-#### es6 增加了哪些
-
-let/const/块级作用域、解构赋值、Symbol、Set/Map、Proxy、Promise、async、Class、Module
-
-[let、const和块级作用域](https://jiuto.github.io/jiuto_blog/guide/js/let_const.html)
-
-[ES6 Module](https://jiuto.github.io/jiuto_blog/guide/js/module.html)
 
 #### let/const/块级作用域
 
@@ -535,7 +572,7 @@ console.prototype.log1 = function (){}
 
 ### 4.19 下午到场两轮两小时技术面 GWG
 
-> 重复问题：水平/垂直居中、es6、promise、vue生命周期、vue3.0、性能优化、http协议
+> 重复问题：水平/垂直居中、ES6、promise、vue生命周期、vue3.0、性能优化、http协议、VirtualDOM作用和优点
 
 #### 说一下flex布局
 
@@ -545,16 +582,6 @@ console.prototype.log1 = function (){}
 
 在循环中把promise保存到数组里，循环外使用Promise.all()传入数组
 
-#### 为什么要有 virtual dom
-
-VirtualDOM 是根据真实的DOM节点树，抽象出来的一棵用 JavaScript 对象描述节点的抽象树。
-
-通过 VirtualDOM ，可以对比前后节点变化了哪些变化，做到局部更新视图，减少 DOM 操作。
-
-> Virtual DOM的优势不在于单次的操作，而是在大量、频繁的数据更新下，能够对视图进行合理、高效的更新。
-
-> 由于 Virtual DOM 是以 JavaScript 对象为基础而不依赖真实平台环境，所以使它具有了跨平台的能力，比如说浏览器平台、Weex、Node 等。
-
 #### 浏览器渲染原理
 
 [浏览器渲染机制](https://jiuto.github.io/jiuto_blog/guide/browser/render.html)
@@ -563,52 +590,387 @@ VirtualDOM 是根据真实的DOM节点树，抽象出来的一棵用 JavaScript 
 
 ### 4.22 下午50min视频面试+coding ZJ
 
-> 未完待续
-
 #### 给多个li增加事件处理程序，如果有加载更多，怎么做其他li的事件绑定
 
-#### vue 和 react 底层有没有做事件委托
+``` html
+<ul id="ul">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+<script>
+    // 用jquery的on方法
+    $('ul').on('click', 'li', function () {
+        console.log(123)
+    });
+    // 遍历挨个儿绑定
+    var ul = document.getElementById("ul"),
+        lis = ul.children;
+    for (let i = 0; i < lis.length; i++) {
+        let li = lis[i];
+        li.addEventListener("click",function(event){
+            console.log(event.target)
+        })
+    }
+    // 通过冒泡，给父元素绑定事件处理程序
+    var ul = document.getElementById("ul");
+    ul.addEventListener("click",function(event){
+        console.log(event.target) // li ie用 event.srcElement
+        console.log(event.currentTarget) // ul ie没有这个属性
+    })
+</script>
+```
+
+#### vue 和 react 事件委托
+
+``` html
+<div id="app">
+    <ul @click="handleClick">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</div>
+<script>
+    new Vue({
+        el: "#app",
+        methods: {
+            handleClick(e){
+                console.log(e.target)
+            }
+        }
+    });
+</script>
+```
+
+``` html
+<div id="root"></div>
+<script type="text/babel">
+    function handleClick(e) {
+        console.log(e.target)
+    }
+    var element = (
+        <ul onClick={handleClick}>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul> 
+    );
+    ReactDOM.render(
+        element,
+        document.getElementById('root')
+    );
+</script>
+```
 
 #### document.querySelectorAll("div")，返回的是什么，怎么遍历
 
+NodeList对象，for循环遍历、`Array.prototype.slice.call(nodeList)`、`Array.from(nodeList)`
+
 #### http2有哪些特点，这些特点有哪些应用
 
-#### 讲一下 VirtualDOM ，除了浏览器还在哪些方面有应用
+> 未完待续
 
-#### 了解过weex和服务端渲染吗
+#### 讲一下 VirtualDOM ，有什么优点，除了浏览器还在哪些方面有应用
 
-#### 数组降维+去重+排序
+VirtualDOM 是根据真实的DOM节点树，抽象出来的一棵用 JavaScript 对象描述节点的抽象树。
+
+1. 通过 VirtualDOM ，可以对比前后节点变化了哪些变化，做到局部更新视图，减少 DOM 操作。
+Virtual DOM的优势不在于单次的操作，而是在大量、频繁的数据更新下，能够对视图进行合理、高效的更新。
+
+2. 由于 Virtual DOM 是以 JavaScript 对象为基础而不依赖真实平台环境，所以使它具有了跨平台的能力，比如说浏览器平台、Weex、Node 等。
+
+vue-server-renderer服务端渲染、WEEX（可以使用 JavaScript 语言和前端开发经验来开发移动应用）。
+
+#### 数组降维+去重+排序（从大到小）
 
 ``` js
-let arr = [[222, 333, 444], [55, 66, 77], {a: 1} ]
-console.log(Array.prototype.concat.apply([], arr)) // 返回新数组 [222, 333, 444, 55, 66, 77, {a: 1}]
-console.log(arr.flat()) // 返回新数组 [222, 333, 444, 55, 66, 77, {a: 1}]
-// 或者用递归实现
+var arr = [[22, 33, 11], [55, 33, 6, 7], 8, 9, 6], 
+    arr1;
+// 降维
+
+// 方法一 递归
+
+// 方法二 Array.prototype.concat.apply([], arr)
+arr1 = Array.prototype.concat.apply([], arr); // 返回新数组 [22, 33, 11, 55, 33, 6, 7, 8, 9, 6]
+
+// 方法三 arr.flat()
+arr1 = arr.flat(); // 返回新数组 [22, 33, 11, 55, 33, 6, 7, 8, 9, 6]
+
+// 去重
+
+// 方法一 两层for循环
+
+// 方法二 一层for循环+一层indexOf
+
+// 方法三 先排序再for循环 比较相邻两个值是否相等
+
+// 方法四 filter+indexOf
+arr1 = arr1.filter(function(item, index, array){
+    return array.indexOf(item) === index;
+}) // indexOf 返回首个匹配的下标，filter 返回新数组， [22, 33, 11, 55, 6, 7, 8, 9]
+
+// 方法五 先排序再filter
+arr1 = arr1.sort((a,b)=> a-b).filter(function(item, index, array){
+    return !index || item !== array[index - 1]
+}) // sort 对原数组排序，filter 返回新数组， [6, 7, 8, 9, 11, 22, 33, 55]
+
+// 方法六 Object键值对+filter
+
+// 方法七 Set+Array.from
+arr1 = Array.from(new Set(arr1)) // 返回新数组 [22, 33, 11, 55, 6, 7, 8, 9]
+arr1 = [...new Set(arr1)] // 简化 [22, 33, 11, 55, 6, 7, 8, 9]
+
+// 方法八 Map+filter
+var map = new Map()
+arr1 = arr1.filter((item) => !map.has(item) && map.set(item, true)) // [22, 33, 11, 55, 6, 7, 8, 9]
+
+// 排序
+
+// sort+reverse
+arr1.sort((a,b)=> a-b).reverse() // [6, 7, 8, 9, 11, 22, 33, 55]
+
+// 各种排序算法
+
+console.log(arr1)
 ```
 
-#### XMLHttpRequest 和 fetch 的区别
+#### XMLHttpRequest 和 fetch 
+
+**什么是Ajax**
+
+Ajax是一种异步请求数据的web开发技术，不需要重新刷新页面，通过Ajax异步请求加载后台数据，进行局部更新。
+
+**Ajax原理**
+
+依赖浏览器提供的XMLHttpRequest对象，让浏览器异步发起或接收HTTP请求，期间浏览器做其他事情，等收到XHR响应再渲染页面。
+
+**XMLHttpRequest和fetch的使用**
+
+``` js
+// XMLHttpRequest
+let xhr;
+if (window.XMLHttpRequest) {
+  xhr = new XMLHttpRequest()
+} else if (window.ActiveXObject) { // IE 6 and older
+  xhr = new ActiveXObject('Microsoft.XMLHTTP')
+}
+xhr.open("POST","test.html",true); // 第三个参数 async， true 表示异步， false 表示同步 
+xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");  
+xhr.send("fname=Henry&lname=Ford");
+xhr.onreadystatechange = function(){ 
+    if (xhr.readyState==4 &&xhr.status==200)  { 
+        console.log(xhr.responseText);  
+    }
+} 
+/** readyState：
+ * 0：未初始化 -- 尚未调用.open()方法；
+ * 1：启动 -- 已经调用.open()方法，但尚未调用.send()方法；
+ * 2：发送 -- 已经调用.send()方法，但尚未接收到响应；
+ * 3：接收 -- 已经接收到部分响应数据；
+ * 4：完成 -- 已经接收到全部响应数据，而且已经可以在客户端使用了；
+*/
+
+// fetch 使用 Promise 语法结构
+fetch('/users.json', {
+    method: 'post', 
+    mode: 'no-cors', // 跨域配置
+    data: {}
+})
+  .then((r) => r.json())
+  .then((data) => console.log(data))
+  .catch((e) => console.log('error'))
+```
+
+**$.ajax、axios、XMLHttpRequest和fetch的区别**
+
+$.ajax 和 axios 是对 XMLHttpRequest 的封装， fetch 是底层API，可以代替XHR。
+
+> + fetch只对网络请求报错，对400，500都当做成功的请求，需要封装去处理
+> + fetch默认不会带cookie，需要添加配置项。
+> + fetch不支持abort，不支持超时控制，使用setTimeout及Promise.reject的实现超时控制并不能阻止请求过程继续在后台运行，造成了流量的浪费。
+> + fetch没有办法原生监测请求的进度，而XHR可以。
+
+#### service worker 是什么
+
+> Service workers 本质上充当 Web 应用程序、浏览器与网络（可用时）之间的代理服务器。[Service Worker API](https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API)
 
 #### 网络工具怎么封装的
 
+``` js
+import axios from "axios";
+
+//对axios的配置
+axios.defaults.timeout = 10000;
+axios.defaults.headers.post["Content-Type"] = "application/json;charset=UTF-8";
+
+/**
+ * @param {*} url
+ * 使用get
+ */
+export const baseGet = (url, config= {}) => {
+    config.method = "get";
+    config.url = url;
+    return base(config);
+};
+
+/**
+ * @param {*} url
+ * @param {*} data
+ * 使用post
+ */
+export const basePost = (url, data, config = {}) => {
+    config.method = "post";
+    config.url = url;
+    config.data = data;
+    return base(config);
+};
+
+/**
+ * 请求基础配置
+ */
+export const base = (config = {}) => {
+    if (!config.url) return;
+
+    //取消请求
+    const CancelToken = axios.CancelToken;
+    let cancel;
+    config.cancelToken = new CancelToken(function executor(c) {
+        cancel = c;
+    });
+
+    //返回结果
+    let res = axios.request(config).catch((error) => {
+        if (error.response) {
+            return Promise.reject(error.response.data);
+        }
+        error.message && (error.msg = error.message);
+        return Promise.reject(error);
+    });
+
+    res.cancel = cancel;
+
+    return res;
+}
+
+export default axios
+```
+
 #### 了解过reactNative吗
+
+> 使用 React 来创建 Android 和 iOS 的原生应用
 
 #### 用户缓存怎么做的，有什么办法优化
 
+``` js
+const defaultValue = {
+  currentPage: '0',
+  tagAry: new Array(),
+  subCurrentPage: "",
+  activeIndex: "",
+  menuList: new Array(),
+  token: "",
+  uids: "",
+  uname: "",
+  userid:"",
+  ucompany:"",
+  logStatus: 'login',//登录: login  登出: logOut mock:mock
+}
+function getStorageValue(name) {
+  let value = window.sessionStorage.getItem(name);
+  let initValue = defaultValue[name] || ''
+  if (value) {
+    try {
+      value = JSON.parse(value)
+    } catch (e) {
+      value = initValue;
+    }
+  } else {
+    value = initValue;
+  }
+  return value;
+}
+let token = getStorageValue("token");
+let uids = getStorageValue("uids");
+let uname = getStorageValue("uname");
+let userid = getStorageValue('userid');
+let ucompany = getStorageValue('ucompany');
+let currentPage = getStorageValue("currentPage");
+let tagAry = getStorageValue("tagAry");
+let subCurrentPage = getStorageValue("subCurrentPage");
+let activeIndex = getStorageValue("activeIndex");
+let menuList = getStorageValue("menuList");
+let logStatus = getStorageValue("logStatus");
+let localStorage = {
+  state: {
+    token,
+    //用户账号
+    uids,
+    //用户名
+    uname,
+    //用户id
+    userid,
+    //用户公司
+    ucompany,
+    //导航条高亮
+    currentPage,
+    //tag导航数组
+    tagAry,
+    //tag条高亮
+    subCurrentPage,
+    //侧边栏高亮
+    activeIndex,
+    //侧边栏
+    menuList,
+    //登录状态
+    logStatus,
+    //判断浏览器
+    browser:'',
+  },
+  mutations: {
+    //设置本地存储
+    'SET_SESSIONSTORAGE': (state, { name, content }) => {
+      window.sessionStorage.setItem(name, JSON.stringify(content));
+      state[name] = content;
+    },
+    //移除本地存储
+    'REMOVE_SESSIONSTORAGE': (state, name) => {
+      window.sessionStorage.removeItem(name);
+      if (name == "tagAry" || name == "menuList") {
+        state[name] = [];
+      } else {
+        state[name] = defaultValue[name] || '';
+      }
+    },
+  },
+  actions: {
+  }
+}
+export default localStorage;
+```
+
+可以让后端通过cookie中的token自己获取用户信息，避免所有需要校验用户的接口都要带用户id。
+
 #### 讲一下http缓存，除了http缓存，还有哪些缓存
+
++ [浏览器缓存](https://jiuto.github.io/jiuto_blog/guide/network/cache.html)
+
++ cookie、sessionStorage、localStorage
 
 #### 你知道哪些排序算法
 
+冒泡排序、选择排序、插入排序、快速排序、希尔排序
 
+[前端笔试&面试爬坑系列---算法](https://juejin.cn/post/6844903656865677326#heading-8)
 
 ---
 
 ### 4.22 晚上37min电话面试 AL
 
-> 重复问题：水平/垂直居中、vue3.0、响应式原理
-
-> 未完待续
-
-#### es6及之后版本添加的特性
+> 重复问题：水平/垂直居中、vue3.0、响应式原理、ES6
 
 #### vue响应式原理之后，如何更新页面
 
@@ -644,9 +1006,42 @@ updateChildren：
 
 #### webpack构建流程
 
+> 未完待续
+
 #### 数组求和：实现一个function getIndex(arr,sum)，找出数组中和为sum的下标
 
+``` js
+function getIndex (arr,sum) {
+    let map = new Map();
+    for(let i = 0; i < arr.length; i++){
+        map.set(arr[i],i);
+        let target = map.get(sum-arr[i]);
+        if(target && target !== i) return [target,i]
+    }
+}
+console.log(getIndex([1,2,3,4,5],8)) // 2,4
+console.log(getIndex([1,2,3,4,5],9)) // 3,4
+```
 
+#### git add/commit/push前后的回滚操作，以及回滚后提交记录的变化
+
++ 修改 commit ，`git commit --amend`进入vim编辑器，可修改commit注释
+
++ add 前，`git checkout -- <file>`撤销上一次对文件的操作
+
++ add 后 commit 前，`git reset HEAD <file>`
+
++ add + commit 后 push 前：`git reset --soft HEAD^`
+
+> + `HEAD^`表示上一个版本，即上一次的commit，也可以写成`HEAD~1`，如果要撤回两次commit，可以使用`HEAD~2`。
+> + `--soft`不删除工作空间改动代码 ，撤销commit，不撤销add
+> + `--hard`删除工作空间改动代码，撤销commit且撤销add
+
++ push 后，执行`git log`查看日志，找到版本号
+
+1. `git reset --hard 版本号`(回退到目标记录) + `git push origin master --force`(回退后记录比远程靠前，要--force)
+
+2. `git revert -n 版本号`(revert会生成新的记录，而不是回到目标记录，-n表示--no-commit，如果不带这个参数会自动提交一条commit) + `git push`
 
 ---
 
@@ -805,3 +1200,110 @@ function memory(fn) {
 var newFibonacci = memory(fibonacci);
 console.log(newFibonacci(7))
 ```
+
+#### css 样式隔离
+
+命名空间、css Modules(一种构建步骤中的一个进程)、[Shadow DOM](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_shadow_DOM)
+
+#### gitlab 权限控制
+
+[Gitlab管理用户、组、权限](https://www.cnblogs.com/zangxueyuan/p/9222014.html)
+
+#### 手写一个 isEqual
+
+``` js
+var eq, deepEq;
+eq = function(a, b, aStack, bStack) {
+  if (a === b) return a !== 0 || 1 / a === 1 / b; // 排除 0 === -0，使这种情况下返回false
+  if (a == null || b == null) return false; // === 失败的情况下，排除 null == undefined
+  if (a !== a) return b !== b; // 由于NaN!==NaN，另作判断，当a、b都为NaN时返回true
+  var type = typeof a;
+  if (type !== 'function' && type !== 'object' && typeof b != 'object') return false;
+  return deepEq(a, b, aStack, bStack);
+};
+
+deepEq = function (a, b, aStack, bStack) {
+    //如果a，b是_的一个实例的话，需要先把他们解包出来再进行比较。
+	if (a instanceof _) a = a._wrapped;
+	if (b instanceof _) b = b._wrapped;
+
+	var className = toString.call(a);
+	if (className !== toString.call(b)) return false;
+	switch (className) {
+		//如果a，b为正则表达式，那么转化为字符串判断是否相等即可。
+		case '[object RegExp]':
+		case '[object String]':
+			// var a = new String('12'),b = new String('12');
+            // a === b // false
+			return '' + a === '' + b;
+		case '[object Number]':
+			//数字对象转化为数字进行比较，并且要考虑new Number(NaN) === new Number(NaN)应该要成立的情况。
+			if (+a !== +a) return +b !== +b;
+			//排除0 === -0 的情况。
+			return +a === 0 ? 1 / +a === 1 / b : +a === +b;
+		case '[object Date]':
+		//Date类型以及Boolean类型都可以转换为number类型进行比较。
+		//在变量前加一个加号“+”，可以强制转换为数值型。
+		//在Date型变量前加一个加号“+”可以将Date转化为毫秒形式；Boolean类型同上（转换为0或者1）。
+		case '[object Boolean]':
+			return +a === +b;
+		case '[object Symbol]':
+			return SymbolProto.valueOf.call(a) === SymbolProto.valueOf.call(b);
+	}
+
+	var areArrays = className === '[object Array]';
+	//如果不是数组对象。
+	if (!areArrays) {
+		if (typeof a != 'object' || typeof b != 'object') return false;
+		//比较两个非数组对象的构造函数。
+		var aCtor = a.constructor, bCtor = b.constructor;
+		if (aCtor !== bCtor && !(_.isFunction(aCtor) && aCtor instanceof aCtor &&
+			_.isFunction(bCtor) && bCtor instanceof bCtor)
+			&& ('constructor' in a && 'constructor' in b)) {
+			return false;
+		}
+	}
+
+	//初次调用eq函数时，aStack以及bStack均未被传递，在循环递归的时候，会被传递进来。
+	//aStack和bStack存在的意义在于循环引用对象之间的比较。
+	aStack = aStack || [];
+	bStack = bStack || [];
+	var length = aStack.length;
+	
+	while (length--) {
+		if (aStack[length] === a) return bStack[length] === b;
+	}
+
+	//初次调用eq函数时，就把两个参数放入到参数堆栈中去，保存起来方便递归调用时使用。
+	aStack.push(a);
+	bStack.push(b);
+
+	//如果是数组对象。
+	if (areArrays) {
+		length = a.length;
+		//长度不等，直接返回false认定为数组不相等。
+		if (length !== b.length) return false;
+		while (length--) {
+			//递归调用。
+			if (!eq(a[length], b[length], aStack, bStack)) return false;
+		}
+	} else {
+		//对比纯对象
+		var keys = _.keys(a), key;
+		length = keys.length;
+		//对比属性数量，如果数量不等，直接返回false。
+		if (_.keys(b).length !== length) return false;
+		while (length--) {
+			key = keys[length];
+			if (!(_.has(b, key) && eq(a[key], b[key], aStack, bStack))) return false;
+		}
+	}
+
+    //循环递归结束，把a，b堆栈中的元素推出。
+	aStack.pop();
+	bStack.pop();
+	return true;
+};
+```
+
+[如何判断JavaScript中的两变量是否相等？](https://juejin.cn/post/6844903569502502920#heading-8)
