@@ -272,12 +272,6 @@ computed本质是在vue实例上定义一个计算属性同名属性，我们设
 
 Object.create(null)
 
-#### for in 不能遍历原型
-
-for...in语句以任意顺序遍历一个对象的除Symbol以外的可枚举属性。
-
-in 操作符可以遍历原型，结合`hasOwnProperty()`可以判断对象属性是否在原型对象上。
-
 #### BFC
 
 [BFC 块格式化上下文](https://jiuto.github.io/jiuto_blog/guide/css/bfc.html)
@@ -333,7 +327,13 @@ localStorage同sessionStorage
 
 #### vue3.0
 
-> 未完待续
+组合式API(Vue3 composion api,VCA)（setup、ref响应式引用）、生命周期（on+Hook名，接收回调）、watch、computed、v-model、Teleport 组件、对v-if/v-else自动生成key...
+
+底层优化：proxy、静态提升（把一些静态的不会变的节点用变量缓存起来，提供下次 re-render 直接调用。如果没有做这个动作，当 render 重新执行时，即使标签是静态的，也会被重新创建，这就会产生性能消耗。）
+
+基于函数的API有利于支持TypeScript、Tree-shaking。
+
+[Vue3丨从 5 个维度来讲 Vue3 变化](https://juejin.cn/post/6910009240053055496#heading-29)
 
 #### data更改为什么视图没有更新
 
@@ -1006,7 +1006,35 @@ updateChildren：
 
 #### webpack构建流程
 
-> 未完待续
+1. 从配置文件和Shell语句中读取与合并参数，根据参数初始化compiler对象，加载插件
+
+2. 执行compiler对象的run方法开始执行编译，每一次新的编译都会实例化一个compilation对象，记录本次编译的基本信息，进入make hook（生成modules）
+
+3. 通过compilation.addEntry，找到配置中的entry找出所有的入口文件，从入口文件出发，递归找出依赖的依赖
+
+4. 通过loader将依赖转换成标准的js，通过Parser.parse再转换成AST，解析成AST最大作用就是收集模块依赖关系，webpack会遍历AST对象将依赖记录在module.dependencies，最后遍历module.dependencies解析依赖生成module，make阶段结束，得到项目所依赖的所有modules
+
+5. 执行compilation.seal方法生成chunks，把entry中对应的每个module都生成一个新的chunk，遍历module.dependencies，将其依赖的模块也加入到上一步生成的chunk中，若某个module是动态引入的，为其创建一个新的chunk，接着遍历依赖
+
+6. 遍历chunk，生成源码，调用emitAsset将其存在compilation.assets（最终的文件列表），compilation.seal结束，compilation结束
+
+7. 进入emit hook，这是修改最终文件的最后一个机会
+
+8. 遍历 compilation.assets 生成所有文件，然后触发钩子done，结束构建流程。
+
+简单地说：
+
+1. 读取与合并配置参数，加载 Plugin，实例化 Compiler
+
+2. 从 Entry 出发，用 Loader 翻译每个Module，递归地进行编译处理并得到依赖关系
+
+3. 将编译后的 Module 组合成 Chunk，将 Chunk 转换成文件，输出到文件系统中
+
+[吐血整理」再来一打Webpack面试题](https://juejin.cn/post/6844904094281236487#heading-3)
+
+[Webpack源码解读：理清编译主流程](https://juejin.cn/post/6844903987129352206#heading-6)
+
+[webpack构建流程分析](https://juejin.cn/post/6844904000169607175#heading-15)
 
 #### 数组求和：实现一个function getIndex(arr,sum)，找出数组中和为sum的下标
 
@@ -1045,6 +1073,186 @@ console.log(getIndex([1,2,3,4,5],9)) // 3,4
 
 ---
 
+### 4.25 晚上76min视频面试+coding KS
+
+> 重复问题：水平/垂直居中、BFC、浏览器缓存
+
+#### 盒模型
+
+content+padding+border+margin
+
+border-box：content+padding+border
+
+content-box：content
+
+#### flex:1 是什么的简写
+
+flex属性是flex-grow（放大）, flex-shrink（缩小） 和 flex-basis（定义在分配多余空间之前，元素占据的主轴空间）的简写
+
+flex: 1 === flex: 1 1 0
+
+#### rem、em、100%、vm
+
+rem：参考根元素font-size
+
+em：参考物父元素font-size
+
+%：参考父元素百分比
+
+vh：参考视口高度均分100份
+
+vw：参考视口宽度均分100份
+
+vm：参考视口宽高中较小值来均分100份
+
+#### 基本数据类型有哪些
+
+String、Number、Boolean、Null、Undefined、Symbol、BigInt
+
+#### 对象类型判断
+
+如何判断一个array类型？ 
+
+`Object.prototype.toString.call([])`、`[] instanceof Array`、`[].constructor`、`Array.isArray([])`
+
+typeof [] 返回什么：object
+
+#### new操作符做了什么
+
+[手写 new 操作符](https://jiuto.github.io/jiuto_blog/guide/js/new.html)
+
+1. 得到一个新的Object的实例
+2. 实例的方法this指向这个实例本身
+3. 每个实例的__proto__指向构造函数的原型对象
+4. 当return 一个Object/Function/Array/Date/RegExp/Error的实例，new操作符得到的就是return的结果
+
+`typeof new String(1)` 返回什么：object
+
+`typeof String(1)` 返回什么：string
+
+为什么可以这样调用substr？
+
+`new String(1).substr()`
+
+因为 new 让实例的__proto__指向了String.prototype
+
+`String(1).substr()` 
+
+js中有三个基本包装类型：String、Number、Boolean，每当读取一个基本类型的时候，后台就会创建一个对应的基本包装类型对象，从而让我们能够调用一些方法来操作这些数据。（装箱）
+
+（拆箱：valueOf()方法和toString()方法）
+
+#### for in 能不能遍历原型
+
+> for...in语句以任意顺序遍历一个对象的除Symbol以外的可枚举属性。
+
+for in 可以遍历原型，要拿自身对象可以搭配使用hasOwnProperty
+
+``` js
+var triangle = {a: 1, b: 2, c: 3};
+
+function ColoredTriangle() {
+  this.color = 'red';
+}
+
+ColoredTriangle.prototype = triangle;
+
+var obj = new ColoredTriangle();
+
+for (var prop in obj) {
+  if (obj.hasOwnProperty(prop)) {
+    console.log(`obj.${prop} = ${obj[prop]}`);
+  }
+}
+```
+
+#### 跨域
+
+[跨域](https://jiuto.github.io/jiuto_blog/guide/network/cross.html)
+
+什么是跨域？ scheme(协议)、host(主机)和port(端口)都相同则为同源。
+
+可以跨域的标签有哪些？ `<img>`、`<link>`、`<script>`、`<audio>`、`<video>`
+
+跨域方式有哪些？ CORS、Nginx 反向代理、jsonp
+
+CORS怎么做？ 简单请求（`Origin`不在`Access-Control-Allow-Origin`）、非简单请求（预检请求）
+
+application/json属于哪种？ 非简单请求
+
+跨域能携带cookie吗？ `Access-Control-Allow-Credentials:true`+`xhr.withCredentials = true;`
+
+#### SameSite
+
+**SameSite** 这个属性可以让 Cookie 在**跨站**请求时不会被发送，从而可以阻止跨站请求伪造攻击（CSRF）。
+
+> 跨站和跨域是不同的。
+>
+> Cookie中的「同站」判断：
+> 只要两个 URL 的 eTLD+1 相同即可，不需要考虑协议和端口。
+> 其中，eTLD 表示有效顶级域名，注册于 Mozilla 维护的公共后缀列表（Public Suffix List）中，例如，.com、.co.uk、.github.io 等。
+> eTLD+1 则表示，有效顶级域名+二级域名，例如 taobao.com 等。
+
+例如：
+> www.taobao.com 和 www.baidu.com 是跨站，www.a.taobao.com 和 www.b.taobao.com 是同站，a.github.io 和 b.github.io 是跨站(注意是跨站)。
+
+SameSite有三种取值：
+
+`Strict` 仅允许一方请求携带 Cookie，即浏览器将只发送相同站点请求的 Cookie，即当前网页 URL 与请求目标 URL 完全一致。
+
+`Lax` 允许部分第三方请求携带 Cookie
+
+`None` 无论是否跨站都会发送 Cookie
+
+之前默认是 None 的，Chrome80 后默认是 Lax。
+
+#### 事件模型
+
+[冒泡与捕获](https://jiuto.github.io/jiuto_blog/guide/js/babble_capture.html)
+
+#### 事件循环
+
+[event loop 事件循环](https://jiuto.github.io/jiuto_blog/guide/browser/eventloop.html)
+
+#### await/async
+
+await命令后面是一个promise对象，如果不是，会被转换一个立即resolve的promise对象。
+
+await 返回的是什么？ resolve的值
+
+reject怎么办？ try catch
+
+#### preload/prefetch、defer/async
+
+preload（提高优先级，优先加载本页资源）、prefetch（降低优先级，提前加载可能用到的资源）
+
++ `<script src="index.js"></script>`没有 defer 或 async，浏览器会立即加载并执行指定的脚本，也就是说不等待后续载入的文档元素，读到就加载并执行。
++ `<script async src="index.js"></script>`async 属性表示异步执行引入的 JavaScript，与 defer 的区别在于，如果已经加载好，就会开始执行。
++ `<script defer src="index.js"></script>`defer 属性表示延迟执行js，设置了defer的js加载不会阻塞dom构建，即js加载时HTML并未停止解析，这两个过程是并行的，都完成后才会执行由defer-script加载的脚本。
++ 在加载多个JS脚本的时候，async是无顺序的加载，而defer是有顺序的加载。
+
+#### 实现防止重复请求
+
+设一个flag标识。（节流也算一种思路）
+
+#### 实现可执行 one(add(two()))与two(add(one())) 的 add、one、two
+
+``` js
+function add(a){
+    return function(b){
+        return a+b
+    }
+}
+function one(a){
+    return typeof a === 'function' ? a(1) : 1
+}
+function two(a){
+    return typeof a === 'function' ? a(2) : 2
+}
+```
+
+---
+
 ### 其他
 
 #### dom列表倒置
@@ -1074,10 +1282,6 @@ console.log(getIndex([1,2,3,4,5],9)) // 3,4
     ul.appendChild(flag);
 </script>
 ```
-
-#### 跨域 CORS
-
-[跨域](https://jiuto.github.io/jiuto_blog/guide/network/cross.html)
 
 #### webpack缓存
 

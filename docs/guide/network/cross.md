@@ -16,9 +16,9 @@ scheme(协议)、host(主机)和port(端口)都相同则为同源。
 2. 不读访问对方的 Cookie、IndexDB 和 LocalStorage
 3. 限制 XMLHttpRequest 请求
 
-有三个标签允许跨域加载资源：
+允许跨域加载资源的标签：
 
-`<img>`、`<link>`、`<script>`
+`<img>`、`<link>`、`<script>`、`<audio>`、`<video>`
 
 + 跨域仅仅是通过scheme(协议)、host(主机)和port(端口)来识别，不会根据域名对应的IP地址是否相同来判断。
 
