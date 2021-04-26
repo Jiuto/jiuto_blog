@@ -1075,7 +1075,7 @@ console.log(getIndex([1,2,3,4,5],9)) // 3,4
 
 ### 4.25 晚上76min视频面试+coding KS
 
-> 重复问题：水平/垂直居中、BFC、浏览器缓存
+> 重复问题：水平/垂直居中、BFC、浏览器缓存、let/const
 
 #### 盒模型
 
@@ -1141,6 +1141,46 @@ typeof [] 返回什么：object
 js中有三个基本包装类型：String、Number、Boolean，每当读取一个基本类型的时候，后台就会创建一个对应的基本包装类型对象，从而让我们能够调用一些方法来操作这些数据。（装箱）
 
 （拆箱：valueOf()方法和toString()方法）
+
+#### 如何使对象属性不可改
+
+``` js
+Object.freeze(obj)
+
+Object.defineProperty(obj, "key", {
+  enumerable: false, //为true属性才会出现在对象的枚举属性中即被for...in 或 Object.keys 方法枚举到。默认为false。
+  configurable: false, //为true该属性的描述符才能够被改变，同时该属性也能从对应的对象上被删除。默认为false。
+  writable: false, //为true时，属性的值value才能被赋值运算符改变。默认为false。
+  value: "val", //该属性对应的值。可以是任何有效的JavaScript值（数值，对象，函数等）。默认为undefined。
+  // get、set
+});
+```
+
+#### margin合并
+
+在CSS中，两个相邻的盒子会存在外边距margin合并的现象：
+
+1. margin合并的前提：
+
++ 外边距合并只出现在两个紧紧相邻的盒子(父子关系或兄弟关系)，如果两个盒子间存在border或padding则无法合并
+
++ 外边距合并只发生在普通文档流中垂直方向上相邻的块级元素，而水平方向上的两个相邻的盒子则不会发生外边距合并
+
+2. 两个盒子外边距合并后的实际边距：
+
++ 两个盒子的margin均为正值，外边距合并后的实际边距为二者中较大的值
+
++ 两个盒子的margin均为负值，外边距合并后实际边距为二者中较小的值
+
++ 两个盒子的margin一个为正值、一个为负值，外边距合并后实际边距为二者之和
+
+#### 行内元素的padding、margin
+
+padding四个方向生效，margin左右生效
+
+#### for in、for of、Object.keys区别
+
+for in 可以遍历对象，拿到属性名，可以遍历数组，拿到下标，for of 只能遍历数组，拿到值，Object.keys返回对象属性名数组
 
 #### for in 能不能遍历原型
 
@@ -1226,10 +1266,33 @@ reject怎么办？ try catch
 
 preload（提高优先级，优先加载本页资源）、prefetch（降低优先级，提前加载可能用到的资源）
 
+`<link rel="preload" href="./app.js" as="script">`
+`<link rel="prefetch" href="./vendor-async.js">`
+
 + `<script src="index.js"></script>`没有 defer 或 async，浏览器会立即加载并执行指定的脚本，也就是说不等待后续载入的文档元素，读到就加载并执行。
 + `<script async src="index.js"></script>`async 属性表示异步执行引入的 JavaScript，与 defer 的区别在于，如果已经加载好，就会开始执行。
 + `<script defer src="index.js"></script>`defer 属性表示延迟执行js，设置了defer的js加载不会阻塞dom构建，即js加载时HTML并未停止解析，这两个过程是并行的，都完成后才会执行由defer-script加载的脚本。
 + 在加载多个JS脚本的时候，async是无顺序的加载，而defer是有顺序的加载。
+
+#### DNS 预解析
+
+DNS 实现域名到IP的映射，通过域名访问站点，每次请求都要做DNS解析。
+在解析过程中，按照浏览器缓存、系统缓存、路由器缓存、ISP(运营商)DNS缓存、根域名服务器、顶级域名服务器、主域名服务器的顺序，逐步读取缓存，直到拿到IP地址。
+
+DNS Prefetch 是一种 DNS 预解析技术，浏览器会在加载网页时对网页中的域名进行解析并缓存，当用户单击连接时就无需再进行DNS的解析。
+
+Chromium使用超链接的href属性来查找要预解析的主机名。当遇到a标签，Chromium会自动将href中的域名解析为IP地址，这个解析过程是与用户浏览网页并行处理的。
+但是为了确保安全性，在HTTPS页面中不会自动解析。
+
+手动解析：
+
+`<link rel="dns-prefetch" href="http://www.spreadfirefox.com/">`
+
+`<meta http-equiv="x-dns-prefetch-control" content="on">`
+
+禁用隐式dns预解析：
+
+`<meta http-equiv="x-dns-prefetch-control" content="off">`
 
 #### 实现防止重复请求
 
