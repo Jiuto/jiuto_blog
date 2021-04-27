@@ -141,7 +141,7 @@ ondrop - 在一个拖动过程中，释放鼠标键时触发此事件
 
 首屏加载优化：
 
-webpack 分离打包、mini-xss-extract-plugin、uglifyjs-webpack-plugin、vue-router异步加载、LocalStorage缓存资源、图片压缩/雪碧图、cdn、gzip、script标签的preload（提高优先级，优先加载本页资源）/prefetch（降低优先级，提前加载可能用到的资源）
+webpack 分离打包、mini-xss-extract-plugin、uglifyjs-webpack-plugin、vue-router异步加载、LocalStorage缓存资源、图片压缩/雪碧图、cdn、gzip、link标签的preload（提高优先级，优先加载本页资源）/prefetch（降低优先级，提前加载可能用到的资源）
 
 [首屏加载优化](https://jiuto.github.io/jiuto_blog/guide/else/optimization.html)
 
@@ -1316,6 +1316,53 @@ function two(a){
 
 ---
 
+### 4.26 晚上40min语言面试 WY
+
+> 重复问题：响应式原理、vdom diff、git撤销提交、react和vue区别、vuex原理
+
+#### 多页面打包是怎么配置的？
+
+[webpack多页面打包方法工具和模板](https://jiuto.github.io/jiuto_blog/guide/webpack/webpack_template.html)
+
+#### v-if和v-show区别，怎么考虑什么时候用哪个？
+
+v-if 会重新渲染和销毁，v-show 只是样式层面的隐藏。
+
+从开闭的频率和初始化两方面考虑。
+
+#### 知道哪些可以实现动画效果的方法？
+
++ JavaScript：通过定时器间歇改变元素样式、[window.requestAnimationFrame](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestAnimationFrame)
++ CSS3：transition、transform、animation；
++ HTML5：canvas、svg、webgl
+
+#### ECharts 原理
+
+> 未完待续
+
+#### 对node的应用场景和优缺点？
+
++ Node.js是一个基于V8引擎的事件驱动I/O的服务端JavaScript运行环境。
++ 单进程、单线程
++ 事件驱动
++ 非阻塞I/O(遇到I/O创建线程执行)
+
+"异步机制，事件驱动-回调+事件"
+
+优点：高并发、适合I/O密集型应用。
+
+缺点：只支持单核CPU，不能充分利用CPU、可靠性低，（由于单进程、单线程）一旦代码某个环节崩溃，整个系统都崩溃（解决方案：1.Nnigx反向代理，负载均衡，开多个进程，绑定多个端口；2.开多个进程监听同一个端口，使用cluster模块）、 开源组件库质量参差不齐，更新快，向下不兼容、Debug不方便，错误没有stack trace
+
+应用场景：RESTful API、统一Web应用的UI层、大量Ajax请求的应用
+
+[node系列之 优缺点及适用场景讨论](https://zhuanlan.zhihu.com/p/26288894)
+
+#### koa的机制
+
+> 未完待续
+
+---
+
 ### 其他
 
 #### dom列表倒置
@@ -1470,7 +1517,7 @@ console.log(newFibonacci(7))
 
 #### css 样式隔离
 
-命名空间、css Modules(一种构建步骤中的一个进程)、[Shadow DOM](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_shadow_DOM)
+命名空间、css Modules(一种构建步骤中的一个进程)、CSS in JS、[Shadow DOM](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_shadow_DOM)
 
 #### gitlab 权限控制
 

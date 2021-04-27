@@ -62,6 +62,8 @@
 
 [源码阅读vue-router](https://jiuto.github.io/jiuto_blog/guide/vue/router.html)
 
+[源码阅读vuex](https://jiuto.github.io/jiuto_blog/guide/vue/vuex.html)
+
 ### webpack
 
 [webpack多页面打包方法工具和模板](https://jiuto.github.io/jiuto_blog/guide/webpack/webpack_template.html)
