@@ -1,6 +1,6 @@
 ## 面试路漫漫
 
-> 一个菜鸡的面试之路记录，持续更新中
+> 一个菜鸡的面试之路记录，持续更新，后面要尽量提炼拓展出一些文章。
 
 ### 4.15 晚上电话面试50min ALCN
 
@@ -277,6 +277,8 @@ Object.create(null)
 [BFC 块格式化上下文](https://jiuto.github.io/jiuto_blog/guide/css/bfc.html)
 
 #### vuex原理
+
+[源码阅读vuex](https://jiuto.github.io/jiuto_blog/guide/vue/vuex.html)
 
 > 未完待续
 
@@ -1363,6 +1365,200 @@ v-if 会重新渲染和销毁，v-show 只是样式层面的隐藏。
 
 ---
 
+### 4.28 下午3小时到场面试3轮技术+1轮hr TYZN
+
+> http1/2、ES6 模块化、Vue2/3、Vue/react、浏览器缓存(cookie、sessionStorage、localStorage)、nodejs特点
+
+#### http0.9
+
+> 只允许客户端发送GET这一种请求，且不支持请求头。
+> 由于没有协议头，造成了HTTP/0.9协议只支持一种内容，即纯文本。
+> 不过网页仍然支持用HTML语言格式化，同时无法插入图片。
+> 一次HTTP/0.9的传输首先要建立一个由客户端到Web服务器的TCP连接，由客户端发起一个请求，然后由Web服务器返回页面内容，然后连接会关闭。
+> 如果请求的页面不存在，也不会返回任何错误码。
+
+#### csp
+
+> 添加 Content-Security-Policy  HTTP头部到一个页面，并配置相应的值，以控制用户代理（浏览器等）可以为该页面获取哪些资源。
+
+[内容安全策略( CSP )](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP)
+
+#### web安全、跨站请求伪造
+
+[web 安全](https://jiuto.github.io/jiuto_blog/guide/network/security.html)
+
+#### webpack 性能优化
+
+持久化缓存（hash,chunkhash和contenthash）、cache（缓存生成的 webpack 模块和 chunk，用来改善构建速度）、懒加载、压缩插件、分离打包
+
+#### babel 原理、预设
+
+> 未完待续
+
+#### Tree-shaking原理
+
+**定义**
+
+Tree-shaking 是指将没有使用到的代码删去，比如我们在项目中引入了某些依赖，但只使用了其中的部分功能，通过 Tree-shaking 可以将没有用到的代码删除。
+
+**意义**
+
+> javascript绝大多数情况需要通过网络进行加载，然后执行，加载的文件大小越小，整体执行时间更短，所以去除无用代码以减少文件体积，对javascript来说更有意义。
+
+**DCE**
+
+DCE（dead code elimination），无用代码消除。
+
+> Tree-shaking 是 DCE 的一种新的实现，和传统的 DCE 的方法又不太一样，传统的 DCE 消灭不可能执行的代码，而 Tree-shaking 更关注宇消除没有用到的代码。
+>
+> Dead Code 一般具有以下几个特征：
+> + 代码不会被执行，不可到达
+> + 代码执行的结果不会被用到
+> + 代码只会影响死变量（只写不读）
+
+js中，由代码压缩优化工具 uglify 完成DCE。
+
+**原理**
+
+Tree-shaking原理依赖于ES6的模块特性。
+
+> ES6模块依赖关系是确定的，和运行时的状态无关，可以进行可靠的静态分析，这就是tree-shaking的基础。
+>
+> 所谓静态分析就是不执行代码，从字面量上对代码进行分析，ES6之前的模块化，比如我们可以动态require一个模块，只有执行后才知道引用的什么模块，这个就不能通过静态分析去做优化。
+
+**工具**
+
+Rollup、Webpack、Closure compiler
+
+Webpack4 中的 Tree-shakingg 相关配置：
+
+在`package.json`中设置`"sideEffects": false`，表示项目中导入引入的都是没有副作用的函数或类，可以安全地删除未用到的export。
+
+对于有副作用的导出文件，可以这样设置来告知webpack`"sideEffects": [ "./src/some-side-effectful-file.js" ]`。
+
+也可以通过 module.rules 配置设置 sideEffects。
+
+#### Vue/React设计思想
+
+> vue的整体思想仍然是拥抱经典的html(结构)+css(表现)+js(行为)的形式，vue鼓励开发者使用template模板，并提供指令供开发者使用(v-if、v-show、v-for等等)，因此在开发vue应用的时候会有一种在写经典web应用（结构、表现、行为分离）的感觉。另一方面，在针对组件数据上，vue2.0通过Object.defineProperty对数据做到了更细致的监听，精准实现组件级别的更新。
+>
+> react整体上是函数式的思想，组件使用jsx语法，all in js，将html与css全都融入javaScript，jsx语法相对来说更加灵活。
+> 当组件调用setState或props变化的时候，组件内部render会重新渲染，子组件也会随之重新渲染，可以通过shouldComponentUpdate或者PureComponent可以避免不必要的重新渲染。
+
+#### 设计模式
+
+[Javascript常用的设计模式详解](https://www.cnblogs.com/tugenhua0707/p/5198407.html)
+
+[JavaScript 常见设计模式解析](https://juejin.cn/post/6844903474535071752#heading-0)
+
+[JavaScript 中常见设计模式整理](https://juejin.cn/post/6844903607452581896)
+
+#### 递归的特点
+
+调用自身、相同的步骤、必须有出口...
+
+#### 尾递归优化
+
+**尾调用**
+
+尾调用优化：只保留内层函数的调用帧。
+
+尾调用优化，节约内存，防止栈溢出。
+
+只有不再用到外层函数的内部变量，内层函数的调用帧才会取代外层函数的调用帧，否则就无法进行“尾调用优化”。
+
+**尾递归**
+
+函数调用自身称为递归，尾调用自身就称为尾递归。
+
+递归本身就非常耗内存，因为要保存多个调用帧，容易栈溢出（stack overflow）。尾递归优化，只保存一个调用帧。
+
+尾递归的实现：把所有用到的内部变量改写成函数的参数。
+
+**斐波那契数列尾递归改写**
+
+``` js
+function Fibonacci(n){
+    if(n<=1) {return 1}
+    return Fibonacci(n-1)+Fibonacci(n-2)
+}
+console.log(Fibonacci(10)) // 89
+console.log(Fibonacci(100)) // 堆栈溢出
+
+function Fibonacci2(n,ac1=1,ac2=1){
+    if(n<=1) {return ac2}
+    return Fibonacci2(n-1,ac2,ac1+ac2)
+}
+console.log(Fibonacci2(10)) // 89
+console.log(Fibonacci2(100)) // 573147844013817200000
+```
+
+**严格模式**
+
+ES6的尾递归优化只在严格模式下开启，因为严格模式下禁用函数内部的caller和arguments变量。
+
+**尾递归优化实现**
+
+1. 利用trampoline蹦床函数，将递归转换为循环。
+
+``` js
+function trampoline(f){
+    while(f && f instanceof Function){
+        f=f()
+    }
+    return f
+}
+function sum(x,y){
+    if(y>0){
+        return sum.bind(null,x+1,y-1)
+    }else{
+        return x;
+    }
+}
+trampoline(sum(1,10000))
+```
+
+2. 利用tco，将递归转换为循环。
+
+``` js
+function tco(f) {
+    var value;
+    var active=false;
+    var accumulated=[];
+    return function accumulator(){
+        accumulated.push(arguments); // 每一项都是一轮递归的arguments
+        if(!active){
+            active=true;
+            while(accumulated.length){
+                value = f.apply(this,accumulated.shift())
+            }
+            active=false;
+            return value;
+        }
+    }
+}
+var sum = tco(function sum(x,y){
+    if(y>0){
+        return sum(x+1,y-1)
+    }else{
+        return x;
+    }
+})
+sum(1,10000)
+```
+
+每一次return的sum由于active处于true状态，返回的都是undefined，避免了递归，而每次调用sum都增加了accumulated的长度。
+
+> 摘自《ES6标准入门》P124-132
+
+#### 手写编程题
+
+百元买百鸡、青蛙跳台阶
+
+> 未完待续
+
+---
+
 ### 其他
 
 #### dom列表倒置
@@ -1425,49 +1621,6 @@ module.exports = {
   ]
 };
 ```
-
-#### Tree-shaking原理
-
-**定义**
-
-Tree-shaking 是指将没有使用到的代码删去，比如我们在项目中引入了某些依赖，但只使用了其中的部分功能，通过 Tree-shaking 可以将没有用到的代码删除。
-
-**意义**
-
-> javascript绝大多数情况需要通过网络进行加载，然后执行，加载的文件大小越小，整体执行时间更短，所以去除无用代码以减少文件体积，对javascript来说更有意义。
-
-**DCE**
-
-DCE（dead code elimination），无用代码消除。
-
-> Tree-shaking 是 DCE 的一种新的实现，和传统的 DCE 的方法又不太一样，传统的 DCE 消灭不可能执行的代码，而 Tree-shaking 更关注宇消除没有用到的代码。
->
-> Dead Code 一般具有以下几个特征：
-> + 代码不会被执行，不可到达
-> + 代码执行的结果不会被用到
-> + 代码只会影响死变量（只写不读）
-
-js中，由代码压缩优化工具 uglify 完成DCE。
-
-**原理**
-
-Tree-shaking原理依赖于ES6的模块特性。
-
-> ES6模块依赖关系是确定的，和运行时的状态无关，可以进行可靠的静态分析，这就是tree-shaking的基础。
->
-> 所谓静态分析就是不执行代码，从字面量上对代码进行分析，ES6之前的模块化，比如我们可以动态require一个模块，只有执行后才知道引用的什么模块，这个就不能通过静态分析去做优化。
-
-**工具**
-
-Rollup、Webpack、Closure compiler
-
-Webpack4 中的 Tree-shakingg 相关配置：
-
-在`package.json`中设置`"sideEffects": false`，表示项目中导入引入的都是没有副作用的函数或类，可以安全地删除未用到的export。
-
-对于有副作用的导出文件，可以这样设置来告知webpack`"sideEffects": [ "./src/some-side-effectful-file.js" ]`。
-
-也可以通过 module.rules 配置设置 sideEffects。
 
 #### 快速排序
 
