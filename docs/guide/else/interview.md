@@ -674,6 +674,8 @@ NodeList对象，for循环遍历、`Array.prototype.slice.call(nodeList)`、`Arr
 
 #### http2有哪些特点，这些特点有哪些应用
 
+服务端推送
+
 > 未完待续
 
 #### 讲一下 VirtualDOM ，有什么优点，除了浏览器还在哪些方面有应用
@@ -1393,7 +1395,41 @@ v-if 会重新渲染和销毁，v-show 只是样式层面的隐藏。
 
 #### babel 原理、预设
 
-> 未完待续
+**原理**
+
+1. 解析，从代码=>AST语法树，分为词法分析（代码字符串=>tokens）、语法分析阶段（tokens=>AST）。
+2. 转换，遍历AST，对节点进行增删改。
+3. 生成，AST=>代码字符串。
+
+**预设**
+
+Babel 的预设（preset）可以被看作是一组 Babel 插件和/或 options 配置的可共享模块。
+
+通过presets配置来使用一组插件，官方提供：
+
++ @babel/preset-env
++ @babel/preset-flow
++ @babel/preset-react
++ @babel/preset-typescript
+
+``` js
+// .babelrc
+{
+    "presets": ["@babel/preset-env"] // 逆序排列
+}
+// 可配置参数
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "loose": true,
+        "modules": false
+      }
+    ]
+  ]
+}
+```
 
 #### Tree-shaking原理
 
@@ -1553,9 +1589,37 @@ sum(1,10000)
 
 #### 手写编程题
 
-百元买百鸡、青蛙跳台阶
+**百元买百鸡**
 
-> 未完待续
+公鸡5元一只，母鸡3元一只，小鸡1元三只，现有100元钱欲买100只鸡，怎么买？
+
+解题思路：满足等式`5x+3y+z/3=100`与`x+y+z=100`，且`0<=x<=20`、`0<=y<=33`、`0<=z<=100`
+
+``` js
+for(let x=0;x<=20;x++){
+　　for(let y=0;y<=33;y++){
+　　　for(let z=0;z<=100;z++){
+　　　　　　if((5*x+3*y+z/3)==100 && (x+y+z)==100){
+　　　　　　　　console.log("公鸡有"+x+"只");
+　　　　　　　　console.log("母鸡有"+y+"只");
+　　　　　　　　console.log("小鸡有"+z+"只");
+　　　　　　}
+　　　　}　
+　　}
+}
+```
+
+**青蛙跳台阶**
+
+一只青蛙一次可以跳一级或二级台阶，请问要跳n级台阶有几种跳法？
+
+解题思路：到达n级，必然是从n-1或n-2级上来，也就是斐波那契数列。不同之处在于第一级只有一种，第二级有两种可能。
+
+``` js
+function fibonacci(n) {
+    return n === 1 || n === 2 ? n : fibonacci(n-1) + fibonacci(n-2)
+}
+```
 
 ---
 
@@ -1667,6 +1731,8 @@ function memory(fn) {
 var newFibonacci = memory(fibonacci);
 console.log(newFibonacci(7))
 ```
+
+[用js优美的写各种斐波那契数列](https://zhuanlan.zhihu.com/p/27205391)
 
 #### css 样式隔离
 
