@@ -197,7 +197,7 @@ export class Store {
     // 在 registerGetter 方法中会收集所有module的getter到 _wrappedGetters
     installModule(this, state, [], this._modules.root)
 
-    // 通过vm重设store，新建Vue对象使用Vue内部的响应式实现注册state以及computed
+    // 通过vm重设store，新建Vue实例使用Vue内部的响应式实现注册state以及computed
     resetStoreVM(this, state)
 
     // 调用插件，Vuex 插件就是一个函数，它接收 store 作为唯一参数
@@ -392,6 +392,48 @@ export function forEachValue (obj, fn) {
 这个方法对Object实例的每个属性遍历调用回调，传入值和属性名。
 
 也就是说，遍历子module递归调用installModule时，path数组拼接的其实就是module的名称，也就是上面`modules: { a: moduleA, b: moduleB }`的a、b。
+
++ registerMutation
+
+``` js
+function registerMutation (store, type, handler, local) {
+  const entry = store._mutations[type] || (store._mutations[type] = []) // 获取或初始化当前namespace + key构成的type的_mutations数组，推入包装过的mutation函数
+  entry.push(function wrappedMutationHandler (payload) {
+    handler.call(store, local.state, payload)
+  })
+}
+```
+
++ registerAction
+
+``` js
+function registerAction (store, type, handler, local) {
+  const entry = store._actions[type] || (store._actions[type] = []) // 获取或初始化当前namespace + key构成的type的_actions数组，推入包装过的actions函数
+  entry.push(function wrappedActionHandler (payload) {
+    let res = handler.call(store, {
+      dispatch: local.dispatch,
+      commit: local.commit,
+      getters: local.getters,
+      state: local.state,
+      rootGetters: store.getters,
+      rootState: store.state
+    }, payload)
+    // action内部执行异步操作，不是Promise对象时，需要用Promise.resolve包装结果
+    if (!isPromise(res)) {
+      res = Promise.resolve(res)
+    }
+    //  使用了devtool插件时，需要把error提交给插件
+    if (store._devtoolHook) {
+      return res.catch(err => {
+        store._devtoolHook.emit('vuex:error', err)
+        throw err
+      })
+    } else {
+      return res
+    }
+  })
+}
+```
 
 + registerGetter
 
@@ -613,4 +655,159 @@ export class Store {
 
 ### Store 的其他方法
 
-> 未完待续
+#### commit 和 subscribe
+
+``` js
+commit (_type, _payload, _options) {
+  // check object-style commit
+  // 格式化参数
+  const {
+    type,
+    payload,
+    options
+  } = unifyObjectStyle(_type, _payload, _options)
+
+  const mutation = { type, payload }
+  const entry = this._mutations[type] // 获取type对应的wrappedMutationHandler数组
+  // 开发环境无当前type报错
+  if (!entry) {
+    if (__DEV__) {
+      console.error(`[vuex] unknown mutation type: ${type}`)
+    }
+    return
+  }
+  // 使用_withCommit避免enableStrictMode设置的观察者回调报错
+  this._withCommit(() => {
+    // 遍历执行当前type的_mutations数组的每一个wrappedMutationHandler
+    entry.forEach(function commitIterator (handler) {
+      handler(payload)
+    })
+  })
+
+  // 通知所有订阅者 
+  this._subscribers
+    .slice() // shallow copy to prevent iterator invalidation if subscriber synchronously calls unsubscribe
+    .forEach(sub => sub(mutation, this.state))
+
+  if (
+    __DEV__ &&
+    options && options.silent
+  ) {
+    console.warn(
+      `[vuex] mutation type: ${type}. Silent option has been removed. ` +
+      'Use the filter functionality in the vue-devtools'
+    )
+  }
+}
+subscribe (fn, options) {
+  return genericSubscribe(fn, this._subscribers, options)
+}
+function genericSubscribe (fn, subs, options) {
+  if (subs.indexOf(fn) < 0) {
+    // prepend 配置执行顺序
+    options && options.prepend
+      ? subs.unshift(fn)
+      : subs.push(fn)
+  }
+  // 返回的函数用于停止订阅
+  return () => {
+    const i = subs.indexOf(fn)
+    if (i > -1) {
+      subs.splice(i, 1)
+    }
+  }
+}
+```
+
+关于[subscribe](https://vuex.vuejs.org/zh/api/#subscribe)
+
+> `subscribe(handler: Function, options?: Object): Function`
+>
+> 订阅 store 的 mutation，handler 会在每个 mutation 完成后调用。
+
+#### dispatch 和 subscribeAction
+
+``` js
+dispatch (_type, _payload) {
+  // check object-style dispatch
+  // 格式化参数
+  const {
+    type,
+    payload
+  } = unifyObjectStyle(_type, _payload)
+
+  const action = { type, payload }
+  const entry = this._actions[type] // 获取type对应的wrappedActionHandler数组
+  // 开发环境无当前type报错
+  if (!entry) {
+    if (__DEV__) {
+      console.error(`[vuex] unknown action type: ${type}`)
+    }
+    return
+  }
+
+  try {
+    this._actionSubscribers
+      .slice() // shallow copy to prevent iterator invalidation if subscriber synchronously calls unsubscribe
+      .filter(sub => sub.before)
+      .forEach(sub => sub.before(action, this.state))
+  } catch (e) {
+    if (__DEV__) {
+      console.warn(`[vuex] error in before action subscribers: `)
+      console.error(e)
+    }
+  }
+
+  // type对应的wrappedActionHandler数组有多个处理函数时，要用Promise.all处理全部异步函数
+  const result = entry.length > 1
+    ? Promise.all(entry.map(handler => handler(payload)))
+    : entry[0](payload)
+
+  return new Promise((resolve, reject) => {
+    result.then(res => {
+      try {
+        this._actionSubscribers
+          .filter(sub => sub.after)
+          .forEach(sub => sub.after(action, this.state))
+      } catch (e) {
+        if (__DEV__) {
+          console.warn(`[vuex] error in after action subscribers: `)
+          console.error(e)
+        }
+      }
+      resolve(res)
+    }, error => {
+      try {
+        this._actionSubscribers
+          .filter(sub => sub.error)
+          .forEach(sub => sub.error(action, this.state, error))
+      } catch (e) {
+        if (__DEV__) {
+          console.warn(`[vuex] error in error action subscribers: `)
+          console.error(e)
+        }
+      }
+      reject(error)
+    })
+  })
+}
+subscribeAction (fn, options) {
+  const subs = typeof fn === 'function' ? { before: fn } : fn
+  return genericSubscribe(subs, this._actionSubscribers, options)
+}
+```
+
+关于[subscribeAction](https://vuex.vuejs.org/zh/api/#subscribe)
+
+#### watch
+
+``` js
+watch (getter, cb, options) {
+  // getter 必须为函数
+  if (__DEV__) {
+    assert(typeof getter === 'function', `store.watch only accepts a function.`)
+  }
+  // 利用Vue的watch侦听器，对getter进行响应式的侦听
+  return this._watcherVM.$watch(() => getter(this.state, this.getters), cb, options)
+}
+```

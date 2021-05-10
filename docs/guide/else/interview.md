@@ -278,9 +278,10 @@ Object.create(null)
 
 #### vuex原理
 
-[源码阅读vuex](https://jiuto.github.io/jiuto_blog/guide/vue/vuex.html)
+通过applyMixin方法，在vue的beforeCreate生命周期混入一个vuexInit方法，通过该方法初始化或从父组件拿$store，保证全局共用一个store。
+Vuex内部新建一个Vue实例vm，通过vm响应式地注册state，并将状态管理的getters注册到vm的computed上。
 
-> 未完待续
+[源码阅读vuex](https://jiuto.github.io/jiuto_blog/guide/vue/vuex.html)
 
 #### 需要大屏经验 three、d3
 
