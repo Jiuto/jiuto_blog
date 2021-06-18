@@ -72,6 +72,8 @@
 
 [手写webpack plugin 和 loader](https://jiuto.github.io/jiuto_blog/guide/webpack/plugin_loader.html)
 
+[写一个Babel插件](https://jiuto.github.io/jiuto_blog/guide/webpack/babel_plugin.html)
+
 ### 浏览器
 
 [event loop 事件循环](https://jiuto.github.io/jiuto_blog/guide/browser/eventloop.html)

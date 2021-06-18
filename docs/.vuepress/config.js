@@ -66,6 +66,7 @@ module.exports = {
                     '/guide/webpack/webpack_template',
                     '/guide/webpack/babeltry',
                     '/guide/webpack/plugin_loader',
+                    '/guide/webpack/babel_plugin',
                 ]
             },
             {
