@@ -100,6 +100,7 @@ module.exports = {
                     '/guide/else/eslint_prettier',
                     '/guide/else/karma_mocha',
                     '/guide/else/optimization',
+                    '/guide/else/docker',
                     '/guide/else/interview',
                 ]
             }

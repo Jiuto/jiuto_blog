@@ -110,4 +110,6 @@
 
 [首屏加载优化](https://jiuto.github.io/jiuto_blog/guide/else/optimization.html)
 
+[如何使用docker发布项目](https://jiuto.github.io/jiuto_blog/guide/else/docker.html)
+
 [面试路漫漫](https://jiuto.github.io/jiuto_blog/guide/else/interview.html)
