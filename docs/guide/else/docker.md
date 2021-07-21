@@ -102,6 +102,33 @@ ADD init.sql .
 
 大家可以参考这篇文章，传送门：[Nginx 容器教程-阮一峰](http://www.ruanyifeng.com/blog/2018/02/nginx-docker.html)
 
+1. 安装好docker之后，需要换源，可以通过[阿里云容器镜像服务](https://cr.console.aliyun.com/cn-beijing/instances/mirrors)获取个人开发者的镜像加速器地址。（Docker toolbox无法用阿里云提供的方法，参考[Docker toolbox的换源](https://www.cnblogs.com/cielosun/p/11113863.html)）
+
+2. `docker pull nginx`拉取镜像，`docker images -a`查看镜像列表
+
+3. 建一个html demo：`mkdir nginx-docker-demo`=>`cd nginx-docker-demo`=>`mkdir html`=>`vi index.html`=>i切换输入模式复制粘贴html，esc退出编辑，:底边命令，wq回车保存并退出
+
+``` html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    </head>
+    <body>
+    <div>docker nginx test</div>
+    </body>
+</html>
+```
+
+4. `docker run --name nginx-test -p 8080:80 -d -v /Users/你的用户文件夹/nginx-docker-demo/html:/usr/share/nginx/html nginx`
+
+5. 打开`http://localhost:8080/`
+
+6. 如过想要更改配置，可以`docker cp nginx-test:/etc/nginx .`把容器的默认配置拷贝出来，运行容器的时候做好映射即可。
+
 ---
 
 ### 我曾使用过的自动化部署流程
