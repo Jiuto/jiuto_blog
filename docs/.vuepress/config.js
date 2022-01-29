@@ -88,6 +88,13 @@ module.exports = {
                 ]
             },
             {
+                title: '算法',
+                collapsable: false,
+                children: [
+                    '/guide/algorithm/editDistance',
+                ]
+            },
+            {
                 title: '其他',
                 collapsable: false,
                 children: [

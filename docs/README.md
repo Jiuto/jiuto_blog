@@ -90,6 +90,10 @@
 
 [web 安全](https://jiuto.github.io/jiuto_blog/guide/network/security.html)
 
+### 算法
+
+[从最短编辑距离问题到初识动态规划](https://jiuto.github.io/jiuto_blog/guide/algorithm/editDistance.html)
+
 ### 其他
 
 [如何在element-ui中拓展一个新的组件](https://jiuto.github.io/jiuto_blog/guide/else/ele_expend.html)
