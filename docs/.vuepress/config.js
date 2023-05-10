@@ -109,6 +109,7 @@ module.exports = {
                     '/guide/else/optimization',
                     '/guide/else/docker',
                     '/guide/else/interview',
+                    '/guide/else/interview23',
                 ]
             }
         ]

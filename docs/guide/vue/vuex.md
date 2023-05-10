@@ -53,7 +53,7 @@ export function toArray (list: any, start?: number): Array<any> {
 
 ### install + applyMixin
 
-在vuex源码[vue-router/src/store.js](https://github.com/vuejs/vuex/blob/dev/src/store.js)中导出了install方法。
+在vuex源码[vuex/src/store.js](https://github.com/vuejs/vuex/blob/dev/src/store.js)中导出了install方法。
 
 ``` js
 import applyMixin from './mixin'
@@ -72,7 +72,7 @@ export function install (_Vue) {
 }
 ```
 
-install 做了重复注册校验，并调用了applyMixin方法，applyMixin来自[vue-router/src/mixin.js](https://github.com/vuejs/vuex/blob/dev/src/mixin.js)。
+install 做了重复注册校验，并调用了applyMixin方法，applyMixin来自[vuex/src/mixin.js](https://github.com/vuejs/vuex/blob/dev/src/mixin.js)。
 
 ``` js
 export default function (Vue) {
@@ -142,7 +142,7 @@ new Vue({
 
 可以看到Vue实例化传入的store对象，是通过`new Vuex.Store({})`实例化生成的，那么接下来，就看一下Store构造函数。
 
-源码跟install方法在同一个文件中：[vue-router/src/store.js](https://github.com/vuejs/vuex/blob/dev/src/store.js)
+源码跟install方法在同一个文件中：[vuex/src/store.js](https://github.com/vuejs/vuex/blob/dev/src/store.js)
 
 ``` js
 export class Store {
@@ -214,7 +214,7 @@ export class Store {
 }
 ```
 
-ModuleCollection方法在[vue-router/src/module/module-collection.js](https://github.com/vuejs/vuex/blob/dev/src/module/module-collection.js)
+ModuleCollection方法在[vuex/src/module/module-collection.js](https://github.com/vuejs/vuex/blob/dev/src/module/module-collection.js)
 
 ``` js
 export default class ModuleCollection {
@@ -257,7 +257,7 @@ export default class ModuleCollection {
 }
 ```
 
-Module类在[vue-router/src/module/module.js](https://github.com/vuejs/vuex/blob/dev/src/module/module.js)
+Module类在[vuex/src/module/module.js](https://github.com/vuejs/vuex/blob/dev/src/module/module.js)
 
 ``` js
 export default class Module {
@@ -381,7 +381,7 @@ function getNestedState (state, path) {
 
 + forEachXXX
 
-这里的每一个forEachXXX方法都接收了一个回调函数，都是调用的forEachValue方法，这个方法在[vue-router/src/util.js](https://github.com/vuejs/vuex/blob/dev/src/util.js)里。
+这里的每一个forEachXXX方法都接收了一个回调函数，都是调用的forEachValue方法，这个方法在[vuex/src/util.js](https://github.com/vuejs/vuex/blob/dev/src/util.js)里。
 
 ``` js
 export function forEachValue (obj, fn) {
@@ -601,7 +601,7 @@ function resetStoreVM (store, state, hot) {
 
 + partial
 
-partial方法在[vue-router/src/util.js](https://github.com/vuejs/vuex/blob/dev/src/util.js)里。
+partial方法在[vuex/src/util.js](https://github.com/vuejs/vuex/blob/dev/src/util.js)里。
 
 ``` js
 export function partial (fn, arg) {

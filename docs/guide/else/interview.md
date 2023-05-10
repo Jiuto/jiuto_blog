@@ -196,7 +196,7 @@ activated => deactivated
 
 #### webpack基础配置
 
-mode、devtool、entry、output、resolve(alias、extensions)、module.rules(babel-loader、style-loader、css-loader、less-loader、less-loader、url-loader)、plugins(html-webpack-plugin、mini-css-extract-plugin)
+mode、devtool、entry、output、resolve(alias、extensions)、module.rules(babel-loader、style-loader、css-loader、less-loader、sass-loader、url-loader)、plugins(html-webpack-plugin、mini-css-extract-plugin)
 
 ---
 
@@ -794,6 +794,10 @@ fetch('/users.json', {
 
 $.ajax 和 axios 是对 XMLHttpRequest 的封装， fetch 是底层API，可以代替XHR。
 
+$.ajax 是 jQuery 封装的方法。
+
+axios 是一个基于 Promise 的HTTP库，可以用在浏览器和 node.js 中。
+
 > + fetch只对网络请求报错，对400，500都当做成功的请求，需要封装去处理
 > + fetch默认不会带cookie，需要添加配置项。
 > + fetch不支持abort，不支持超时控制，使用setTimeout及Promise.reject的实现超时控制并不能阻止请求过程继续在后台运行，造成了流量的浪费。
@@ -1100,7 +1104,7 @@ flex: 1 === flex: 1 1 0
 
 rem：参考根元素font-size
 
-em：参考物父元素font-size
+em：参考父元素font-size
 
 %：参考父元素百分比
 
