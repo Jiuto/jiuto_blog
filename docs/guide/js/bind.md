@@ -15,7 +15,7 @@ console.log(Function.prototype.bind.length); // 1
 console.log(Function.prototype.bind().length); // 0
 ```
 
-bind方法返回一个名为`"bound "`的函数（下面统称为bound函数），bing函数的形参个数为1，当bind没有传参时，bound的形参个数为0。
+bind方法返回一个名为`"bound "`的函数（下面统称为bound函数），bind函数的形参个数为1，当bind没有传参时，bound的形参个数为0。
 
 试试给bind传参：
 
@@ -50,7 +50,7 @@ console.log(typeof newBoundResult) // object
 2. 原函数的this将指向bind方法的第一个入参。
 3. 执行原函数时，入参由bind（去掉一个入参）和bound函数的入参拼接而来。
 4. 有原函数时，bound的名称时"bound"+空格+原函数名，没有原函数时为"bound"+空格。
-5. bing函数的形参个数为1，bound函数的形参个数不定，为原函数的形参个数。
+5. bind函数的形参个数为1，bound函数的形参个数不定，为原函数的形参个数。
 
 ``` js
 var obj = {

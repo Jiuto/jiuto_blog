@@ -115,8 +115,8 @@
     1. flex-direction 定义主轴：row、row-reverse、column、column-reverse；
     2. flex-wrap 换行：nowrap、wrap、wrap-reverse；
     3. justify-content 主轴上的排列方式：flex-start、flex-end、center、space-around、space-between；
-    4. align-items 交叉轴上的对齐方式：stretch（元素拉伸）、flex-start、flex-end、center、baseline；
-    5. align-content 交叉轴上的排列方式：stretch（间隔撑满）、flex-start、flex-end、center、space-between、space-around；
+    4. align-items 交叉轴上的对齐方式：stretch（元素/容器拉伸）、flex-start、flex-end、center、baseline；
+    5. align-content 交叉轴上的整组的排列方式：stretch、flex-start、flex-end、center、space-between、space-around；
     6. flex-flow flex-direction和flex-wrap的简写：row nowrap；
 
     元素属性：
@@ -210,7 +210,7 @@
 
     经典继承在子类构造函数内部调用超类构造函数，使用apply()、call()。父类引用类型会在子类创建副本，但方法无法继承。
 
-    伪经典继承使用原型链实现对原型属性和方法的继承，通过构造函数实现对实例属性的继承。需要两次调用父类构造函数。
+    伪经典继承将父类实例作为原型对象，使用原型链实现对原型方法的继承，仍在构造函数内调用父类实现对属性的继承。需要两次调用父类构造函数。
 
     *原型继承，Object.create()。引用类型公用。
 
@@ -482,13 +482,13 @@
 
     HTTP1.0：增加了 HEAD、POST 等新方法，增加了响应状态码，引入了协议版本号概念，引入了 HTTP Header 的概念，支持多种类型的文件下载。
 
-    HTTP1.1：正式标准。基于基于TCP/IP的可靠传输，无状态，不保留通信过程的上下文信息，增加了 PUT、DELETE 等新的方法，增加了缓存管理和控制，允许持久连接，允许响应数据分块（chunked），利于传输大文件，强制要求 Host 头，客户端 Cookie 机制和安全机制。
+    HTTP1.1：正式标准。基于TCP/IP的可靠传输，无状态，不保留通信过程的上下文信息，增加了 PUT、DELETE 等新的方法，增加了缓存管理和控制，允许持久连接，允许响应数据分块（chunked），利于传输大文件，强制要求 Host 头，客户端 Cookie 机制和安全机制。
 
     缺点：队头阻塞（将同一页面的资源分散到不同域名下，提升连接上限（同域名限制6个））、头部过大、明文传输不安全、不支持服务器推送消息。
 
     HTTP2：二进制传输，减少传输数据量；Header压缩，"HPACK"算法，在客户端和服务器两端建立"字典"，用索引号表示重复的字符串，采用哈夫曼编码来压缩整数和字符串；多路复用，同域名同一个TCP连接，定义了“流”（Stream）的概念，它是二进制帧的双向传输序列，同一个消息往返的帧会分配一个唯一的流 ID；支持服务器推送，如：提前把可能会用到的JS、CSS文件发给客户端；安全性提高，“事实上”要求加密通信，基于 TLS。
 
-    缺点：TCP 以及 TCP+TLS 建立连接的延时、TCP 丢包重传机制导致对头阻塞。
+    缺点：TCP 以及 TCP+TLS 建立连接的延时、TCP 丢包重传机制导致队头阻塞。
 
     HTTP3：QUIC协议，基于 UDP 实现了可靠传输，基本数据传输单位是包和帧，“QPACK”头部压缩算法，没有指定端口号，需要先用HTTP2连接，服务器返回指定端口号。
 
@@ -776,7 +776,7 @@
     为每个POST请求增加验证码；为每个用户生成一个唯一的token，用户在提交请求时携带；利用 Samesite Cookie属性。
 
     点击劫持，指在一个Web页面中隐藏了一个透明的iframe，用外层假页面诱导用户点击。
-    X-Frame-Options X-FRAME-OPTIONS头部字段。
+    X-FRAME-OPTIONS头部字段。
 
 * 设计模式：
 
@@ -788,7 +788,7 @@
 
     工厂模式，工厂模式创建对象时不确定具体用哪个创建对象的类，而是定义一个用于创建对象的接口，通过接口决定如何实例化。
 
-    装饰者模式，在不改变对象自身的基础上，在程序运行期间给对像动态的添加属性或方法。
+    装饰者模式，在不改变对象自身的基础上，在程序运行期间给对象动态的添加属性或方法。
 
 * 前端优化：
 
@@ -799,6 +799,10 @@
 * js基本规范：
 
     尽量用let和const代替var、用字符串模板而不是 + 来拼接字符串、函数参数优先用...args，而不是arguments、函数参数默认赋值opts = {}，而不是在内部赋值、一个模块只 import 一次、用a || b取代三元表达式、语义化命名，驼峰；
+
+* 浏览器的popstate什么情况下会触发：
+
+    history.pushState()、history.replaceState()不会触发popstate事件，popstate事件只会在浏览器某些行为下触发，比如点击后退、前进，调用history.back()、history.forward()、history.go()
 
 #### webpack
 
