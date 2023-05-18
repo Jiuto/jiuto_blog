@@ -1,4 +1,4 @@
-## 面试路漫漫
+## 面试路漫漫2021
 
 > 一个菜鸡的面试之路记录，持续更新，后面要尽量提炼拓展出一些文章。
 
@@ -552,7 +552,7 @@ store.dispatch('actionA').then(() => {
 在style标签上加上scoped属性，实现标签内的样式仅在当前模板输出的HTML标签上生效。
 
 > + 每个Vue文件都将对应一个唯一的id，该id可以根据文件路径名和内容hash生成
-> + 编译template标签时时为每个标签添加了当前组件的id，如<div class="demo"></div>会被编译成<div class="demo" data-v-27e4e96e></div>
+> + 编译template标签时时为每个标签添加了当前组件的id，如`<div class="demo"></div>`会被编译成`<div class="demo" data-v-27e4e96e></div>`
 > + 编译style标签时，会根据当前组件的id通过属性选择器和组合选择器输出样式，如.demo{color: red;}会被编译成.demo[data-v-27e4e96e]{color: red;}
 >
 > ( 涉及vue-loader相关源码，引自[从vue-loader源码分析CSS Scoped的实现](https://juejin.cn/post/6844903949900742670)。)

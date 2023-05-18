@@ -794,7 +794,7 @@
 
     1. 减少回流、重绘（css：使用 transform 替代 top；使用 visibility 替换 display: none；避免使用 table 布局；避免设置节点层级过多的样式，CSS 选择符从右往左匹配查找；js：避免频繁操作样式和DOM；避免频繁读取会引发回流/重绘的属性；）
 
-    2. 首屏加载优化：webpack 分离打包、mini-xss-extract-plugin（提取CSS到单独的文件, 并使用optimize-css-assets-webpack-plugin来压缩CSS文件）、uglifyjs-webpack-plugin、懒加载、缓存、图片压缩、雪碧图、cdn、gizp、link标签的preload（提高优先级，优先加载本页资源）/prefetch（降低优先级，提前加载可能用到的资源）
+    2. 首屏加载优化：webpack 分离打包（optimization.splitChunks）、mini-xss-extract-plugin（提取CSS到单独的文件, 并使用optimize-css-assets-webpack-plugin来压缩CSS文件）、uglifyjs-webpack-plugin、懒加载、缓存、图片压缩、雪碧图、cdn、gizp、link标签的preload（提高优先级，优先加载本页资源）/prefetch（降低优先级，提前加载可能用到的资源）
 
 * js基本规范：
 
@@ -803,6 +803,15 @@
 * 浏览器的popstate什么情况下会触发：
 
     history.pushState()、history.replaceState()不会触发popstate事件，popstate事件只会在浏览器某些行为下触发，比如点击后退、前进，调用history.back()、history.forward()、history.go()
+
+* css样式隔离的几种方案及其优缺点：
+
+    1. BEM，模块名 + 元素名 + 修饰器名的命名方法论，.block__element--modifier，如.dropdown-menu__item--active。优点：可读性好；缺点：命名太长，依赖人为约定容易出错；
+    2. CSS modules，在构建步骤中对CSS类名和选择器限定作用域，依赖webpack css-loader，为每个局部样式名编译为哈希字符串，全局样式可以使用:global。优点：学习成本低，避免人工约束；缺点：没有变量，hash导致debug不方便；
+    3. CSS in JS，一种设计模式，它的核心思想是把CSS直接写到各自组件中，有很多库，通过唯一CSS选择器或者行内样式解决。优点：没有无用的CSS样式堆积问题；缺点：学习成本高，可读性差，由于动态生成css，造成运行时消耗；
+    4. CSS 预处理器，利用嵌套。优点：可读性好；缺点：依赖人为约定容易出错，需要编译；
+    5. Shadow DOM，优点：浏览器原生支持；缺点：浏览器兼容问题，只对一定范围内的dom结构起作用；
+    6. vue scoped，优点：简单；缺点：只适用于vue；
 
 #### webpack
 
@@ -855,7 +864,7 @@
 * 热更新原理：
 
     1. 使用express启动本地服务，将websocket客户端代码塞进打包结果，用websocket连接浏览器；
-    2. 监听源文件的变化，触发重新编译，生成新的生成hash值（用于下一次打包结果命名）、json文件、js文件，通过websocket发送最新hash给浏览器；
+    2. 监听源文件的变化，触发重新编译，生成新的hash值（用于下一次打包结果命名）、json文件、js文件，通过websocket发送最新hash给浏览器；
     3. 客户端对比，走缓存或发起ajax请求json文件，通过JSONP方式请求js文件（JSONP获取的代码可以直接执行，以进行热更新）；
 
 #### 框架
