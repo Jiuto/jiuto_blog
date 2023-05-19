@@ -790,12 +790,6 @@
 
     装饰者模式，在不改变对象自身的基础上，在程序运行期间给对象动态的添加属性或方法。
 
-* 前端优化：
-
-    1. 减少回流、重绘（css：使用 transform 替代 top；使用 visibility 替换 display: none；避免使用 table 布局；避免设置节点层级过多的样式，CSS 选择符从右往左匹配查找；js：避免频繁操作样式和DOM；避免频繁读取会引发回流/重绘的属性；）
-
-    2. 首屏加载优化：webpack 分离打包（optimization.splitChunks）、mini-xss-extract-plugin（提取CSS到单独的文件, 并使用optimize-css-assets-webpack-plugin来压缩CSS文件）、uglifyjs-webpack-plugin、懒加载、缓存、图片压缩、雪碧图、cdn、gizp、link标签的preload（提高优先级，优先加载本页资源）/prefetch（降低优先级，提前加载可能用到的资源）
-
 * js基本规范：
 
     尽量用let和const代替var、用字符串模板而不是 + 来拼接字符串、函数参数优先用...args，而不是arguments、函数参数默认赋值opts = {}，而不是在内部赋值、一个模块只 import 一次、用a || b取代三元表达式、语义化命名，驼峰；
@@ -813,7 +807,19 @@
     5. Shadow DOM，优点：浏览器原生支持；缺点：浏览器兼容问题，只对一定范围内的dom结构起作用；
     6. vue scoped，优点：简单；缺点：只适用于vue；
 
+* 前端优化：
+
+    1. 减少回流、重绘（css：使用 transform 替代 top；使用 visibility 替换 display: none；避免使用 table 布局；避免设置节点层级过多的样式，CSS 选择符从右往左匹配查找；js：避免频繁操作样式和DOM；避免频繁读取会引发回流/重绘的属性；）
+
+    2. 首屏加载优化：webpack 分离打包（optimization.splitChunks）、mini-xss-extract-plugin（提取CSS到单独的文件, 并使用optimize-css-assets-webpack-plugin来压缩CSS文件）、uglifyjs-webpack-plugin、懒加载（import()）、缓存、图片压缩、雪碧图、cdn、gizp、link标签的preload（提高优先级，优先加载本页资源）/prefetch（降低优先级，提前加载可能用到的资源）
+
+    3. 其他性能优化：js压缩（terser-webpack-plugin）、css压缩（css-minimizer-webpack-plugin）、删除无用css（purgecss-webpack-plugin）、图片压缩（image-webpack-loader）
+
 #### webpack
+
+* 提高构建速度：
+
+    resolve 配置（alias配置别名简化模块引用、extensions配置解析文件格式、modules配置解析模块时应该搜索的目录）、externals配置从输出的 bundle 中排除依赖、module.rules配置include和exclude，指定 loader 的作用目录或者需要排除的目录、module.noParse配置不需要解析依赖的第三方大型类库、IgnorePlugin防止在 import 或 require 调用时，生成正则表达式匹配的模块、多进程配置、babel-loader 开启缓存，其他loader可以用cache-loader、cache 缓存生成的 webpack 模块和 chunk。
 
 * 基础配置：
 
@@ -856,10 +862,6 @@
 * tree-shaking原理：
 
     Tree-shaking 的本质是消除无用的js代码。Tree-shaking原理依赖于ES6的模块特性。ES6模块依赖关系是确定的，和运行时的状态无关，可以进行可靠的静态分析，这就是tree-shaking的基础。所谓静态分析就是不执行代码，从字面量上对代码进行分析，ES6之前的模块化，比如我们可以动态require一个模块，只有执行后才知道引用的什么模块，这个就不能通过静态分析去做优化。
-
-* 提高构建速度：
-
-    resolve 配置（alias配置别名简化模块引用、extensions配置解析文件格式、modules配置解析模块时应该搜索的目录）、externals配置从输出的 bundle 中排除依赖、module.rules配置include和exclude，指定 loader 的作用目录或者需要排除的目录、module.noParse配置不需要解析依赖的第三方大型类库、IgnorePlugin防止在 import 或 require 调用时，生成正则表达式匹配的模块、多进程配置、babel-loader 开启缓存，其他loader可以用cache-loader、cache 持久化缓存。
 
 * 热更新原理：
 
@@ -965,7 +967,7 @@
 
     销毁：父beforeDestroy -> 子beforeDestroy -> 子destroyed -> 父destroyed
 
-* computed和watch的区别：
+* computed 和 watch 的区别：
 
     需要经过计算获取值，可以使用computed，需要在值发生变化的时候执行回调则用watch。计算属性的结果会被缓存，除非依赖的响应式 property 变化才会重新计算。
 
@@ -979,9 +981,25 @@
 
     全局守卫（beforeEach、beforeResolve、afterEach）、路由独享的守卫（beforeEnter）、组件内的守卫（beforeRouteEnter、beforeRouteUpdate、beforeRouteLeave）
 
-* vuex原理：
+* vuex 原理：
 
     通过applyMixin方法，在vue的beforeCreate生命周期混入一个vuexInit方法，通过该方法初始化或从父组件拿$store，保证全局共用一个store。 Vuex内部新建一个Vue实例vm，通过vm响应式地注册state，并将状态管理的getters注册到vm的computed上。
+
+* vue computed 原理：
+
+    假设有一个vue实例vm，vm.data上有一个A属性，vm.computed上有一个A'计算属性，值为function(){return this.A}。
+
+    + 那么A在initData方法中会生产一个观察者实例watcher a，A'在initComputed方法中会生产一个观察者实例watcher a'。
+
+    + 第一次调用vm.computed.A'时：触发A'的get，由于a'.dirty默认为true，调用a'.evaluate=>a'.get(在这里将Dep.target设为a')=>调用a'.getter，即function(){return this.A}，触发了A.get。
+
+    在A.get中，由于Dep.target指向a'，调用了A的闭包中的dep的depend方法，dep.depent调用了Dep.target也就是a'的addDep，a'.addDep又触发了dep.addSub， 总的来说，这一步完成了双方的观察者和依赖的收集。
+
+    A.get执行完，回到a'.get，将Dep.target设为null，回到a'.evaluate，将a'.dirty设为false。
+
+    + 第二次调用vm.computed.A'时，由于a'.dirty为false，直接返回缓存的a'.value。
+
+    + 当A被更改时，触发A的set，调用dep.notify，会调用a'.update，在update中a'.dirty将重置为true，下一次获取A'时就会重新调用a'.evaluate了。
 
 ##### React
 
