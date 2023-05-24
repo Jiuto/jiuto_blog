@@ -333,6 +333,44 @@
     3. 实例方法中的this指向实例本身；
     4. 当构造函数return 一个Object/Function/Array/Date/RegExp/Error的实例时，new操作符得到的就是return的结果；
 
+* 实现 Promise.all、Promise.race：
+
+    ``` js
+    function myPromiseAll(arr) {
+        let len = arr.length
+
+        if(len === 0) return Promise.resolve(arr)
+
+        return new Promise((res, rej) => {
+            let count = 0
+            let result = []
+
+            for(let i = 0; i < len; i++) {
+                arr[i].then(resolve => {
+                    result[i] = resolve
+                    count++
+                    if(count === len) res(result)
+                }).catch(e => {
+                    rej(e)
+                })
+            }
+        })
+    }
+
+    function myPromiseRace(arr) {
+        return new Promise((res, rej) => {
+            let len = arr.length
+            for(let i = 0; i < len; i++) {
+                arr[i].then(resolve => {
+                     res(resolve)
+                }).catch(e => {
+                    rej(e)
+                })
+            }
+        })
+    }
+    ```
+
 * for of、for in、Object.keys：
 
     for in 以任意顺序迭代一个对象除Symbol以外的可枚举属性，可以遍历对象，拿到属性名，可以遍历数组，拿到下标；
@@ -877,8 +915,6 @@
 
     + 数据流：Vue 组件与DOM之间可以通过 v-model 双向绑定。 react 组件=>Dom单向数据流，使用onChange/setState()。
 
-    + 组合不同功能：Vue通过 mixin，而在React中通过高阶组件。（现在都有hooks了）
-
     + 组件通信：Vue props/event，provide/inject跨越层级。React props传递数据和回调，context跨越层级。
 
     + 渲染方式不同：React是在组件中通过原生JS实现模板中的常见语法，比如插值，条件，循环等。Vue是在template模板中，通过指令比如v-if、v-for来实现。
@@ -1140,3 +1176,11 @@
     ```
 
     React怎么阻止事件冒泡：阻止合成事件的冒泡用e.stopPropagation()；阻止合成事件和最外层document事件冒泡，使用e.nativeEvent.stopImmediatePropogation()。
+
+* useEffect 和 useLayoutEffect：
+
+    useEffect 是下一个宏任务，渲染完成后，执行一些副作用操作。useLayoutEffect 在当前宏任务中执行，会阻塞渲染，可以解决一些页面闪烁问题。
+
+* React 性能优化：
+
+    React.memo、避免使用匿名函数，使用useCallback、懒加载（React.lazy 和 React.Suspense）、useMemo、遍历展示视图时使用key。
