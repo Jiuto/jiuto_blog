@@ -455,9 +455,9 @@
 
     cookie（document.cookie）：可设置失效时间，默认关闭浏览器失效；可存放4KB左右数据；会携带在HTTP头中；
 
-    localStorage（使用同sessionStorage）：除非被手动清除，否则永久保存；可保存5MB数据；不参与通信，仅存于客户端；
+    localStorage（使用同sessionStorage）：除非被手动清除，否则永久保存；可保存5MB数据；不参与通信，仅存于客户端；同源文档之间共享；
 
-    sessionStorage（sessionStorage.setItem(name,value);、sessionStorage.getItem(name);、sessionStorage.removeItem(name);、 sessionStorage.valueOf();、sessionStorage.属性名、sessionStorage.clear()）：仅在当前会话有效；可保存5MB数据；不参与通信，仅存于客户端；
+    sessionStorage（sessionStorage.setItem(name,value);、sessionStorage.getItem(name);、sessionStorage.removeItem(name);、 sessionStorage.valueOf();、sessionStorage.属性名、sessionStorage.clear()）：仅在当前会话有效；可保存5MB数据；不参与通信，仅存于客户端；同源文档，且同一个页面会话之间共享；
 
     浏览器缓存，分为强制缓存和协商缓存，强缓存优先级更高：
 
@@ -513,6 +513,10 @@
     + background、background-image、background-position、background-repeat、background-size
     + outline、outline-color、outline-style、outline-radius、outline-width
     + border-style、box-shadow
+
+* CSS GPU 加速：
+
+    浏览器在处理这几个的 css 的时候，会使用 gpu 渲染：transform、opacity、filter、will-change。触发 gpu 渲染会新建一个图层，把该元素样式的计算交给 gpu。gpu 硬件加速能减轻 cpu 压力，使得渲染更流畅，但是也会增加内存的占用，建议只在必要的时候用。
 
 * HTTP：
 
@@ -1037,6 +1041,15 @@
 
     + 当A被更改时，触发A的set，调用dep.notify，会调用a'.update，在update中a'.dirty将重置为true，下一次获取A'时就会重新调用a'.evaluate了。
 
+* vue3 diff：
+
+    + 首首查找相同的节点，遇到不同停止
+    + 尾尾查找相同的节点，遇到不同停止
+    + 如果新节点遍历完，删除多余旧节点
+    + 如果旧节点遍历完，新增多余新节点
+    + 构建可复用节点的最长递增子序列
+    + 遍历新节点，没有可复用旧节点则新增，否则判断是否在最长递增子序列中，在则跳过， 不在则移动
+
 ##### React
 
 * setState:
@@ -1184,3 +1197,11 @@
 * React 性能优化：
 
     React.memo、避免使用匿名函数，使用useCallback、懒加载（React.lazy 和 React.Suspense）、useMemo、遍历展示视图时使用key。
+
+* redux、react-redux、@reduxjs/toolkit：
+
+    Redux 和 React 之间没有关系，Redux 支持 React、Angular、Ember、jQuery 甚至纯 JavaScript。
+
+    react-redux 是一个 react 插件库，从 redux 封装而来，提供`<Provider store={store}>`、`connect(mapStateToprops,mapDispatchToProps)(OurComponent)`、mapStateToprops、mapDispatchToProps，不需要在每一个组件中引入store，并手动监听store变化。
+
+    @reduxjs/toolkit 是对 Redux 的二次封装，使得创建store、更新store等更简单。
