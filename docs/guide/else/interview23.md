@@ -480,6 +480,10 @@
 
     作用域是在函数定义时决定的，而不是函数调用时决定的。每一段JavaScript代码（全局代码或函数）都有一个与之关联的作用域链。 这个作用域链是一个对象列表或者链表，定义了这段代码“作用域中”的变量。当JavaScript需要查找变量的x的值的时候，它会从作用域链中的第一个对象开始查找， 如果这个对象没有名为x的属性，就会继续查找链上下一个对象，最后到全局作用域，如果全都没有找到就会抛出一个引用错误（ReferenceError）异常。
 
+* 为什么需要块级作用域：
+
+    防止由于变量提升，函数作用域内部的变量覆盖全局作用域的变量；避免循环计数作用的临时变量泄露到全局；
+
 * 浏览器渲染过程（从url到展示）：
 
     1. 网络进程查找缓存，没有缓存要先进行DNS解析。如果是HTTPS，要建立TLS连接。通过IP地址建立TCP连接，构建请求行、请求头等信息，添加cookie，发起请求。
@@ -840,6 +844,12 @@
 
     history.pushState()、history.replaceState()不会触发popstate事件，popstate事件只会在浏览器某些行为下触发，比如点击后退、前进，调用history.back()、history.forward()、history.go()
 
+* hash、history模式：
+
+    hash：#后面的路径发生变化时，浏览器并不会重新发起请求，而是会触发 hashchange 事件，通过 window.location.hash 获取 hash 控制页面变化；
+
+    history：通过 history.pushState、history.replaceState 来实现无刷新跳转的功能；浏览器的进后退触发 popstate 事件，通过 window.location.pathname 获取路径来控制页面的变化；需要通过服务端来允许地址可访问，如果没有设置，404；
+
 * css样式隔离的几种方案及其优缺点：
 
     1. BEM，模块名 + 元素名 + 修饰器名的命名方法论，.block__element--modifier，如.dropdown-menu__item--active。优点：可读性好；缺点：命名太长，依赖人为约定容易出错；
@@ -991,7 +1001,7 @@
 
     beforeCreate => created 这个阶段进行数据观测，created可以拿到$data
 
-    beforeMount => mounted 这个阶段从 `{{message}} => 真实内容`，添加$el
+    beforeMount => mounted 这个阶段从 `{{message}\} => 真实内容`，添加$el
 
     beforeUpdate => updated
 
@@ -1205,3 +1215,13 @@
     react-redux 是一个 react 插件库，从 redux 封装而来，提供`<Provider store={store}>`、`connect(mapStateToprops,mapDispatchToProps)(OurComponent)`、mapStateToprops、mapDispatchToProps，不需要在每一个组件中引入store，并手动监听store变化。
 
     @reduxjs/toolkit 是对 Redux 的二次封装，使得创建store、更新store等更简单。
+
+* react 16 后的diff：
+
+    1. 新旧对比，相同的可复用节点打上更新标记，遇到不可复用节点就停止；
+    2. 如果新节点遍历完，多余旧节点打上删除标记；
+    3. 如果新节点未遍历完，将旧的剩余节点放入Map，遍历新节点，在Map中存在即可复用打上更新标记，遍历完成给剩余旧节点打上删除标记，未找到可复用的新节点打上新增标记；
+
+* 为什么不能在循环、判断内部使用 hook：
+
+    每个 hook 的 state 按顺序保存在数组中，需要保证每次渲染 hook 的执行顺序一致，才能正确一一对应 state。
